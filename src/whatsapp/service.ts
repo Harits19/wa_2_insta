@@ -1,6 +1,6 @@
-import { Client, LocalAuth } from "whatsapp-web.js";
+import { Client, LocalAuth, MessageMedia } from "whatsapp-web.js";
 import qrcode from "qrcode-terminal";
-import { publishPhoto } from "../instagram/service";
+import { publishPhoto, publishPhotos } from "../instagram/service";
 
 export async function initWhatsappClient() {
   const client = new Client({ authStrategy: new LocalAuth() });
@@ -17,30 +17,47 @@ export async function initWhatsappClient() {
       resolve();
     });
 
+    let batchMedia: MessageMedia[] = [];
+    let isLoadingUploadToInstagram = false;
+
     client.on("message", async (msg) => {
-      const rawData: any = msg.rawData;
+      const body = msg.body;
 
-      const captionPrefix = rawData?.caption;
+      const endUploadInstagramKeyword = "end upload to instagram";
 
-      if (typeof captionPrefix !== "string") return;
-
-      const uploadInstagramKeyword = "Upload to instagram";
-
-      const isKeywordValid = captionPrefix
+      const isEndUploadToInstagram = body
         .toLowerCase()
-        .startsWith(uploadInstagramKeyword.toLowerCase());
+        .startsWith(endUploadInstagramKeyword);
 
-      if (!msg.hasMedia || !isKeywordValid) return;
+      if (isEndUploadToInstagram) {
+        console.log("all media received with size ", batchMedia.length);
+        console.log("start post multiple photo");
+        const caption = body.split("-").at(1)?.trim();
+        await publishPhotos({
+          items: batchMedia.map((item) => item.data),
+          caption,
+        });
 
-      console.log("__________________________________");
-      console.log("id ", msg.id.id);
-      console.log("timestamp", msg.timestamp);
-      const media = await msg.downloadMedia();
-      console.log("media ", media.data);
-      const caption = captionPrefix.split("-").at(1)?.trim();
+        console.log("clear batch media data");
+        batchMedia = [];
+      }
 
-      console.log("caption", caption);
-      await publishPhoto({ base64: media.data, caption: caption });
+      const startUploadInstagramKeyword = "start upload to instagram";
+
+      const isStartUploadToInstagram = body
+        .toLowerCase()
+        .startsWith(startUploadInstagramKeyword);
+
+      if (isStartUploadToInstagram) {
+        console.log("start upload to instagram!");
+        isLoadingUploadToInstagram = true;
+      }
+
+      if (isLoadingUploadToInstagram && msg.hasMedia) {
+        const media = await msg.downloadMedia();
+        console.log("start push to batch upload with id", msg.id.id);
+        batchMedia.push(media);
+      }
     });
 
     await client.initialize();

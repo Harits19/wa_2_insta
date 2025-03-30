@@ -1,4 +1,4 @@
-import { IgApiClient } from "instagram-private-api";
+import { IgApiClient, PostingAlbumPhotoItem } from "instagram-private-api";
 import { env } from "../env/service";
 import * as fs from "fs";
 
@@ -41,6 +41,24 @@ export async function publishPhoto({
   const publishResult = await ig.publish.photo({
     file: Buffer.from(base64, "base64"),
     caption: caption, // Caption for the post
+  });
+
+  console.log("Image posted successfully!", publishResult.upload_id);
+}
+
+export async function publishPhotos({
+  items: photos,
+  caption,
+}: {
+  items: string[];
+  caption?: string;
+}) {
+  const items: PostingAlbumPhotoItem[] = photos.map((item) => ({
+    file: Buffer.from(item, "base64"),
+  }));
+  const publishResult = await ig.publish.album({
+    items,
+    caption,
   });
 
   console.log("Image posted successfully!", publishResult.upload_id);
