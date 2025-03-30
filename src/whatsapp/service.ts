@@ -23,9 +23,14 @@ export async function initWhatsappClient() {
     });
 
     client.on("message", async (msg) => {
-      handlePostBatchMedia(msg);
-      handleStartUpload(msg);
-      handleAddMedia(msg);
+      try {
+        await handlePostBatchMedia(msg);
+        await handleStartUpload(msg);
+        await handleAddMedia(msg);
+      } catch (error) {
+        console.error(error);
+        msg.reply(`error ${error?.toString()}`);
+      }
     });
 
     await client.initialize();

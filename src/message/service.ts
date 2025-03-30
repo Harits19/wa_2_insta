@@ -5,7 +5,7 @@ let isLoadingUploadToInstagram = false;
 
 let batchMedia: MessageMedia[] = [];
 
-export function handleStartUpload(msg: Message) {
+export async function handleStartUpload(msg: Message) {
   const startUploadInstagramKeyword = "start upload to instagram";
 
   const isStartUploadToInstagram = msg.body
@@ -15,6 +15,7 @@ export function handleStartUpload(msg: Message) {
   if (!isStartUploadToInstagram) return;
 
   console.log("start upload to instagram!");
+  msg.reply("start listen image");
   isLoadingUploadToInstagram = true;
 }
 
@@ -26,24 +27,38 @@ export async function handleAddMedia(msg: Message) {
   batchMedia.push(media);
 }
 
-export async function handlePostBatchMedia(msg: Message) {
-  const endUploadInstagramKeyword = "end upload to instagram";
-  const body = msg.body;
-
-  const isEndUploadToInstagram = body
-    .toLowerCase()
-    .startsWith(endUploadInstagramKeyword);
-
-  if (!isEndUploadToInstagram) return;
-
-  console.log("all media received with size ", batchMedia.length);
-  console.log("start post multiple photo");
-  const caption = body.split("-").at(1)?.trim();
-  await publishPhotos({
-    items: batchMedia.map((item) => item.data),
-    caption,
-  });
-
+function resetState() {
   console.log("clear batch media data");
+
   batchMedia = [];
+  isLoadingUploadToInstagram = false;
+}
+
+export async function handlePostBatchMedia(msg: Message) {
+  try {
+    const endUploadInstagramKeyword = "end upload to instagram";
+    const body = msg.body;
+
+    const isEndUploadToInstagram = body
+      .toLowerCase()
+      .startsWith(endUploadInstagramKeyword);
+
+    if (!isEndUploadToInstagram) return;
+
+    console.log("all media received with size ", batchMedia.length);
+    console.log("start post multiple photo");
+    const caption = body.split("-").at(1)?.trim();
+    msg.reply("start post image");
+    await publishPhotos({
+      items: batchMedia.map((item) => item.data),
+      caption,
+    });
+
+    msg.reply("Image posted successfully!");
+
+    resetState();
+  } catch (error) {
+    resetState();
+    throw error;
+  }
 }
