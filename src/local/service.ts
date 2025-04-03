@@ -1,9 +1,11 @@
+import { IgApiClient } from "instagram-private-api";
 import { listFolder, prefixPath } from "../constants/file";
 import FileService from "../file/service";
-import { publishPhotos, publishPhotosLocal } from "../instagram/service";
+import { InstagramService } from "../instagram/service";
 import ResizeService from "../resize/service";
 
 export async function startLocalFileUpload() {
+  const instagramService = new InstagramService({ ig: new IgApiClient() });
   for (const [index, folder] of listFolder.entries()) {
     const {
       caption,
@@ -44,7 +46,7 @@ export async function startLocalFileUpload() {
         `start upload batch index ${index} with value ${item} reduceQuality ${reduceQuality} caption text ${captionText}`
       );
 
-      await publishPhotosLocal({
+      await instagramService.publishPhotosLocal({
         items: item.map((item) => `${folderPath}/${item}`),
         caption: captionText,
       });
