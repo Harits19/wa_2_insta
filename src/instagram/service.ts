@@ -64,3 +64,21 @@ export async function publishPhotos({
 
   console.log("Image posted successfully!", publishResult.media.id);
 }
+
+export async function publishPhotosLocal({
+  items: photos,
+  caption,
+}: {
+  items: string[];
+  caption?: string;
+}) {
+  const items: PostingAlbumPhotoItem[] = photos.map((item) => ({
+    file: fs.readFileSync(item),
+  }));
+  const publishResult: AlbumResponse = await ig.publish.album({
+    items,
+    caption,
+  });
+
+  console.log("Image posted successfully!", publishResult.media.id);
+}

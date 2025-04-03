@@ -58,29 +58,6 @@ export default class ResizeService {
     return this.outputDirectory;
   }
 
-  static async reduceQuality(filePath: string) {
-    // Find the last dot in the file name to separate the extension
-    const extIndex = filePath.lastIndexOf(".");
-
-    // Separate the path from the extension
-    const fileName = filePath.slice(0, extIndex);
-    const extension = filePath.slice(extIndex);
-
-    // Modify the file name by adding " reduced-" before the number
-    const newFilePath = `${fileName.replace(
-      /-(\d+)/,
-      " reduced-$1"
-    )}${extension}`;
-
-    console.log({ newFilePath, filePath });
-
-    const result = await sharp(filePath)
-      .jpeg({ quality: 70 })
-      .toFile(newFilePath);
-
-    return newFilePath;
-  }
-
   async resizeImage(file: string) {
     const outputPath = this.getOutputPath(file);
 

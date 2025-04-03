@@ -52,7 +52,7 @@ export default class FileService {
   }
 
   static batchFile(files: string[]) {
-    const INSTAGRAM_MAX_POST = 10;
+    const INSTAGRAM_MAX_POST = 20;
 
     const result: string[][] = [];
 
