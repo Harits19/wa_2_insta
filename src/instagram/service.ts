@@ -21,6 +21,13 @@ export class InstagramService {
     return isHaveSession;
   }
 
+  async loadSession() {
+    const session = JSON.parse(fs.readFileSync(this.sessionPath, "utf-8"));
+    await this.ig.state.deserialize(session);
+    await new Promise((resolve) => setTimeout(resolve, 3000));
+    console.log("Session loaded!");
+  }
+
   async initInstagramClient({
     password,
     username,
@@ -35,9 +42,7 @@ export class InstagramService {
     }
 
     if (this.isHaveSession) {
-      const session = JSON.parse(fs.readFileSync(sessionPath, "utf-8"));
-      await this.ig.state.deserialize(session);
-      console.log("Session loaded!");
+      await this.loadSession();
     } else {
       console.log("start init instagram client");
 
@@ -74,12 +79,20 @@ export class InstagramService {
     items: photos,
     caption,
   }: {
-    items: string[];
+    items: (string | Buffer)[];
     caption?: string;
   }) {
-    const items: PostingAlbumPhotoItem[] = photos.map((item) => ({
-      file: Buffer.from(item, "base64"),
-    }));
+    const items: PostingAlbumPhotoItem[] = photos.map((item) => {
+      if (typeof item === "string") {
+        return {
+          file: Buffer.from(item, "base64"),
+        };
+      }
+
+      return {
+        file: item,
+      };
+    });
     const publishResult: AlbumResponse = await this.ig.publish.album({
       items,
       caption,

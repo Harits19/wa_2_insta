@@ -1,5 +1,7 @@
 import { Message, MessageMedia } from "whatsapp-web.js";
 import { MessageClientModel } from "./type";
+import ResizeBase64Service from "../resize/base-64/service";
+import { AspectRatio, listAspectRatio } from "../resize/types";
 
 export class MessageService {
   client: MessageClientModel;
@@ -14,8 +16,13 @@ export class MessageService {
     const isStartUploadToInstagram = msg.body
       .toLowerCase()
       .startsWith(startUploadInstagramKeyword);
+    const aspectRatio = msg.body.split("-").at(1)?.trim();
 
     if (!isStartUploadToInstagram) return;
+
+    if (listAspectRatio.some((item) => item === aspectRatio)) {
+      this.client.aspectRatio = aspectRatio as AspectRatio;
+    }
 
     console.log("start upload to instagram!");
     msg.reply("start listen image");
@@ -54,9 +61,15 @@ export class MessageService {
       );
       console.log("start post multiple photo");
       const caption = body.split("-").at(1)?.trim();
+      const resizeService = new ResizeBase64Service({
+        aspectRatio: this.client.aspectRatio,
+      });
+      const resizeResult = await resizeService.resizeBase64Images({
+        images: this.client.batchMedia.map((item) => item.data),
+      });
       msg.reply("start post image");
       await this.client.instagramService.publishPhotos({
-        items: this.client.batchMedia.map((item) => item.data),
+        items: resizeResult,
         caption,
       });
 

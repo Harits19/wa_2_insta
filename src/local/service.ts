@@ -1,9 +1,8 @@
-import { IgApiClient } from "instagram-private-api";
 import { listFolder, prefixPath } from "../constants/file";
 import FileService from "../file/service";
 import { InstagramService } from "../instagram/service";
-import ResizeService from "../resize/service";
 import { env } from "../env/service";
+import ResizeLocalService from "../resize/local/service";
 
 export async function startLocalFileUpload() {
   const instagramService = new InstagramService({ cookiesKey: "local" });
@@ -31,7 +30,7 @@ export async function startLocalFileUpload() {
 
     if (aspectRatio) {
       console.log("start resize with aspect ratio ", aspectRatio);
-      const resizeService = new ResizeService({ aspectRatio, folderPath });
+      const resizeService = new ResizeLocalService({ aspectRatio, folderPath });
       const resizePath = await resizeService.startResizeAllImage();
       folderPath = resizePath;
     }

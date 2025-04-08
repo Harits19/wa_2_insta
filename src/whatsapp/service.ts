@@ -4,6 +4,7 @@ import qrcode from "qrcode-terminal";
 import { MessageClientModel } from "../message/type";
 import { InstagramService } from "../instagram/service";
 import { IgLoginBadPasswordError } from "instagram-private-api";
+import { MessageService } from "../message/service";
 
 const clients: Record<string, MessageClientModel> = {};
 
@@ -28,9 +29,20 @@ export async function initWhatsappClient() {
         const body = msg.body;
         console.log({ from, body });
 
-        const selectedClients = clients[from];
+        let selectedClients = clients[from];
 
         const loginKeyword = "login";
+
+        const setNewClient = (instagramService: InstagramService) => {
+          const newValue: MessageClientModel = {
+            aspectRatio: `1x1`,
+            batchMedia: [],
+            isLoadingUploadToInstagram: false,
+            instagramService,
+          };
+          clients[from] = newValue;
+          return newValue;
+        };
 
         if (body.startsWith(loginKeyword) && !selectedClients) {
           const values = body.split("-");
@@ -46,6 +58,9 @@ export async function initWhatsappClient() {
           const instagramService = new InstagramService({ cookiesKey: from });
           msg.reply("start login");
           await instagramService.initInstagramClient({ password, username });
+          msg.reply("success login");
+
+          setNewClient(instagramService);
 
           return;
         }
@@ -63,15 +78,22 @@ export async function initWhatsappClient() {
             return;
           }
 
-          // reassign client value
-          clients[from] = {
-            batchMedia: [],
-            instagramService,
-            isLoadingUploadToInstagram: false,
-          };
+          await instagramService.loadSession();
 
-          return;
+          selectedClients = setNewClient(instagramService);
         }
+
+        const messageService = new MessageService({ client: selectedClients });
+
+        await messageService.handlePostBatchMedia(msg);
+        await messageService.handleStartUpload(msg);
+        await messageService.handleAddMedia(msg);
+
+        console.log("state after batch media ", {
+          ...selectedClients,
+          batchMedia: undefined,
+          instagramService: undefined,
+        });
       } catch (error) {
         if (error instanceof IgLoginBadPasswordError) {
           console.error(error);
