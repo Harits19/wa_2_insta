@@ -4,26 +4,30 @@ import { AlbumResponse } from "./type";
 
 export class InstagramService {
   ig: IgApiClient;
-  username?: string;
-  password?: string;
+  cookiesKey: string;
 
-  constructor({ ig }: { ig: IgApiClient }) {
-    this.ig = ig;
+  constructor({ cookiesKey }: { cookiesKey: string }) {
+    this.ig = new IgApiClient();
+    this.cookiesKey = cookiesKey;
   }
 
   get sessionPath() {
-    return `${this.username}-session.json`;
+    return `${this.cookiesKey}-session.json`;
   }
 
   get isHaveSession() {
-    if (!this.username) return false;
+    if (!this.cookiesKey) return false;
     const isHaveSession = fs.existsSync(this.sessionPath);
     return isHaveSession;
   }
 
-  async initInstagramClient() {
-    const username = this.username;
-    const password = this.password;
+  async initInstagramClient({
+    password,
+    username,
+  }: {
+    password: string;
+    username: string;
+  }) {
     const sessionPath = this.sessionPath;
 
     if (!password || !username) {

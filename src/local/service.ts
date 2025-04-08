@@ -3,9 +3,14 @@ import { listFolder, prefixPath } from "../constants/file";
 import FileService from "../file/service";
 import { InstagramService } from "../instagram/service";
 import ResizeService from "../resize/service";
+import { env } from "../env/service";
 
 export async function startLocalFileUpload() {
-  const instagramService = new InstagramService({ ig: new IgApiClient() });
+  const instagramService = new InstagramService({ cookiesKey: "local" });
+  await instagramService.initInstagramClient({
+    password: env.INSTAGRAM_PASSWORD,
+    username: env.INSTAGRAM_USERNAME,
+  });
   for (const [index, folder] of listFolder.entries()) {
     const {
       caption,

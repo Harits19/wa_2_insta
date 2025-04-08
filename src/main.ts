@@ -5,7 +5,7 @@ import { initWhatsappClient } from "./whatsapp/service";
 export default async function main() {
   checkENV();
   await initWhatsappClient();
-  await startLocalFileUpload();
+  // await startLocalFileUpload();
   
 }
 

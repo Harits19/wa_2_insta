@@ -3,7 +3,7 @@ import qrcode from "qrcode-terminal";
 
 import { MessageClientModel } from "../message/type";
 import { InstagramService } from "../instagram/service";
-import { IgApiClient } from "instagram-private-api";
+import { IgLoginBadPasswordError } from "instagram-private-api";
 
 const clients: Record<string, MessageClientModel> = {};
 
@@ -23,48 +23,63 @@ export async function initWhatsappClient() {
     });
 
     client.on("message", async (msg) => {
-      const from = msg.from;
-      const body = msg.body;
-      console.log({ from, body });
+      try {
+        const from = msg.from;
+        const body = msg.body;
+        console.log({ from, body });
 
-      const selectedClients = clients[from];
+        const selectedClients = clients[from];
 
-      const loginKeyword = "login";
+        const loginKeyword = "login";
 
-      if (body.startsWith(loginKeyword)) {
-        const values = body.split("-");
-        const username = values.at(1)?.trim();
-        const password = values.at(2)?.trim();
+        if (body.startsWith(loginKeyword) && !selectedClients) {
+          const values = body.split("-");
+          const username = values.at(1)?.trim();
+          const password = values.at(2)?.trim();
 
-        if (!password || !username) {
+          if (!password || !username) {
+            return;
+          }
+
+          console.log({ username, password });
+
+          const instagramService = new InstagramService({ cookiesKey: from });
+          msg.reply("start login");
+          await instagramService.initInstagramClient({ password, username });
+
           return;
         }
 
-        console.log({ username, password });
-      }
+        if (!selectedClients) {
+          console.log("client not found, start new client");
+          const instagramService = new InstagramService({ cookiesKey: from });
 
-      if (!selectedClients) {
-        console.log("client not found, start new client");
-        const instagramService = new InstagramService({
-          ig: new IgApiClient(),
-        });
+          const isHaveSession = instagramService.isHaveSession;
 
-        const isHaveSession = instagramService.isHaveSession;
+          if (!isHaveSession) {
+            msg.reply(
+              "client not found, please input instagram username and password with this format \n *login - example.username - examplePassword*"
+            );
+            return;
+          }
 
-        if (!isHaveSession) {
-          msg.reply(
-            "client not found, please input instagram username and password with this format \n *login - example.username - examplePassword*"
-          );
+          // reassign client value
+          clients[from] = {
+            batchMedia: [],
+            instagramService,
+            isLoadingUploadToInstagram: false,
+          };
+
           return;
         }
-
-        clients[from] = {
-          batchMedia: [],
-          instagramService,
-          isLoadingUploadToInstagram: false,
-        };
-
-        return;
+      } catch (error) {
+        if (error instanceof IgLoginBadPasswordError) {
+          console.error(error);
+          msg.reply(`incorrect credential`);
+          return;
+        }
+        console.error(error);
+        msg.reply(`error ${error?.toString()}`);
       }
 
       // try {
