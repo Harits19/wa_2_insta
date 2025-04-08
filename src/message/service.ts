@@ -10,8 +10,41 @@ export class MessageService {
     this.client = client;
   }
 
+  messageKeyword = {
+    cancelUpload: "cancel upload",
+    help: "help",
+    startUpload: "start upload to instagram",
+    endUpload: "end upload to instagram",
+  };
+
+  async handleHelpKeyword(msg: Message) {
+    const cancelUploadKeyword = this.messageKeyword.help;
+    const isHelpKeyword = msg.body.toLowerCase() === cancelUploadKeyword;
+
+    if (!isHelpKeyword) return;
+
+    msg.reply(
+      `Use this keyword to upload to Instagram via WhatsApp \n${Object.values(
+        this.messageKeyword
+      )
+        .map((item) => `- ${item}`)
+        .join("\n")}`
+    );
+  }
+
+  async handleCancelUpload(msg: Message) {
+    const cancelUploadKeyword = this.messageKeyword.cancelUpload;
+    const isCancelKeyword = msg.body.toLowerCase() === cancelUploadKeyword;
+
+    if (!isCancelKeyword) return;
+
+    msg.reply("Cancel Upload Successfully");
+
+    this.resetState();
+  }
+
   async handleStartUpload(msg: Message) {
-    const startUploadInstagramKeyword = "start upload to instagram";
+    const startUploadInstagramKeyword = this.messageKeyword.startUpload;
 
     const isStartUploadToInstagram = msg.body
       .toLowerCase()
@@ -46,7 +79,7 @@ export class MessageService {
 
   async handlePostBatchMedia(msg: Message) {
     try {
-      const endUploadInstagramKeyword = "end upload to instagram";
+      const endUploadInstagramKeyword = this.messageKeyword.endUpload;
       const body = msg.body;
 
       const isEndUploadToInstagram = body

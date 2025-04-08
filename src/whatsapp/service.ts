@@ -88,6 +88,8 @@ export async function initWhatsappClient() {
         await messageService.handlePostBatchMedia(msg);
         await messageService.handleStartUpload(msg);
         await messageService.handleAddMedia(msg);
+        await messageService.handleCancelUpload(msg);
+        await messageService.handleHelpKeyword(msg);
 
         console.log("state after batch media ", {
           ...selectedClients,
