@@ -2,6 +2,7 @@ import { Message, MessageMedia } from "whatsapp-web.js";
 import { MessageClientModel } from "./type";
 import ResizeBase64Service from "../resize/base-64/service";
 import { AspectRatio, listAspectRatio } from "../resize/types";
+import FileService from "../file/service";
 
 export class MessageService {
   client: MessageClientModel;
@@ -93,18 +94,37 @@ export class MessageService {
         this.client.batchMedia.length
       );
       console.log("start post multiple photo");
-      const caption = body.split("-").at(1)?.trim();
+      let caption = body.split("-").at(1)?.trim();
       const resizeService = new ResizeBase64Service({
         aspectRatio: this.client.aspectRatio,
       });
       const resizeResult = await resizeService.resizeBase64Images({
         images: this.client.batchMedia.map((item) => item.data),
       });
-      msg.reply("start post image");
-      await this.client.instagramService.publishPhotos({
-        items: resizeResult,
-        caption,
-      });
+
+      const resultBatch = FileService.batchFile(resizeResult);
+
+      for (const [i, images] of Object.entries(resultBatch)) {
+        const index = Number(i);
+        let finalCaption = caption;
+
+        if (resultBatch.length > 1) {
+          finalCaption = `${caption ?? ""} ${index + 1}`;
+        }
+
+        console.log("start post image with caption ", finalCaption);
+        if (images.length > 1) {
+          await this.client.instagramService.publishPhotos({
+            items: images,
+            caption: finalCaption,
+          });
+        } else {
+          await this.client.instagramService.publishPhoto({
+            caption: finalCaption,
+            base64: images[0],
+          });
+        }
+      }
 
       msg.reply("Image posted successfully!");
 

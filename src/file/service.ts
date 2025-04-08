@@ -51,10 +51,10 @@ export default class FileService {
     return result;
   }
 
-  static batchFile(files: string[]) {
+  static batchFile<T>(files: T[]) {
     const INSTAGRAM_MAX_POST = 20;
 
-    const result: string[][] = [];
+    const result: T[][] = [];
 
     for (let index = 0; index < files.length; index += INSTAGRAM_MAX_POST) {
       const batch = files.slice(index, index + INSTAGRAM_MAX_POST);

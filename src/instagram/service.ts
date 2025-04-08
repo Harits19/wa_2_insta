@@ -64,11 +64,11 @@ export class InstagramService {
     base64,
     caption,
   }: {
-    base64: string;
+    base64: string | Buffer;
     caption?: string;
   }) {
     const publishResult = await this.ig.publish.photo({
-      file: Buffer.from(base64, "base64"),
+      file: typeof base64 === "string" ? Buffer.from(base64, "base64") : base64,
       caption: caption, // Caption for the post
     });
 
