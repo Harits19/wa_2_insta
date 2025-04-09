@@ -1,5 +1,5 @@
 import AnalyzeSizeService from "../../analyze-size/service";
-import ffmpeg, { FfprobeStream } from "fluent-ffmpeg";
+import ffmpeg, { FfprobeData, FfprobeStream } from "fluent-ffmpeg";
 import ffmpegInstaller from "@ffmpeg-installer/ffmpeg";
 import ffprobeInstaller from "@ffprobe-installer/ffprobe";
 import { AspectRatio } from "../types";
@@ -22,13 +22,43 @@ export default class ResizeVideoService extends AnalyzeSizeService {
     this.filePath = filePath;
   }
 
-  async resizeVideo() {
-    const { height, width, format } = await this.videoMetadata();
-    console.log({ height, width, format });
+  async instagramReadyVideo() {
+    const metadata = await this.getVideoMetadata();
+    const resizedVideo = await this.resizeVideo(metadata);
+    const duration = metadata.format.duration;
+    if (!duration) {
+      throw new Error("No duration found");
+    }
+
+    const thumbnail = await this.getVideoThumbnail({
+      duration,
+    });
+
+    return {
+      thumbnail,
+      resizedVideo,
+    };
+  }
+
+  async resizeVideo(metadata: FfprobeData) {
+    const videoMetadata = metadata.streams.find(
+      (item) => item.codec_type === "video"
+    );
+
+    const duration = metadata.format.duration;
+
+    if (!videoMetadata) {
+      throw new Error("No video stream found");
+    }
+
+    const { height, width } = videoMetadata;
+    console.log({ height, width, duration });
+
     const { targetHeight, targetWidth } = await this.analyze({
       height,
       width,
     });
+    console.log({ targetHeight, targetWidth });
 
     const result = await this.resizeVideoStream({
       targetHeight,
@@ -68,46 +98,39 @@ export default class ResizeVideoService extends AnalyzeSizeService {
     });
   }
 
-  async videoMetadata() {
-    return new Promise<FfprobeStream>((resolve, reject) => {
+  async getVideoMetadata() {
+    return new Promise<FfprobeData>((resolve, reject) => {
       ffmpeg.ffprobe(this.filePath, (err, metadata) => {
         if (err) {
           reject(err);
           return;
         }
 
-        const videoStream = metadata.streams.find(
-          (stream) => stream.codec_type === "video"
-        );
-        if (videoStream) {
-          resolve(videoStream);
-        } else {
-          reject(new Error("No video stream found"));
-        }
+        resolve(metadata);
       });
     });
   }
 
-  async getVideoThumbnail({ duration = 3000 }: { duration?: number }): Promise<Buffer> {
+  async getVideoThumbnail({ duration }: { duration: number }): Promise<Buffer> {
     const outputChunks: Buffer[] = [];
 
+    const timestamp = +(Math.random() * Math.max(1, duration - 1)).toFixed(2);
+
     return new Promise(async (resolve, reject) => {
-      
       ffmpeg(this.filePath)
-      .seekInput(2)
-      .frames(1)
-      .outputOptions('-vframes', '1')
-      .format('mjpeg') // 💥 JPG output!
-      .on('error', async (err) => {
-        reject(err);
-      })
-      .on('end', async () => {
-        console.log('outputChunks', outputChunks.length);
-        resolve(Buffer.concat(outputChunks));
-      })
-      .pipe()
-      .on('data', (chunk: Buffer) => outputChunks.push(chunk));
-      
+        .seekInput(timestamp)
+        .frames(1)
+        .outputOptions("-vframes", "1")
+        .format("mjpeg") // 💥 JPG output!
+        .on("error", async (err) => {
+          reject(err);
+        })
+        .on("end", async () => {
+          console.log("outputChunks", outputChunks.length);
+          resolve(Buffer.concat(outputChunks));
+        })
+        .pipe()
+        .on("data", (chunk: Buffer) => outputChunks.push(chunk));
     });
   }
 }

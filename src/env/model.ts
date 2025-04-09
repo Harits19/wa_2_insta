@@ -1,4 +1,4 @@
-export const ENVKeyList = ["INSTAGRAM_PASSWORD", "INSTAGRAM_USERNAME"] as const;
+export const ENVKeyList = ["INSTAGRAM_PASSWORD", "INSTAGRAM_USERNAME", "ENVIRONMENT"] as const;
 
 export type ENVKey = (typeof ENVKeyList)[number];
 
