@@ -7,3 +7,4 @@ package-lock.json
 session.json
 
 *-session.json
+.DS_Store

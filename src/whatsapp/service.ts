@@ -1,4 +1,4 @@
-import { Client, LocalAuth, MessageMedia } from "whatsapp-web.js";
+import { Client, LocalAuth, MessageMedia, MessageTypes } from "whatsapp-web.js";
 import qrcode from "qrcode-terminal";
 
 import { MessageClientModel } from "../message/type";
@@ -9,7 +9,9 @@ import { MessageService } from "../message/service";
 const clients: Record<string, MessageClientModel> = {};
 
 export async function initWhatsappClient() {
-  const client = new Client({ authStrategy: new LocalAuth() });
+  const client = new Client({
+    authStrategy: new LocalAuth(),
+  });
 
   return new Promise<void>(async (resolve) => {
     client.on("qr", (qr) => {

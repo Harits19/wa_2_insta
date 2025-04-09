@@ -1,4 +1,8 @@
-import { IgApiClient, PostingAlbumPhotoItem } from "instagram-private-api";
+import {
+  IgApiClient,
+  PostingAlbumPhotoItem,
+  PostingAlbumVideoItem,
+} from "instagram-private-api";
 import * as fs from "fs";
 import { AlbumResponse } from "./type";
 
@@ -117,5 +121,38 @@ export class InstagramService {
     });
 
     console.log("Image posted successfully!", publishResult.media.id);
+  }
+
+  async publishVideo({ buffer }: { buffer: Buffer }) {
+    const publishResult = await this.ig.publish.video({
+      video: buffer,
+      coverImage: buffer,
+      caption: "Video caption",
+    });
+
+    console.log("Video posted successfully!", publishResult.upload_id);
+  }
+
+  async publishVideos({
+    videos,
+    caption,
+  }: {
+    videos: PostingAlbumVideoItem[];
+    caption?: string;
+  }) {
+    if (videos.length > 1) {
+      const publishResult = await this.ig.publish.album({
+        items: videos,
+        caption: caption,
+      });
+      console.log("Posted carousel:", publishResult.media.code);
+    } else {
+      const publishResult = await this.ig.publish.video({
+        video: videos[0].video,
+        coverImage: videos[0].coverImage,
+        caption: caption,
+      });
+      console.log("Video posted successfully!", publishResult.upload_id);
+    }
   }
 }
