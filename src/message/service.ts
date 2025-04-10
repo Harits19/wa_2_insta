@@ -1,8 +1,14 @@
-import { Message, MessageMedia } from "whatsapp-web.js";
-import { MessageClientModel } from "./type";
-import ResizeBase64Service from "../resize/base-64/service";
+import { Message } from "whatsapp-web.js";
+import {
+  mapMessageType,
+  MediaModel,
+  MessageClientModel,
+} from "./type";
+import ResizeImageService from "../resize/base-64/service";
 import { AspectRatio, listAspectRatio } from "../resize/types";
 import FileService from "../file/service";
+import ResizeVideoService from "../resize/video/service";
+import FsService from "../fs/service";
 
 export class MessageService {
   client: MessageClientModel;
@@ -67,8 +73,22 @@ export class MessageService {
     if (!this.client.isLoadingUploadToInstagram || !msg.hasMedia) return;
 
     const media = await msg.downloadMedia();
+    const type = mapMessageType(msg.type);
+
+    if (media?.data === undefined) {
+      throw new Error("media data is undefined");
+    }
+
+    if (!type) {
+      throw new Error(`message type ${msg.type} not supported`);
+    }
+    const mediaModel: MediaModel = {
+      ...media,
+      type,
+    };
+
     console.log("start push to batch upload with id", msg.id.id);
-    this.client.batchMedia.push(media);
+    this.client.batchMedia.push(mediaModel);
   }
 
   resetState() {
@@ -95,12 +115,28 @@ export class MessageService {
       );
       console.log("start post multiple photo");
       let caption = body.split("-").at(1)?.trim();
-      const resizeService = new ResizeBase64Service({
-        aspectRatio: this.client.aspectRatio,
-      });
-      const resizeResult = await resizeService.resizeBase64Images({
-        images: this.client.batchMedia.map((item) => item.data),
-      });
+
+      const resizeResult = await Promise.all(
+        this.client.batchMedia.map(async (item) => {
+          const mediaType = item.type;
+          if (mediaType === "video") {
+            const result = await this.resizeVideo({ base64: item.data });
+            return {
+              video: {
+                buffer: result.resizedVideo,
+                thumbnail: result.thumbnail,
+              },
+            };
+          } else if (mediaType === "image") {
+            const result = await this.resizeImage({ base64: item.data });
+            return {
+              image: {
+                buffer: result,
+              },
+            };
+          }
+        })
+      );
 
       const resultBatch = FileService.batchFile(resizeResult);
 
@@ -113,17 +149,14 @@ export class MessageService {
         }
 
         console.log("start post image with caption ", finalCaption);
-        if (images.length > 1) {
-          await this.client.instagramService.publishPhotos({
-            items: images,
-            caption: finalCaption,
-          });
-        } else {
-          await this.client.instagramService.publishPhoto({
-            caption: finalCaption,
-            base64: images[0],
-          });
-        }
+        await this.client.instagramService.publishAlbum({
+          items: images.map((item) => ({
+            coverImage: item?.video?.thumbnail,
+            file: item?.image?.buffer!,
+            video: item?.video?.buffer,
+          })),
+          caption: finalCaption,
+        });
       }
 
       msg.reply("Image posted successfully!");
@@ -133,5 +166,29 @@ export class MessageService {
       this.resetState();
       throw error;
     }
+  }
+
+  async resizeVideo({ base64 }: { base64: string }) {
+    const fsService = new FsService({ base64 });
+
+    const tempPath = await fsService.createTempFile();
+
+    const resizeVideoService = new ResizeVideoService({
+      aspectRatio: this.client.aspectRatio,
+      filePath: tempPath,
+    });
+    const { resizedVideo, thumbnail } =
+      await resizeVideoService.instagramReadyVideo();
+
+    return { resizedVideo, thumbnail };
+  }
+
+  async resizeImage({ base64 }: { base64: string }) {
+    const resizeImageService = new ResizeImageService({
+      aspectRatio: this.client.aspectRatio,
+    });
+
+    const result = await resizeImageService.resizeImage(base64);
+    return result;
   }
 }

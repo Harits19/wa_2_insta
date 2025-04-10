@@ -11,6 +11,9 @@ const clients: Record<string, MessageClientModel> = {};
 export async function initWhatsappClient() {
   const client = new Client({
     authStrategy: new LocalAuth(),
+    puppeteer: {
+      executablePath: "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+    }
   });
 
   return new Promise<void>(async (resolve) => {
@@ -95,6 +98,7 @@ export async function initWhatsappClient() {
 
         console.log("state after batch media ", {
           ...selectedClients,
+          batchMediaLength: selectedClients.batchMedia.length,
           batchMedia: undefined,
           instagramService: undefined,
         });

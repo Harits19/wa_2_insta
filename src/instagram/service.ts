@@ -133,26 +133,39 @@ export class InstagramService {
     console.log("Video posted successfully!", publishResult.upload_id);
   }
 
-  async publishVideos({
-    videos,
+  async publishAlbum({
+    items,
     caption,
   }: {
-    videos: PostingAlbumVideoItem[];
+    items: Array<PostingAlbumPhotoItem | PostingAlbumVideoItem>;
     caption?: string;
   }) {
-    if (videos.length > 1) {
+    if (items.length > 1) {
       const publishResult = await this.ig.publish.album({
-        items: videos,
+        items: items,
         caption: caption,
       });
       console.log("Posted carousel:", publishResult.media.code);
     } else {
-      const publishResult = await this.ig.publish.video({
-        video: videos[0].video,
-        coverImage: videos[0].coverImage,
-        caption: caption,
-      });
-      console.log("Video posted successfully!", publishResult.upload_id);
+      const item = items[0] as PostingAlbumVideoItem & PostingAlbumPhotoItem;
+
+      const isPhoto = Boolean(item.file);
+      const isVideo = Boolean(item.video);
+
+      if (isPhoto) {
+        const publishResult = await this.ig.publish.photo({
+          file: item.file,
+          caption: caption,
+        });
+        console.log("Image posted successfully!", publishResult.upload_id);
+      } else if (isVideo) {
+        const publishResult = await this.ig.publish.video({
+          video: item.video,
+          coverImage: item.coverImage,
+          caption: caption,
+        });
+        console.log("Video posted successfully!", publishResult.upload_id);
+      }
     }
   }
 }

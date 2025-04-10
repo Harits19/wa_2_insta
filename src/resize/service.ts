@@ -2,7 +2,7 @@ import sharp from "sharp";
 import AnalyzeSizeService from "../analyze-size/service";
 
 export default class ResizeService extends AnalyzeSizeService {
-  async resizeImage({ input }: { input: string | Buffer }) {
+  async getSharpConfig({ input }: { input: string | Buffer }) {
     try {
       const metadata = await sharp(input).metadata();
       const { targetHeight, targetWidth } = await this.analyze({

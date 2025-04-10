@@ -5,6 +5,10 @@ node_modules
 .env
 package-lock.json
 session.json
+*.mp4
+*.jpg
+*.jpeg
 
 *-session.json
 .DS_Store
+dist

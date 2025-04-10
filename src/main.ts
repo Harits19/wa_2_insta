@@ -4,11 +4,13 @@ import { InstagramService } from "./instagram/service";
 import { listAspectRatio } from "./resize/types";
 import ResizeVideoService from "./resize/video/service";
 import fs, { writeFile } from "fs/promises";
+import { initWhatsappClient } from "./whatsapp/service";
 
 export default async function main() {
   checkENV();
-  // await initWhatsappClient();
+  await initWhatsappClient();
   // await startLocalFileUpload();
+  return;
 
   const videoBuffer = await fs.readFile("video.mp4");
   const dummyVideo = videoBuffer.toString("base64");
@@ -16,7 +18,7 @@ export default async function main() {
   const fsService = new FsService({ base64: dummyVideo });
 
   const tempPath = await fsService.createTempFile();
-  const aspectRatio = listAspectRatio[1];
+  const aspectRatio = listAspectRatio[2];
 
   const resizeVideoService = new ResizeVideoService({
     aspectRatio: aspectRatio,
@@ -35,13 +37,12 @@ export default async function main() {
     username: env.INSTAGRAM_USERNAME,
   });
 
-  await instagramService.publishVideos({
-    videos: [
-      { video: resizedVideo, coverImage: thumbnail },
+  await instagramService.publishAlbum({
+    items: [
       { video: resizedVideo, coverImage: thumbnail },
       { video: resizedVideo, coverImage: thumbnail },
     ],
-    caption: "Test caption",
+    caption: "Video " + aspectRatio,
   });
 }
 

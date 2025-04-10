@@ -1,19 +1,19 @@
 import ResizeService from "../service";
 
-export default class ResizeBase64Service extends ResizeService {
-  async resizeBase64Images({ images }: { images: string[] }) {
-    const result = await Promise.all(
-      images.map(async (item) => {
-        const sharp = await this.resizeImage({
-          input: Buffer.from(item, "base64"),
-        });
-
-        const buffer = await sharp.toBuffer();
-
-        return buffer;
-      })
-    );
+export default class ResizeImageService extends ResizeService {
+  async resizeImages({ images }: { images: string[] }) {
+    const result = await Promise.all(images.map(this.resizeImage));
 
     return result;
+  }
+
+  async resizeImage(item: string) {
+    const sharp = await this.getSharpConfig({
+      input: Buffer.from(item, "base64"),
+    });
+
+    const buffer = await sharp.toBuffer();
+
+    return buffer;
   }
 }

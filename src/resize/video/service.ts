@@ -27,6 +27,7 @@ export default class ResizeVideoService extends AnalyzeSizeService {
   }
 
   async instagramReadyVideo() {
+    
     const metadata = await this.videoService.getVideoMetadata();
     const resizedVideo = await this.resizeVideo(metadata);
     const duration = metadata.format.duration;
