@@ -9,6 +9,7 @@ import { AspectRatio, listAspectRatio } from "../resize/types";
 import FileService from "../file/service";
 import ResizeVideoService from "../resize/video/service";
 import FsService from "../fs/service";
+import { IgLoginBadPasswordError } from "instagram-private-api";
 
 export class MessageService {
   client: MessageClientModel;
@@ -190,5 +191,15 @@ export class MessageService {
 
     const result = await resizeImageService.resizeImage(base64);
     return result;
+  }
+
+  static handleError({error, msg}:{error: any, msg: Message}){
+    if (error instanceof IgLoginBadPasswordError) {
+      console.error(error);
+      msg.reply(`incorrect credential`);
+      return;
+    }
+    console.error(error);
+    msg.reply(`error ${error?.toString()}`);
   }
 }
