@@ -4,12 +4,15 @@ import ffmpegInstaller from "@ffmpeg-installer/ffmpeg";
 import ffprobeInstaller from "@ffprobe-installer/ffprobe";
 import { AspectRatio } from "../types";
 import { writeFile } from "fs/promises";
+import FsService from "../../fs/service";
+import VideoService from "../../video/service";
 
 ffmpeg.setFfmpegPath(ffmpegInstaller.path);
 ffmpeg.setFfprobePath(ffprobeInstaller.path); // no weird regex needed
 
 export default class ResizeVideoService extends AnalyzeSizeService {
   filePath: string;
+  videoService: VideoService;
 
   constructor({
     aspectRatio,
@@ -20,19 +23,27 @@ export default class ResizeVideoService extends AnalyzeSizeService {
   }) {
     super({ aspectRatio });
     this.filePath = filePath;
+    this.videoService = new VideoService({ path: this.filePath });
   }
 
   async instagramReadyVideo() {
-    const metadata = await this.getVideoMetadata();
+    const metadata = await this.videoService.getVideoMetadata();
     const resizedVideo = await this.resizeVideo(metadata);
     const duration = metadata.format.duration;
     if (!duration) {
       throw new Error("No duration found");
     }
 
-    const thumbnail = await this.getVideoThumbnail({
+    const fsService = new FsService({ base64: resizedVideo });
+    const tempPath = await fsService.createTempFile();
+
+    const tempVideoService = new VideoService({ path: tempPath });
+
+    const thumbnail = await tempVideoService.getVideoThumbnail({
       duration,
     });
+
+    await fsService.unlink();
 
     return {
       thumbnail,
@@ -95,42 +106,6 @@ export default class ResizeVideoService extends AnalyzeSizeService {
         .on("data", (chunk: Buffer) => {
           outputChunks.push(chunk);
         });
-    });
-  }
-
-  async getVideoMetadata() {
-    return new Promise<FfprobeData>((resolve, reject) => {
-      ffmpeg.ffprobe(this.filePath, (err, metadata) => {
-        if (err) {
-          reject(err);
-          return;
-        }
-
-        resolve(metadata);
-      });
-    });
-  }
-
-  async getVideoThumbnail({ duration }: { duration: number }): Promise<Buffer> {
-    const outputChunks: Buffer[] = [];
-
-    const timestamp = +(Math.random() * Math.max(1, duration - 1)).toFixed(2);
-
-    return new Promise(async (resolve, reject) => {
-      ffmpeg(this.filePath)
-        .seekInput(timestamp)
-        .frames(1)
-        .outputOptions("-vframes", "1")
-        .format("mjpeg") // 💥 JPG output!
-        .on("error", async (err) => {
-          reject(err);
-        })
-        .on("end", async () => {
-          console.log("outputChunks", outputChunks.length);
-          resolve(Buffer.concat(outputChunks));
-        })
-        .pipe()
-        .on("data", (chunk: Buffer) => outputChunks.push(chunk));
     });
   }
 }

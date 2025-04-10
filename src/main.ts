@@ -14,32 +14,35 @@ export default async function main() {
   const dummyVideo = videoBuffer.toString("base64");
 
   const fsService = new FsService({ base64: dummyVideo });
+
+  const tempPath = await fsService.createTempFile();
+  const aspectRatio = listAspectRatio[1];
+
+  const resizeVideoService = new ResizeVideoService({
+    aspectRatio: aspectRatio,
+    filePath: tempPath,
+  });
+  const { resizedVideo, thumbnail } =
+    await resizeVideoService.instagramReadyVideo();
+
+  await writeFile(`resizedVideo-${aspectRatio}.mp4`, resizedVideo);
+  await writeFile(`thumbnail-${aspectRatio}.jpg`, thumbnail);
+  await fsService.unlink();
+
   const instagramService = new InstagramService({ cookiesKey: "local" });
   await instagramService.initInstagramClient({
     password: env.INSTAGRAM_PASSWORD,
     username: env.INSTAGRAM_USERNAME,
   });
 
-  const tempPath = await fsService.createTempFile();
-
-  for (const aspectRatio of listAspectRatio) {
-    const resizeVideoService = new ResizeVideoService({
-      aspectRatio: aspectRatio,
-      filePath: tempPath,
-    });
-    const { resizedVideo, thumbnail } =
-      await resizeVideoService.instagramReadyVideo();
-
-    await writeFile(`resizedVideo-${aspectRatio}.mp4`, resizedVideo);
-  }
-
-  return;
-
-  // await instagramService.publishVideos({
-  //   videos: [{ video: resizedVideo, coverImage: thumbnail }],
-  //   caption: "Test caption",
-  // });
-  // await fsService.unlink();
+  await instagramService.publishVideos({
+    videos: [
+      { video: resizedVideo, coverImage: thumbnail },
+      { video: resizedVideo, coverImage: thumbnail },
+      { video: resizedVideo, coverImage: thumbnail },
+    ],
+    caption: "Test caption",
+  });
 }
 
 main();
