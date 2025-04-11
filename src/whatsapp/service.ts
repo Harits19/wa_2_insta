@@ -11,6 +11,7 @@ import { MessageClientModel } from "../message/type";
 import { InstagramService } from "../instagram/service";
 import { IgLoginBadPasswordError } from "instagram-private-api";
 import { MessageService } from "../message/service";
+import { env } from "../env/service";
 
 export default class WhatsappService {
   clients: Record<string, MessageClientModel> = {};
@@ -77,7 +78,9 @@ export default class WhatsappService {
       authStrategy: new LocalAuth(),
       puppeteer: {
         executablePath:
-          "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
+          env.PUPPETER_BROWSER_PATH,
+        args: ['--no-sandbox', '--disable-setuid-sandbox'],
+
       },
     });
 
