@@ -1,14 +1,13 @@
 import { listFolder, prefixPath } from "../constants/file";
 import FileService from "../file/service";
 import { InstagramService } from "../instagram/service";
-import { env } from "../env/service";
 import ResizeLocalService from "../resize/local/service";
 
-export async function startLocalFileUpload() {
+export async function startLocalFileUpload({ password, username }: { password: string, username: string }) {
   const instagramService = new InstagramService({ cookiesKey: "local" });
   await instagramService.initInstagramClient({
-    password: env.INSTAGRAM_PASSWORD,
-    username: env.INSTAGRAM_USERNAME,
+    password,
+    username,
   });
   for (const [index, folder] of listFolder.entries()) {
     const {
