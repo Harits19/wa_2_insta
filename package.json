@@ -5,7 +5,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "setup-linux": "chmod +x ./install-chrome.sh && bash install-chrome.sh && npm install",
-    "start": "npx ts-node src/main.ts",
+    "start-whatsapp": "npx ts-node src/whatsapp-main.ts",
+    "start-google-photo": "npx ts-node src/google-photo-main.ts",
     "build": "npx tsc --outDir ./dist",
     "prod": "node dist/main.js"
   },

@@ -26,8 +26,7 @@ export default class ResizeVideoService extends AnalyzeSizeService {
     this.videoService = new VideoService({ path: this.filePath });
   }
 
-  async instagramReadyVideo() {
-    
+  async getInstagramReadyVideo() {
     const metadata = await this.videoService.getVideoMetadata();
     const resizedVideo = await this.resizeVideo(metadata);
     const duration = metadata.format.duration;
@@ -35,7 +34,9 @@ export default class ResizeVideoService extends AnalyzeSizeService {
       throw new Error("No duration found");
     }
 
-    const fsService = new FsService({ base64: resizedVideo });
+    const fsService = new FsService({
+      value: resizedVideo,
+    });
     const tempPath = await fsService.createTempFile();
 
     const tempVideoService = new VideoService({ path: tempPath });
@@ -52,7 +53,7 @@ export default class ResizeVideoService extends AnalyzeSizeService {
     };
   }
 
-  async resizeVideo(metadata: FfprobeData) {
+  private async resizeVideo(metadata: FfprobeData) {
     const videoMetadata = metadata.streams.find(
       (item) => item.codec_type === "video"
     );
@@ -80,7 +81,7 @@ export default class ResizeVideoService extends AnalyzeSizeService {
     return result;
   }
 
-  async resizeVideoStream({
+  private async resizeVideoStream({
     targetHeight,
     targetWidth,
   }: {

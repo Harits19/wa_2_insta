@@ -62,7 +62,7 @@ export default class ResizeLocalService extends ResizeService {
         await fs.unlink(outputPath);
       }
 
-      const sharpValue = await this.getSharpConfig({ input: file });
+      const sharpValue = await this.runResize({ input: file });
       await sharpValue.toFile(outputPath);
     } catch (error) {
       console.log("Error resizing image:", error);

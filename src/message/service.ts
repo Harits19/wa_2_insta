@@ -1,9 +1,5 @@
 import { Message } from "whatsapp-web.js";
-import {
-  mapMessageType,
-  MediaModel,
-  MessageClientModel,
-} from "./type";
+import { mapMessageType, MediaModel, MessageClientModel } from "./type";
 import ResizeImageService from "../resize/base-64/service";
 import { AspectRatio, listAspectRatio } from "../resize/types";
 import FileService from "../file/service";
@@ -170,7 +166,7 @@ export class MessageService {
   }
 
   async resizeVideo({ base64 }: { base64: string }) {
-    const fsService = new FsService({ base64 });
+    const fsService = new FsService({ value: base64 });
 
     const tempPath = await fsService.createTempFile();
 
@@ -179,7 +175,7 @@ export class MessageService {
       filePath: tempPath,
     });
     const { resizedVideo, thumbnail } =
-      await resizeVideoService.instagramReadyVideo();
+      await resizeVideoService.getInstagramReadyVideo();
 
     return { resizedVideo, thumbnail };
   }
@@ -193,7 +189,7 @@ export class MessageService {
     return result;
   }
 
-  static handleError({error, msg}:{error: any, msg: Message}){
+  static handleError({ error, msg }: { error: any; msg: Message }) {
     if (error instanceof IgLoginBadPasswordError) {
       console.error(error);
       msg.reply(`incorrect credential`);

@@ -1,12 +1,14 @@
-import { MB } from "../constants/size";
 import GoogleOauthService from "../google-oauth/service";
 import axios from "axios";
-import * as fs from "fs/promises";
+import * as fs from "fs";
+import PromiseService from "../promise/service";
+import path from "path";
 
 interface MediaItem {
   id: string;
   filename: string;
   baseUrl: string;
+  mimeType: string;
   mediaMetadata: {
     creationTime: string;
   };
@@ -24,48 +26,47 @@ export default class GooglePhotoService {
   }
 
   async getImage({
-    end,
-    start,
+    date,
+    pageToken,
   }: {
-    start: { year: number; month: number; day: number };
-    end: { year: number; month: number; day: number };
+    date: { year: number; month: number; day: number };
+    pageToken?: string;
   }) {
     const requestBody = {
       pageSize: 3,
-      pageToken: undefined as string | undefined,
+      pageToken,
       filters: {
         dateFilter: {
-          ranges: [{ startDate: start, endDate: end }],
+          dates: [date],
         },
       },
     };
 
     const url = "https://photoslibrary.googleapis.com/v1/mediaItems:search";
-    const mediaItems: MediaItem[] = [];
 
-    do {
-      const accessToken = await this.googleOauth.accessToken();
+    const accessToken = await this.googleOauth.accessToken();
 
-      const headers = { Authorization: `Bearer ${accessToken}` };
+    const headers = { Authorization: `Bearer ${accessToken}` };
 
-      const res = await axios.post<SearchResponse>(url, requestBody, {
-        headers,
-      });
+    const res = await axios.post<SearchResponse>(url, requestBody, {
+      headers,
+    });
 
-      const items = res.data.mediaItems;
-      console.log("push new array with length ", items.length);
-      mediaItems.push(...items);
+    const items = res.data.mediaItems;
+    console.log("push new array with ", items);
+    const result = await PromiseService.run({
+      promises: items.map((item) => this.download({ item: item })),
+    });
 
-      requestBody.pageToken = res.data.nextPageToken;
-    } while (requestBody.pageToken);
-
-    console.log("final array length", mediaItems);
+    return {
+      result,
+      pageToken: res.data.nextPageToken,
+    };
   }
 
-  async download({ baseUrl }: { baseUrl: string }): Promise<{
-    type: "temporary" | "buffer";
-    data: Buffer | string;
-  }> {
+  async download({ item }: { item: MediaItem }) {
+    const baseUrl = item.baseUrl;
+    console.log("start download", item.filename, item.mediaMetadata);
     const accessToken = await this.googleOauth.accessToken();
     const response = await axios.get(`${baseUrl}=d`, {
       responseType: "arraybuffer",
@@ -74,23 +75,9 @@ export default class GooglePhotoService {
       },
     });
 
-    const result = Buffer.from(response.data);
-
-    const tempFileSizeThreshold = 5 * MB;
-
-    if (result.length > tempFileSizeThreshold) {
-      const outputPath = `/temporary/${crypto.randomUUID()}`;
-      await fs.writeFile(outputPath, result);
-
-      return {
-        type: "temporary",
-        data: outputPath,
-      };
-    } else {
-      return {
-        type: "buffer",
-        data: result,
-      };
-    }
+    return {
+      buffer: Buffer.from(response.data),
+      ...item,
+    };
   }
 }

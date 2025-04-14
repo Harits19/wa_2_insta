@@ -1,5 +1,6 @@
 import {
   IgApiClient,
+  IgLoginRequiredError,
   PostingAlbumPhotoItem,
   PostingAlbumVideoItem,
 } from "instagram-private-api";
@@ -9,16 +10,28 @@ import { AlbumResponse } from "./type";
 export class InstagramService {
   ig: IgApiClient;
   cookiesKey: string;
+  password?: string;
+  username?: string;
 
-  private constructor({ cookiesKey }: { cookiesKey: string }) {
+  private constructor({
+    cookiesKey,
+    username,
+    password,
+  }: {
+    cookiesKey: string;
+    username?: string;
+    password?: string;
+  }) {
     this.ig = new IgApiClient();
     this.cookiesKey = cookiesKey;
+    this.username = username;
+    this.password = password;
   }
 
   static async loginWithSession({ cookiesKey }: { cookiesKey: string }) {
     const instance = new InstagramService({ cookiesKey });
     if (!instance.isHaveSession) return undefined;
-    await instance.loadSession()
+    await instance.loadSession();
     return instance;
   }
 
@@ -31,9 +44,9 @@ export class InstagramService {
     password: string;
     username: string;
   }) {
-    const instance = new InstagramService({ cookiesKey });
+    const instance = new InstagramService({ cookiesKey, password, username, });
     if (instance.isHaveSession) return instance;
-    await instance.initInstagramClient({ password, username });
+    await instance.initInstagramClient();
     return instance;
   }
 
@@ -54,13 +67,9 @@ export class InstagramService {
     console.log("Session loaded!");
   }
 
-  private async initInstagramClient({
-    password,
-    username,
-  }: {
-    password: string;
-    username: string;
-  }) {
+  private async initInstagramClient() {
+    const password = this.password;
+    const username = this.username;
     const sessionPath = this.sessionPath;
 
     if (!password || !username) {
@@ -162,32 +171,43 @@ export class InstagramService {
     items: Array<PostingAlbumPhotoItem | PostingAlbumVideoItem>;
     caption?: string;
   }) {
-    if (items.length > 1) {
-      const publishResult = await this.ig.publish.album({
-        items: items,
-        caption: caption,
-      });
-      console.log("Posted carousel:", publishResult.media.code);
-    } else {
-      const item = items[0] as PostingAlbumVideoItem & PostingAlbumPhotoItem;
-
-      const isPhoto = Boolean(item.file);
-      const isVideo = Boolean(item.video);
-
-      if (isPhoto) {
-        const publishResult = await this.ig.publish.photo({
-          file: item.file,
+    try {
+      if (items.length > 1) {
+        const publishResult = await this.ig.publish.album({
+          items: items,
           caption: caption,
         });
-        console.log("Image posted successfully!", publishResult.upload_id);
-      } else if (isVideo) {
-        const publishResult = await this.ig.publish.video({
-          video: item.video,
-          coverImage: item.coverImage,
-          caption: caption,
-        });
-        console.log("Video posted successfully!", publishResult.upload_id);
+        console.log("Posted carousel:", publishResult.media.code);
+      } else {
+        const item = items[0] as PostingAlbumVideoItem & PostingAlbumPhotoItem;
+
+        const isPhoto = Boolean(item.file);
+        const isVideo = Boolean(item.video);
+
+        if (isPhoto) {
+          const publishResult = await this.ig.publish.photo({
+            file: item.file,
+            caption: caption,
+          });
+          console.log("Image posted successfully!", publishResult.upload_id);
+        } else if (isVideo) {
+          const publishResult = await this.ig.publish.video({
+            video: item.video,
+            coverImage: item.coverImage,
+            caption: caption,
+          });
+          console.log("Video posted successfully!", publishResult.upload_id);
+        }
       }
+    } catch (error) {
+      if (error instanceof IgLoginRequiredError) {
+        await this.initInstagramClient();
+        await this.publishAlbum({ items, caption });
+
+        return;
+      }
+
+      throw error;
     }
   }
 }
