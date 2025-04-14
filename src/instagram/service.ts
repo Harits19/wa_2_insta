@@ -10,9 +10,31 @@ export class InstagramService {
   ig: IgApiClient;
   cookiesKey: string;
 
-  constructor({ cookiesKey }: { cookiesKey: string }) {
+  private constructor({ cookiesKey }: { cookiesKey: string }) {
     this.ig = new IgApiClient();
     this.cookiesKey = cookiesKey;
+  }
+
+  static async loginWithSession({ cookiesKey }: { cookiesKey: string }) {
+    const instance = new InstagramService({ cookiesKey });
+    if (!instance.isHaveSession) return undefined;
+    await instance.loadSession()
+    return instance;
+  }
+
+  static async login({
+    cookiesKey,
+    password,
+    username,
+  }: {
+    cookiesKey: string;
+    password: string;
+    username: string;
+  }) {
+    const instance = new InstagramService({ cookiesKey });
+    if (instance.isHaveSession) return instance;
+    await instance.initInstagramClient({ password, username });
+    return instance;
   }
 
   get sessionPath() {
@@ -32,7 +54,7 @@ export class InstagramService {
     console.log("Session loaded!");
   }
 
-  async initInstagramClient({
+  private async initInstagramClient({
     password,
     username,
   }: {
@@ -65,14 +87,14 @@ export class InstagramService {
   }
 
   async publishPhoto({
-    base64,
+    value,
     caption,
   }: {
-    base64: string | Buffer;
+    value: string | Buffer;
     caption?: string;
   }) {
     const publishResult = await this.ig.publish.photo({
-      file: typeof base64 === "string" ? Buffer.from(base64, "base64") : base64,
+      file: typeof value === "string" ? Buffer.from(value, "base64") : value,
       caption: caption, // Caption for the post
     });
 

@@ -1,8 +1,4 @@
-import {
-  Client,
-  LocalAuth,
-  Message,
-} from "whatsapp-web.js";
+import { Client, LocalAuth, Message } from "whatsapp-web.js";
 import qrcode from "qrcode-terminal";
 
 import { MessageClientModel } from "../message/type";
@@ -13,7 +9,7 @@ import os from "os";
 export default class WhatsappService {
   clients: Record<string, MessageClientModel> = {};
 
-  private constructor(){}
+  private constructor() {}
 
   static async create(): Promise<WhatsappService> {
     const instance = new WhatsappService();
@@ -51,27 +47,28 @@ export default class WhatsappService {
         return null;
       }
 
-      const instagramService = new InstagramService({ cookiesKey: from });
       msg.reply("start login");
-      await instagramService.initInstagramClient({ password, username });
+      const instagramService = await InstagramService.login({
+        cookiesKey: from,
+        password,
+        username,
+      });
       msg.reply("success login");
 
       return this.setNewClient(instagramService, from);
     }
 
     console.log("client not found, start new client");
-    const instagramService = new InstagramService({ cookiesKey: from });
+    const instagramService = await InstagramService.loginWithSession({
+      cookiesKey: from,
+    });
 
-    const isHaveSession = instagramService.isHaveSession;
-
-    if (!isHaveSession) {
+    if (!instagramService) {
       msg.reply(
         "client not found, please input instagram username and password with this format \n *login - example.username - examplePassword*"
       );
       return null;
     }
-
-    await instagramService.loadSession();
 
     client = this.setNewClient(instagramService, from);
 
@@ -81,14 +78,14 @@ export default class WhatsappService {
   getChromePath() {
     const platform = os.platform();
 
-    if (platform === 'win32') {
-      return 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe';
-    } else if (platform === 'darwin') {
-      return '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
-    } else if (platform === 'linux') {
-      return '/usr/bin/google-chrome';
+    if (platform === "win32") {
+      return "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe";
+    } else if (platform === "darwin") {
+      return "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome";
+    } else if (platform === "linux") {
+      return "/usr/bin/google-chrome";
     } else {
-      throw new Error('Unsupported OS');
+      throw new Error("Unsupported OS");
     }
   }
 
@@ -96,10 +93,8 @@ export default class WhatsappService {
     const client = new Client({
       authStrategy: new LocalAuth(),
       puppeteer: {
-        executablePath:
-          this.getChromePath(),
-        args: ['--no-sandbox', '--disable-setuid-sandbox'],
-
+        executablePath: this.getChromePath(),
+        args: ["--no-sandbox", "--disable-setuid-sandbox"],
       },
     });
 

@@ -3,12 +3,19 @@ import FileService from "../file/service";
 import { InstagramService } from "../instagram/service";
 import ResizeLocalService from "../resize/local/service";
 
-export async function startLocalFileUpload({ password, username }: { password: string, username: string }) {
-  const instagramService = new InstagramService({ cookiesKey: "local" });
-  await instagramService.initInstagramClient({
+export async function startLocalFileUpload({
+  password,
+  username,
+}: {
+  password: string;
+  username: string;
+}) {
+  const instagramService = await InstagramService.login({
+    cookiesKey: "local",
     password,
     username,
   });
+
   for (const [index, folder] of listFolder.entries()) {
     const {
       caption,

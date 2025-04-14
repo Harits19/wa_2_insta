@@ -1,5 +1,7 @@
+import { MB } from "../constants/size";
 import GoogleOauthService from "../google-oauth/service";
 import axios from "axios";
+import * as fs from "fs/promises";
 
 interface MediaItem {
   id: string;
@@ -28,10 +30,6 @@ export default class GooglePhotoService {
     start: { year: number; month: number; day: number };
     end: { year: number; month: number; day: number };
   }) {
-    const accessToken = await this.googleOauth.token();
-
-    const headers = { Authorization: `Bearer ${accessToken}` };
-
     const requestBody = {
       pageSize: 3,
       pageToken: undefined as string | undefined,
@@ -46,6 +44,10 @@ export default class GooglePhotoService {
     const mediaItems: MediaItem[] = [];
 
     do {
+      const accessToken = await this.googleOauth.accessToken();
+
+      const headers = { Authorization: `Bearer ${accessToken}` };
+
       const res = await axios.post<SearchResponse>(url, requestBody, {
         headers,
       });
@@ -55,9 +57,40 @@ export default class GooglePhotoService {
       mediaItems.push(...items);
 
       requestBody.pageToken = res.data.nextPageToken;
-
     } while (requestBody.pageToken);
 
     console.log("final array length", mediaItems);
+  }
+
+  async download({ baseUrl }: { baseUrl: string }): Promise<{
+    type: "temporary" | "buffer";
+    data: Buffer | string;
+  }> {
+    const accessToken = await this.googleOauth.accessToken();
+    const response = await axios.get(`${baseUrl}=d`, {
+      responseType: "arraybuffer",
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      },
+    });
+
+    const result = Buffer.from(response.data);
+
+    const tempFileSizeThreshold = 5 * MB;
+
+    if (result.length > tempFileSizeThreshold) {
+      const outputPath = `/temporary/${crypto.randomUUID()}`;
+      await fs.writeFile(outputPath, result);
+
+      return {
+        type: "temporary",
+        data: outputPath,
+      };
+    } else {
+      return {
+        type: "buffer",
+        data: result,
+      };
+    }
   }
 }

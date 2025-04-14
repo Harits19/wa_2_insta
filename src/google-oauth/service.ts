@@ -2,7 +2,6 @@ import { google } from "googleapis";
 import { env, envService } from "../env/service";
 
 export default class GoogleOauthService {
-  
   oauth2Client = new google.auth.OAuth2(
     env.CLIENT_ID,
     env.CLIENT_SECRET,
@@ -34,7 +33,7 @@ export default class GoogleOauthService {
     await this.getToken();
   }
 
-  async token() {
+  async accessToken() {
     const tokenResponse = await this.oauth2Client.getAccessToken();
 
     return tokenResponse.token!;
