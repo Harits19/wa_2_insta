@@ -13,6 +13,14 @@ import os from "os";
 export default class WhatsappService {
   clients: Record<string, MessageClientModel> = {};
 
+  private constructor(){}
+
+  static async create(): Promise<WhatsappService> {
+    const instance = new WhatsappService();
+    await instance.initWhatsappClient();
+    return instance;
+  }
+
   setNewClient = (instagramService: InstagramService, from: string) => {
     const newValue: MessageClientModel = {
       aspectRatio: `1x1`,
