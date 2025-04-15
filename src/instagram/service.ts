@@ -52,7 +52,6 @@ export class InstagramService {
     username: string;
   }) {
     const instance = new InstagramService({ cookiesKey, password, username });
-    if (instance.isHaveSession) return instance;
     await instance.initInstagramClient();
     return instance;
   }
@@ -79,13 +78,12 @@ export class InstagramService {
     const username = this.username;
     const sessionPath = this.sessionPath;
 
-    if (!password || !username) {
-      throw new Error("empty username or password");
-    }
-
     if (this.isHaveSession) {
       await this.loadSession();
     } else {
+      if (!password || !username) {
+        throw new Error("empty username or password");
+      }
       console.log("start init instagram client");
 
       this.ig.state.generateDevice(username);
