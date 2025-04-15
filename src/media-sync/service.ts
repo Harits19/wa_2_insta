@@ -1,3 +1,4 @@
+import { RawDate } from "../date/type";
 import GooglePhotoService from "../google-photo/service";
 import { instagramConstant } from "../instagram/constant";
 import { InstagramService } from "../instagram/service";
@@ -21,30 +22,38 @@ export default class MediaSyncService {
 
   async syncGooglePhotoToInstagram({
     aspectRatio,
+    date,
   }: {
     aspectRatio: AspectRatio;
+    date: RawDate;
   }) {
     let pageToken: string | undefined;
+
+    let currentCount = 1;
 
     do {
       const result = await this.googlePhoto.search({
         pageSize: instagramConstant.max.post,
         pageToken,
-        date: {
-          day: 17,
-          month: 4,
-          year: 2013,
-        },
+        date,
       });
+
 
       const downloadedItems = await PromiseService.run({
         promises: result.items.map((item) =>
           this.googlePhoto.download({ item: item })
         ),
       });
+      let caption = `${date.day}/${date.month}/${date.year}`;
+
+      if (result.pageToken) {
+        caption = `${caption} (${currentCount})`;
+        currentCount++;
+      }
 
       await this.instagram.publishAlbumV2({
         aspectRatio,
+        caption,
         items: downloadedItems.map((item) => ({
           buffer: item.buffer,
           filename: item.filename,

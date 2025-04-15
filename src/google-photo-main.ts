@@ -1,3 +1,4 @@
+import DateService from "./date/service";
 import { env, envService } from "./env/service";
 import GooglePhotoService from "./google-photo/service";
 import { InstagramService } from "./instagram/service";
@@ -7,7 +8,7 @@ async function main() {
   envService.checkENV();
 
   const instagram = await InstagramService.login({
-    cookiesKey: "local",
+    cookiesKey: env.INSTAGRAM_USERNAME,
     password: env.INSTAGRAM_PASSWORD,
     username: env.INSTAGRAM_USERNAME,
   });
@@ -15,7 +16,26 @@ async function main() {
 
   const mediaSyncService = new MediaSyncService({ googlePhoto, instagram });
 
-  await mediaSyncService.syncGooglePhotoToInstagram({ aspectRatio: "16x9" });
+  const startDate = {
+    day: 17,
+    month: 4,
+    year: 2013,
+  };
+
+  const endDate = {
+    day: 17,
+    month: 4,
+    year: 2013,
+  };
+
+  const dates = DateService.getDatesBetween(startDate, endDate);
+
+  for (const date of dates) {
+    await mediaSyncService.syncGooglePhotoToInstagram({
+      aspectRatio: "1x1",
+      date,
+    });
+  }
 }
 
 main();

@@ -34,10 +34,14 @@ export default class FsService {
         : this.value;
 
     // Step 2: Create temp file for video
-    await mkdir(dirname(this.outputPath), { recursive: true });
+    await FsService.createFile({ outputPath: this.outputPath });
     await writeFile(this.outputPath, videoBuffer);
 
     return this.outputPath;
+  }
+
+  static async createFile({ outputPath }: { outputPath: string }) {
+    return await mkdir(dirname(outputPath), { recursive: true });
   }
 
   async unlink() {

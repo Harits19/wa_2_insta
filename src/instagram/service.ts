@@ -13,6 +13,7 @@ import ResizeVideoService from "../resize/video/service";
 import PromiseService from "../promise/service";
 import VideoService from "../video/service";
 import { Base64 } from "../resize/base-64/type";
+import { instagramConstant } from "./constant";
 
 export class InstagramService {
   ig: IgApiClient;
@@ -177,6 +178,8 @@ export class InstagramService {
     caption?: string;
   }) {
     try {
+      if (items.length === 0) return;
+
       if (items.length > 1) {
         const publishResult = await this.ig.publish.album({
           items: items,
@@ -225,6 +228,10 @@ export class InstagramService {
     items: VideoImageBuffer[];
     caption?: string;
   }) {
+    if (items.length > instagramConstant.max.post)
+      throw new Error(
+        `Can't more post media than ${instagramConstant.max.post} `
+      );
     const promises = items.map(async (item) => {
       if (item.type === "video") {
         const result = await this.resizeVideo({
@@ -280,6 +287,7 @@ export class InstagramService {
       value: inputBuffer,
       filename: inputFilename,
     });
+    
     const originalFilePath = await originalFile.createTempFile();
 
     // Extract metadata from the original video

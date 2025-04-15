@@ -61,6 +61,8 @@ export default class GooglePhotoService {
       },
     };
 
+    console.log("get photo with date", date);
+
     const url = `${this.baseUrl}:search`;
 
     const headers = await this.headers();
@@ -69,9 +71,10 @@ export default class GooglePhotoService {
       headers,
     });
 
-    const items = res.data.mediaItems;
+    console.log("result search", res.data);
+
+    const items = res.data?.mediaItems ?? [];
     console.log("push new array with ", items);
-   
 
     return {
       items,
