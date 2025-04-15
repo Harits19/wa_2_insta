@@ -12,7 +12,7 @@ export default class GoogleOauthService {
 
   static async create() {
     const instance = new GoogleOauthService();
-    instance.initLogin();
+    await instance.initLogin();
 
     return instance;
   }

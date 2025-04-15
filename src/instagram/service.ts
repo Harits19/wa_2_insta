@@ -14,6 +14,7 @@ import PromiseService from "../promise/service";
 import VideoService from "../video/service";
 import { Base64 } from "../resize/base-64/type";
 import { instagramConstant } from "./constant";
+import { dirname } from "path";
 
 export class InstagramService {
   ig: IgApiClient;
@@ -95,6 +96,7 @@ export class InstagramService {
       // Save session data
       const serialized = await this.ig.state.serialize();
       delete serialized.constants; // Remove unneeded constants
+      await fs.promises.mkdir(dirname(sessionPath), { recursive: true });
       fs.writeFileSync(sessionPath, JSON.stringify(serialized));
 
       console.log("Session saved!");
@@ -287,7 +289,7 @@ export class InstagramService {
       value: inputBuffer,
       filename: inputFilename,
     });
-    
+
     const originalFilePath = await originalFile.createTempFile();
 
     // Extract metadata from the original video

@@ -7,6 +7,7 @@ import { dirname } from "path";
 
 export default class VideoService {
   path: string;
+  metadata?: FfprobeData;
   constructor({ path }: { path: string }) {
     this.path = path;
   }
@@ -35,6 +36,7 @@ export default class VideoService {
   }
 
   async getVideoMetadata() {
+    if (this.metadata) return this.metadata;
     return new Promise<FfprobeData>((resolve, reject) => {
       ffmpeg.ffprobe(this.path, (err, metadata) => {
         if (err) {
@@ -42,6 +44,7 @@ export default class VideoService {
           return;
         }
 
+        this.metadata = metadata;
         resolve(metadata);
       });
     });
@@ -79,6 +82,44 @@ export default class VideoService {
           resolve(outputPath);
         })
         .save(outputPath);
+    });
+  }
+
+  async splitVideo({ chunkLength }: { chunkLength: number }) {
+    const metadata = await this.getVideoMetadata();
+    const duration = metadata.format.duration;
+
+    if (!duration) {
+      throw new Error("Duration is undefined");
+    }
+
+    const totalChunks = Math.ceil(duration / chunkLength);
+    const id = randomUUID();
+
+    return new Promise<string[]>(async (resolve, reject) => {
+      const outputPaths: string[] = [];
+      for (let i = 0; i < totalChunks; i++) {
+        const output = `temporary/${id}-${i + 1}.mp4`;
+
+        await FsService.createFile({ outputPath: output });
+        const start = i * chunkLength;
+
+        await new Promise((resolve, reject) => {
+          ffmpeg(this.path)
+            .setStartTime(start)
+            .setDuration(chunkLength)
+            .output(output)
+            .on("end", (value) => {
+              outputPaths.push(output);
+            })
+            .on("error", reject)
+            .run();
+        });
+
+        console.log(`Created ${output}`);
+      }
+
+      resolve(outputPaths);
     });
   }
 }
