@@ -5,6 +5,7 @@ import { MessageClientModel } from "../message/type";
 import { InstagramService } from "../instagram/service";
 import { MessageService } from "../message/service";
 import os from "os";
+import PuppeteerService from "../puppeteer/service";
 
 export default class WhatsappService {
   clients: Record<string, MessageClientModel> = {};
@@ -75,25 +76,11 @@ export default class WhatsappService {
     return client;
   }
 
-  getChromePath() {
-    const platform = os.platform();
-
-    if (platform === "win32") {
-      return "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe";
-    } else if (platform === "darwin") {
-      return "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome";
-    } else if (platform === "linux") {
-      return "/usr/bin/google-chrome";
-    } else {
-      throw new Error("Unsupported OS");
-    }
-  }
-
   async initWhatsappClient() {
     const client = new Client({
       authStrategy: new LocalAuth(),
       puppeteer: {
-        executablePath: this.getChromePath(),
+        ...PuppeteerService.defaultOption(),
         args: ["--no-sandbox", "--disable-setuid-sandbox"],
       },
     });

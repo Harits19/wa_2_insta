@@ -1,24 +1,22 @@
 import { MessageMedia, MessageTypes } from "whatsapp-web.js";
 import { InstagramService } from "../instagram/service";
 import { AspectRatio } from "../resize/types";
-
-export type MediaModelType = "video" | "image";
-export interface MediaModel extends MessageMedia {
-  type: MediaModelType;
-}
+import { VideoImageBuffer } from "../instagram/type";
 
 export interface MessageClientModel {
   isLoadingUploadToInstagram: boolean;
-  batchMedia: MediaModel[];
+  batchMedia: VideoImageBuffer[];
   instagramService: InstagramService;
   aspectRatio: AspectRatio;
 }
 
-export function mapMessageType(type: MessageTypes): MediaModelType | undefined {
+export function mapMessageType(type: MessageTypes): "image" | "video" {
   switch (type) {
     case MessageTypes.VIDEO:
       return "video";
     case MessageTypes.IMAGE:
+      return "image";
+    default:
       return "image";
   }
 }

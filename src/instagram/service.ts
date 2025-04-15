@@ -5,7 +5,14 @@ import {
   PostingAlbumVideoItem,
 } from "instagram-private-api";
 import * as fs from "fs";
-import { AlbumResponse } from "./type";
+import { AlbumResponse, VideoImageBuffer } from "./type";
+import FsService from "../fs/service";
+import ResizeImageService from "../resize/base-64/service";
+import { AspectRatio } from "../resize/types";
+import ResizeVideoService from "../resize/video/service";
+import PromiseService from "../promise/service";
+import VideoService from "../video/service";
+import { Base64 } from "../resize/base-64/type";
 
 export class InstagramService {
   ig: IgApiClient;
@@ -44,14 +51,14 @@ export class InstagramService {
     password: string;
     username: string;
   }) {
-    const instance = new InstagramService({ cookiesKey, password, username, });
+    const instance = new InstagramService({ cookiesKey, password, username });
     if (instance.isHaveSession) return instance;
     await instance.initInstagramClient();
     return instance;
   }
 
   get sessionPath() {
-    return `${this.cookiesKey}-session.json`;
+    return `sessions/${this.cookiesKey}-session.json`;
   }
 
   get isHaveSession() {
@@ -209,5 +216,109 @@ export class InstagramService {
 
       throw error;
     }
+  }
+
+  async publishAlbumV2({
+    aspectRatio,
+    items,
+    caption,
+  }: {
+    aspectRatio: AspectRatio;
+    items: VideoImageBuffer[];
+    caption?: string;
+  }) {
+    const promises = items.map(async (item) => {
+      if (item.type === "video") {
+        const result = await this.resizeVideo({
+          aspectRatio,
+          buffer: item.buffer,
+          filename: item.filename,
+        });
+        return {
+          video: result,
+        };
+      }
+
+      return {
+        image: await this.resizeImage({ aspectRatio, buffer: item.buffer }),
+      };
+    });
+
+    const resizeResult = await PromiseService.run({ promises });
+
+    await this.publishAlbum({
+      caption,
+      items: resizeResult.map((item) => ({
+        coverImage: item.video?.thumbnail!,
+        file: item.image,
+        video: item.video?.buffer!,
+      })),
+    });
+  }
+
+  async resizeImage({
+    aspectRatio,
+    buffer,
+  }: {
+    aspectRatio: AspectRatio;
+    buffer: Buffer | Base64;
+  }) {
+    const resizeService = new ResizeImageService({ aspectRatio });
+
+    return await resizeService.resizeImage(buffer);
+  }
+
+  async resizeVideo({
+    aspectRatio,
+    buffer: inputBuffer,
+    filename: inputFilename,
+  }: {
+    aspectRatio: AspectRatio;
+    buffer: Buffer | Base64;
+    filename?: string;
+  }) {
+    // Write original video buffer to temp file
+    const originalFile = new FsService({
+      value: inputBuffer,
+      filename: inputFilename,
+    });
+    const originalFilePath = await originalFile.createTempFile();
+
+    // Extract metadata from the original video
+    const originalVideo = new VideoService({ path: originalFilePath });
+    const originalMetadata = await originalVideo.getVideoMetadata();
+    const duration = originalMetadata.format.duration;
+
+    if (!duration) {
+      throw new Error("No duration found in original video");
+    }
+
+    // Resize video based on aspect ratio
+    const resizeProcessor = new ResizeVideoService({
+      aspectRatio,
+      filePath: originalFilePath,
+    });
+    const resizedVideoBuffer = await resizeProcessor.resizeVideo(
+      originalMetadata
+    );
+
+    // Clean up original temp file
+    await originalFile.unlink();
+
+    // Save resized buffer to new temp file
+    const resizedFile = new FsService({ value: resizedVideoBuffer });
+    const resizedFilePath = await resizedFile.createTempFile();
+
+    // Extract thumbnail from resized video
+    const resizedVideo = new VideoService({ path: resizedFilePath });
+    const thumbnailBuffer = await resizedVideo.getVideoThumbnail({ duration });
+
+    // Clean up resized temp file
+    await resizedFile.unlink();
+
+    return {
+      buffer: resizedVideoBuffer,
+      thumbnail: thumbnailBuffer,
+    };
   }
 }

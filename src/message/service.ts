@@ -1,11 +1,10 @@
 import { Message } from "whatsapp-web.js";
-import { mapMessageType, MediaModel, MessageClientModel } from "./type";
-import ResizeImageService from "../resize/base-64/service";
+import { mapMessageType, MessageClientModel } from "./type";
 import { AspectRatio, listAspectRatio } from "../resize/types";
 import FileService from "../file/service";
-import ResizeVideoService from "../resize/video/service";
-import FsService from "../fs/service";
 import { IgLoginBadPasswordError } from "instagram-private-api";
+import { instagramConstant } from "../instagram/constant";
+import { VideoImageBuffer } from "../instagram/type";
 
 export class MessageService {
   client: MessageClientModel;
@@ -79,9 +78,10 @@ export class MessageService {
     if (!type) {
       throw new Error(`message type ${msg.type} not supported`);
     }
-    const mediaModel: MediaModel = {
-      ...media,
+    const mediaModel: VideoImageBuffer = {
       type,
+      buffer: media.data,
+      filename: media.filename ?? undefined,
     };
 
     console.log("start push to batch upload with id", msg.id.id);
@@ -113,29 +113,10 @@ export class MessageService {
       console.log("start post multiple photo");
       let caption = body.split("-").at(1)?.trim();
 
-      const resizeResult = await Promise.all(
-        this.client.batchMedia.map(async (item) => {
-          const mediaType = item.type;
-          if (mediaType === "video") {
-            const result = await this.resizeVideo({ base64: item.data });
-            return {
-              video: {
-                buffer: result.resizedVideo,
-                thumbnail: result.thumbnail,
-              },
-            };
-          } else if (mediaType === "image") {
-            const result = await this.resizeImage({ base64: item.data });
-            return {
-              image: {
-                buffer: result,
-              },
-            };
-          }
-        })
-      );
-
-      const resultBatch = FileService.batchFile(resizeResult);
+      const resultBatch = FileService.batchFile({
+        files: this.client.batchMedia,
+        batchLength: instagramConstant.max.post,
+      });
 
       for (const [i, images] of Object.entries(resultBatch)) {
         const index = Number(i);
@@ -146,12 +127,9 @@ export class MessageService {
         }
 
         console.log("start post image with caption ", finalCaption);
-        await this.client.instagramService.publishAlbum({
-          items: images.map((item) => ({
-            coverImage: item?.video?.thumbnail,
-            file: item?.image?.buffer!,
-            video: item?.video?.buffer,
-          })),
+        await this.client.instagramService.publishAlbumV2({
+          aspectRatio: this.client.aspectRatio,
+          items: this.client.batchMedia,
           caption: finalCaption,
         });
       }
@@ -163,30 +141,6 @@ export class MessageService {
       this.resetState();
       throw error;
     }
-  }
-
-  async resizeVideo({ base64 }: { base64: string }) {
-    const fsService = new FsService({ value: base64 });
-
-    const tempPath = await fsService.createTempFile();
-
-    const resizeVideoService = new ResizeVideoService({
-      aspectRatio: this.client.aspectRatio,
-      filePath: tempPath,
-    });
-    const { resizedVideo, thumbnail } =
-      await resizeVideoService.getInstagramReadyVideo();
-
-    return { resizedVideo, thumbnail };
-  }
-
-  async resizeImage({ base64 }: { base64: string }) {
-    const resizeImageService = new ResizeImageService({
-      aspectRatio: this.client.aspectRatio,
-    });
-
-    const result = await resizeImageService.resizeImage(base64);
-    return result;
   }
 
   static handleError({ error, msg }: { error: any; msg: Message }) {

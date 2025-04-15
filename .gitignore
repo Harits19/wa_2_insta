@@ -12,3 +12,5 @@ session.json
 *-session.json
 .DS_Store
 dist
+sessions
+temporary

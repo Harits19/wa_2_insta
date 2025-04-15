@@ -12,7 +12,6 @@ ffmpeg.setFfprobePath(ffprobeInstaller.path); // no weird regex needed
 
 export default class ResizeVideoService extends AnalyzeSizeService {
   filePath: string;
-  videoService: VideoService;
 
   constructor({
     aspectRatio,
@@ -23,55 +22,28 @@ export default class ResizeVideoService extends AnalyzeSizeService {
   }) {
     super({ aspectRatio });
     this.filePath = filePath;
-    this.videoService = new VideoService({ path: this.filePath });
   }
 
-  async getInstagramReadyVideo() {
-    const metadata = await this.videoService.getVideoMetadata();
-    const resizedVideo = await this.resizeVideo(metadata);
-    const duration = metadata.format.duration;
-    if (!duration) {
-      throw new Error("No duration found");
-    }
 
-    const fsService = new FsService({
-      value: resizedVideo,
-    });
-    const tempPath = await fsService.createTempFile();
-
-    const tempVideoService = new VideoService({ path: tempPath });
-
-    const thumbnail = await tempVideoService.getVideoThumbnail({
-      duration,
-    });
-
-    await fsService.unlink();
-
-    return {
-      thumbnail,
-      resizedVideo,
-    };
-  }
-
-  private async resizeVideo(metadata: FfprobeData) {
+  async resizeVideo(metadata: FfprobeData) {
     const videoMetadata = metadata.streams.find(
       (item) => item.codec_type === "video"
     );
-
-    const duration = metadata.format.duration;
 
     if (!videoMetadata) {
       throw new Error("No video stream found");
     }
 
     const { height, width } = videoMetadata;
-    console.log({ height, width, duration });
 
     const { targetHeight, targetWidth } = await this.analyze({
       height,
       width,
     });
-    console.log({ targetHeight, targetWidth });
+
+    console.log("convert height from ", height, " to ", targetHeight);
+    console.log("convert width from ", width, " to ", targetWidth);
+
 
     const result = await this.resizeVideoStream({
       targetHeight,

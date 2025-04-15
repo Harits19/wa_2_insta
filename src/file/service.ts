@@ -1,5 +1,6 @@
 import * as fs from "fs/promises";
 import path from "path";
+import { instagramConstant } from "../instagram/constant";
 
 export default class FileService {
   static async getAllImageFiles(folderPath: string) {
@@ -51,13 +52,17 @@ export default class FileService {
     return result;
   }
 
-  static batchFile<T>(files: T[]) {
-    const INSTAGRAM_MAX_POST = 20;
-
+  static batchFile<T>({
+    batchLength,
+    files,
+  }: {
+    files: T[];
+    batchLength: number;
+  }) {
     const result: T[][] = [];
 
-    for (let index = 0; index < files.length; index += INSTAGRAM_MAX_POST) {
-      const batch = files.slice(index, index + INSTAGRAM_MAX_POST);
+    for (let index = 0; index < files.length; index += batchLength) {
+      const batch = files.slice(index, index + batchLength);
 
       result.push(batch);
     }
@@ -68,7 +73,10 @@ export default class FileService {
   static async instagramFileReadyToUpload(folderPath: string) {
     const files = await FileService.getAllImageFiles(folderPath);
     const sortFiles = FileService.sortByNumber(files);
-    const batchFiles = FileService.batchFile(sortFiles);
+    const batchFiles = FileService.batchFile({
+      files: sortFiles,
+      batchLength: instagramConstant.max.post,
+    });
     console.log(
       `files length ${files.length}, sorted files length ${sortFiles.length}, batch files length ${batchFiles.length}`
     );

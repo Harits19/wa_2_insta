@@ -1,6 +1,6 @@
-import { join } from "path";
+import { dirname, join } from "path";
 import { randomUUID } from "crypto";
-import { promises as fs } from "fs";
+import { mkdir, unlink, writeFile } from "fs/promises";
 
 export default class FsService {
   value: string | Buffer;
@@ -22,7 +22,7 @@ export default class FsService {
   }
 
   private get outputPath() {
-    const tempFilePath = join(`${this.randomUUID}.${this.extension}`);
+    const tempFilePath = join(`temporary/${this.randomUUID}.${this.extension}`);
     return tempFilePath;
   }
 
@@ -34,12 +34,13 @@ export default class FsService {
         : this.value;
 
     // Step 2: Create temp file for video
-    await fs.writeFile(this.outputPath, videoBuffer);
+    await mkdir(dirname(this.outputPath), { recursive: true });
+    await writeFile(this.outputPath, videoBuffer);
 
     return this.outputPath;
   }
 
   async unlink() {
-    await fs.unlink(this.outputPath);
+    await unlink(this.outputPath);
   }
 }
