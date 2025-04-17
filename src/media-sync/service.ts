@@ -34,9 +34,11 @@ export default class MediaSyncService {
     let leftOverItems: VideoImageResizeResult[] = [];
 
     let currentCount = 1;
+    let isLastItem = false;
 
     do {
       const result = await this.googlePhoto.search({
+        isLastItem,
         pageSize: instagramConstant.max.post,
         pageToken,
         date,
@@ -49,24 +51,36 @@ export default class MediaSyncService {
       });
       let caption = `${date.day}/${date.month}/${date.year}`;
 
-      if (result.pageToken) {
+      pageToken = result.pageToken;
+
+      const { leftoverItems: leftOverItemsResult, publishItems } =
+        await this.instagram.processVideo({
+          aspectRatio,
+          leftOverItems,
+          items: downloadedItems.map((item) => ({
+            buffer: item.buffer,
+            filename: item.filename,
+            type: item.type,
+          })),
+        });
+
+      leftOverItems = leftOverItemsResult;
+
+      if (pageToken || leftOverItems.length > 0 || currentCount > 1) {
         caption = `${caption} (${currentCount})`;
-        currentCount++;
       }
 
-     
+      currentCount++;
+      isLastItem = !pageToken && currentCount > 1;
 
-      leftOverItems = await this.instagram.publishAlbumV2({
-        aspectRatio,
+      await this.instagram.publishAlbum({
         caption,
-        items: downloadedItems.map((item) => ({
-          buffer: item.buffer,
-          filename: item.filename,
-          type: item.type,
+        items: publishItems.map((item) => ({
+          coverImage: item.video?.thumbnail!,
+          file: item.image,
+          video: item.video?.buffer!,
         })),
       });
-
-      pageToken = result.pageToken;
     } while (pageToken || leftOverItems.length > 0);
   }
 }

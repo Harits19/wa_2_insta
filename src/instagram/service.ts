@@ -191,6 +191,7 @@ export class InstagramService {
         `can't post more than ${instagramConstant.max.post}, current value is ${items.length}`
       );
     }
+
     try {
       if (items.length === 0) return;
 
@@ -233,14 +234,14 @@ export class InstagramService {
     }
   }
 
-  async publishAlbumV2({
+  async processVideo({
     aspectRatio,
     items,
-    caption,
+    leftOverItems: leftOverItemsParams = [],
   }: {
     aspectRatio: AspectRatio;
     items: VideoImageBuffer[];
-    caption?: string;
+    leftOverItems?: VideoImageResizeResult[];
   }) {
     if (items.length > instagramConstant.max.post)
       throw new Error(
@@ -276,22 +277,21 @@ export class InstagramService {
 
     const resizeResult = await PromiseService.run({ promises });
 
-    const flattenResult: VideoImageResizeResult[] = resizeResult.flat();
+    const flattenResult: VideoImageResizeResult[] = [
+      ...leftOverItemsParams,
+      ...resizeResult.flat(),
+    ];
 
     const maxPost = instagramConstant.max.post;
     const publishItems = flattenResult.slice(0, maxPost);
     const leftoverItems = flattenResult.slice(maxPost);
 
-    await this.publishAlbum({
-      caption,
-      items: publishItems.map((item) => ({
-        coverImage: item.video?.thumbnail!,
-        file: item.image,
-        video: item.video?.buffer!,
-      })),
+    console.log({
+      publishItemsLength: publishItems.length,
+      leftoverItemsLength: leftoverItems.length,
     });
 
-    return leftoverItems;
+    return { publishItems, leftoverItems };
   }
 
   async resizeImage({

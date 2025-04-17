@@ -6,6 +6,7 @@ import { AspectRatio } from "../types";
 import { writeFile } from "fs/promises";
 import FsService from "../../fs/service";
 import VideoService from "../../video/service";
+import path from "path";
 
 ffmpeg.setFfmpegPath(ffmpegInstaller.path);
 ffmpeg.setFfprobePath(ffprobeInstaller.path); // no weird regex needed
@@ -23,7 +24,6 @@ export default class ResizeVideoService extends AnalyzeSizeService {
     super({ aspectRatio });
     this.filePath = filePath;
   }
-
 
   async resizeVideo(metadata: FfprobeData) {
     const videoMetadata = metadata.streams.find(
@@ -43,7 +43,6 @@ export default class ResizeVideoService extends AnalyzeSizeService {
 
     console.log("convert height from ", height, " to ", targetHeight);
     console.log("convert width from ", width, " to ", targetWidth);
-
 
     const result = await this.resizeVideoStream({
       targetHeight,

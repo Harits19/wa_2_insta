@@ -27,7 +27,6 @@ export default class VideoService {
           reject(err);
         })
         .on("end", async () => {
-          console.log("outputChunks", outputChunks.length);
           resolve(Buffer.concat(outputChunks));
         })
         .pipe()

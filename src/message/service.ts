@@ -127,10 +127,17 @@ export class MessageService {
         }
 
         console.log("start post image with caption ", finalCaption);
-        await this.client.instagramService.publishAlbumV2({
+        const result = await this.client.instagramService.processVideo({
           aspectRatio: this.client.aspectRatio,
           items: this.client.batchMedia,
+        });
+        await this.client.instagramService.publishAlbum({
           caption: finalCaption,
+          items: result.publishItems.map((item) => ({
+            coverImage: item.video?.thumbnail!,
+            file: item.image,
+            video: item.video?.buffer!,
+          })),
         });
       }
 

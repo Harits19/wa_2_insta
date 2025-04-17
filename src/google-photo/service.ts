@@ -1,5 +1,5 @@
 import GoogleOauthService from "../google-oauth/service";
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 import * as fs from "fs";
 import PromiseService from "../promise/service";
 import path from "path";
@@ -32,40 +32,57 @@ export default class GooglePhotoService {
     date,
     pageToken,
     pageSize,
+    isLastItem,
   }: {
     date: { year: number; month: number; day: number };
     pageToken?: string;
     pageSize: number;
+    isLastItem?: boolean;
   }) {
-    const requestBody = {
-      pageSize,
-      pageToken,
-      filters: {
-        dateFilter: {
-          dates: [date],
+    try {
+      if (isLastItem) {
+        return {
+          items: [] as MediaItem[],
+          pageToken: undefined,
+        };
+      }
+      const requestBody = {
+        pageSize,
+        pageToken,
+        filters: {
+          dateFilter: {
+            dates: [date],
+          },
         },
-      },
-    };
+        orderBy: "MediaMetadata.creation_time",
+      };
 
-    console.log("get photo with date", date);
+      console.log("get photo with date", date);
 
-    const url = `${this.baseUrl}:search`;
+      const url = `${this.baseUrl}:search`;
 
-    const headers = await this.headers();
+      const headers = await this.headers();
 
-    const res = await axios.post<SearchResponse>(url, requestBody, {
-      headers,
-    });
+      const res = await axios.post<SearchResponse>(url, requestBody, {
+        headers,
+      });
 
-    console.log("result search", res.data);
+      console.log("result search", res.data);
 
-    const items = res.data?.mediaItems ?? [];
-    console.log("push new array with ", items);
+      const items = res.data?.mediaItems ?? [];
+      console.log("push new array with ", items);
 
-    return {
-      items,
-      pageToken: res.data.nextPageToken,
-    };
+      return {
+        items,
+        pageToken: res.data.nextPageToken,
+      };
+    } catch (error) {
+      if (error instanceof AxiosError) {
+        console.log("AxiosError ", error.response?.data);
+      }
+      console.log(error);
+      throw error;
+    }
   }
 
   async download({ item }: { item: MediaItem }): Promise<DownloadedMediaItem> {
