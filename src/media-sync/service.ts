@@ -1,7 +1,10 @@
 import { RawDate } from "../date/type";
 import GooglePhotoService from "../google-photo/service";
+import { DownloadedMediaItem } from "../google-photo/type";
 import { instagramConstant } from "../instagram/constant";
 import { InstagramService } from "../instagram/service";
+import { VideoImageResizeResult } from "../instagram/type";
+
 import PromiseService from "../promise/service";
 import { AspectRatio } from "../resize/types";
 
@@ -28,6 +31,7 @@ export default class MediaSyncService {
     date: RawDate;
   }) {
     let pageToken: string | undefined;
+    let leftOverItems: VideoImageResizeResult[] = [];
 
     let currentCount = 1;
 
@@ -37,7 +41,6 @@ export default class MediaSyncService {
         pageToken,
         date,
       });
-
 
       const downloadedItems = await PromiseService.run({
         promises: result.items.map((item) =>
@@ -51,7 +54,9 @@ export default class MediaSyncService {
         currentCount++;
       }
 
-      await this.instagram.publishAlbumV2({
+     
+
+      leftOverItems = await this.instagram.publishAlbumV2({
         aspectRatio,
         caption,
         items: downloadedItems.map((item) => ({
@@ -62,6 +67,6 @@ export default class MediaSyncService {
       });
 
       pageToken = result.pageToken;
-    } while (pageToken);
+    } while (pageToken || leftOverItems.length > 0);
   }
 }

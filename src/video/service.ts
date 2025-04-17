@@ -2,7 +2,7 @@ import { randomUUID } from "crypto";
 import ffmpeg, { FfprobeData, FfprobeStream } from "fluent-ffmpeg";
 import { PassThrough } from "stream";
 import FsService from "../fs/service";
-import { mkdir } from "fs/promises";
+import { mkdir, readFile, unlink } from "fs/promises";
 import { dirname } from "path";
 
 export default class VideoService {
@@ -85,41 +85,58 @@ export default class VideoService {
     });
   }
 
-  async splitVideo({ chunkLength }: { chunkLength: number }) {
-    const metadata = await this.getVideoMetadata();
-    const duration = metadata.format.duration;
+  async splitVideo({ maxDurationPerFile, totalDuration }: { maxDurationPerFile: number, totalDuration?: number }) {
+    if (!totalDuration) {
+      const metadata = await this.getVideoMetadata();
+      totalDuration = metadata.format.duration;
+    }
 
-    if (!duration) {
+    if (!totalDuration) {
       throw new Error("Duration is undefined");
     }
 
-    const totalChunks = Math.ceil(duration / chunkLength);
+    const totalChunks = Math.ceil(totalDuration / maxDurationPerFile);
     const id = randomUUID();
 
-    return new Promise<string[]>(async (resolve, reject) => {
-      const outputPaths: string[] = [];
-      for (let i = 0; i < totalChunks; i++) {
-        const output = `temporary/${id}-${i + 1}.mp4`;
+    const buffers: {
+      path: string;
+      duration: number;
+    }[] = [];
 
-        await FsService.createFile({ outputPath: output });
-        const start = i * chunkLength;
+    for (let index = 0; index < totalChunks; index++) {
+      const outputPath = `temporary/${id}-${index + 1}.mp4`;
 
-        await new Promise((resolve, reject) => {
-          ffmpeg(this.path)
-            .setStartTime(start)
-            .setDuration(chunkLength)
-            .output(output)
-            .on("end", (value) => {
-              outputPaths.push(output);
-            })
-            .on("error", reject)
-            .run();
-        });
+      await FsService.createFile({ outputPath: outputPath });
+      const start = index * maxDurationPerFile;
 
-        console.log(`Created ${output}`);
+      let duration = maxDurationPerFile;
+
+      const isLastFile = (totalChunks -1) === index;
+
+      if(isLastFile){
+        duration = totalDuration % maxDurationPerFile;
       }
 
-      resolve(outputPaths);
-    });
+      await new Promise<void>((resolve, reject) => {
+        ffmpeg(this.path)
+          .setStartTime(start)
+          .setDuration(maxDurationPerFile)
+          .output(outputPath)
+          .on("end", (value) => {
+            console.log('end split video', value);
+            resolve();
+          })
+          .on("error", reject)
+          .run();
+      });
+
+      buffers.push({
+        duration,
+        path: outputPath,
+      });
+
+    }
+
+    return buffers;
   }
 }

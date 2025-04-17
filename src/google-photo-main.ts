@@ -17,14 +17,14 @@ async function main() {
   const mediaSyncService = new MediaSyncService({ googlePhoto, instagram });
 
   const startDate = {
-    day: 17,
-    month: 4,
+    day: 21,
+    month: 6,
     year: 2013,
   };
 
   const endDate = {
-    day: 17,
-    month: 4,
+    day: 21,
+    month: 6,
     year: 2013,
   };
 

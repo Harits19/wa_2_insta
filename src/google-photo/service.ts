@@ -5,21 +5,7 @@ import PromiseService from "../promise/service";
 import path from "path";
 import puppet from "puppeteer";
 import PuppeteerService from "../puppeteer/service";
-
-interface MediaItem {
-  id: string;
-  filename: string;
-  baseUrl: string;
-  productUrl: string;
-  mimeType: string;
-  mediaMetadata: {
-    creationTime: string;
-  };
-}
-interface SearchResponse {
-  mediaItems: MediaItem[];
-  nextPageToken?: string;
-}
+import { DownloadedMediaItem, MediaItem, SearchResponse } from "./type";
 
 export default class GooglePhotoService {
   googleOauth: GoogleOauthService;
@@ -82,7 +68,7 @@ export default class GooglePhotoService {
     };
   }
 
-  async download({ item }: { item: MediaItem }) {
+  async download({ item }: { item: MediaItem }): Promise<DownloadedMediaItem> {
     const baseUrl = item.baseUrl;
     console.log("start download", item.filename, item.mediaMetadata);
     const headers = await this.headers();

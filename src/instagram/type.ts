@@ -288,3 +288,11 @@ export interface SharingFrictionInfo2 {
 export type VideoImageBuffer =
   | { type: "image"; buffer: Buffer | Base64 }
   | { type: "video"; buffer: Buffer | Base64; filename?: string };
+
+export type VideoImageResizeResult = {
+  video?: {
+    buffer: Buffer;
+    thumbnail: Buffer;
+  };
+  image?: Buffer;
+};

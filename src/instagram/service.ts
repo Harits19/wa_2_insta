@@ -5,7 +5,11 @@ import {
   PostingAlbumVideoItem,
 } from "instagram-private-api";
 import * as fs from "fs";
-import { AlbumResponse, VideoImageBuffer } from "./type";
+import {
+  AlbumResponse,
+  VideoImageBuffer,
+  VideoImageResizeResult as VideoImageResizeResult,
+} from "./type";
 import FsService from "../fs/service";
 import ResizeImageService from "../resize/base-64/service";
 import { AspectRatio } from "../resize/types";
@@ -15,6 +19,8 @@ import VideoService from "../video/service";
 import { Base64 } from "../resize/base-64/type";
 import { instagramConstant } from "./constant";
 import { dirname } from "path";
+import { SECOND } from "../constants/size";
+import { readFile, unlink } from "fs/promises";
 
 export class InstagramService {
   ig: IgApiClient;
@@ -179,6 +185,12 @@ export class InstagramService {
     items: Array<PostingAlbumPhotoItem | PostingAlbumVideoItem>;
     caption?: string;
   }) {
+    // return;
+    if (items.length > instagramConstant.max.post) {
+      throw new Error(
+        `can't post more than ${instagramConstant.max.post}, current value is ${items.length}`
+      );
+    }
     try {
       if (items.length === 0) return;
 
@@ -241,26 +253,45 @@ export class InstagramService {
           buffer: item.buffer,
           filename: item.filename,
         });
-        return {
-          video: result,
-        };
+
+        if (Array.isArray(result)) {
+          return result.map((item) => ({
+            video: item,
+          }));
+        }
+
+        return [
+          {
+            video: result,
+          },
+        ];
       }
 
-      return {
-        image: await this.resizeImage({ aspectRatio, buffer: item.buffer }),
-      };
+      return [
+        {
+          image: await this.resizeImage({ aspectRatio, buffer: item.buffer }),
+        },
+      ];
     });
 
     const resizeResult = await PromiseService.run({ promises });
 
+    const flattenResult: VideoImageResizeResult[] = resizeResult.flat();
+
+    const maxPost = instagramConstant.max.post;
+    const publishItems = flattenResult.slice(0, maxPost);
+    const leftoverItems = flattenResult.slice(maxPost);
+
     await this.publishAlbum({
       caption,
-      items: resizeResult.map((item) => ({
+      items: publishItems.map((item) => ({
         coverImage: item.video?.thumbnail!,
         file: item.image,
         video: item.video?.buffer!,
       })),
     });
+
+    return leftoverItems;
   }
 
   async resizeImage({
@@ -301,6 +332,8 @@ export class InstagramService {
       throw new Error("No duration found in original video");
     }
 
+    const maxDuration = instagramConstant.max.duration * SECOND;
+
     // Resize video based on aspect ratio
     const resizeProcessor = new ResizeVideoService({
       aspectRatio,
@@ -309,24 +342,59 @@ export class InstagramService {
     const resizedVideoBuffer = await resizeProcessor.resizeVideo(
       originalMetadata
     );
-
-    // Clean up original temp file
-    await originalFile.unlink();
-
     // Save resized buffer to new temp file
     const resizedFile = new FsService({ value: resizedVideoBuffer });
     const resizedFilePath = await resizedFile.createTempFile();
 
-    // Extract thumbnail from resized video
-    const resizedVideo = new VideoService({ path: resizedFilePath });
-    const thumbnailBuffer = await resizedVideo.getVideoThumbnail({ duration });
+    // Clean up original temp file
+    await originalFile.unlink();
 
+    const getResult = async () => {
+      if (duration > maxDuration) {
+        console.log(
+          `video duration long more than ${maxDuration}, need to be split`
+        );
+        const videoService = new VideoService({ path: resizedFilePath });
+        const splitVideoResult = await videoService.splitVideo({
+          maxDurationPerFile: maxDuration,
+          totalDuration: duration,
+        });
+        const result = await PromiseService.run({
+          promises: splitVideoResult.map(async (video) => {
+            const videoService = new VideoService({ path: video.path });
+            const thumbnail = await videoService.getVideoThumbnail({
+              duration: video.duration,
+            });
+
+            const buffer = await readFile(video.path);
+            await unlink(video.path);
+
+            return {
+              buffer,
+              thumbnail,
+            };
+          }),
+        });
+
+        return result;
+      } else {
+        // Extract thumbnail from resized video
+        const resizedVideo = new VideoService({ path: resizedFilePath });
+        const thumbnailBuffer = await resizedVideo.getVideoThumbnail({
+          duration,
+        });
+
+        return {
+          buffer: resizedVideoBuffer,
+          thumbnail: thumbnailBuffer,
+        };
+      }
+    };
+
+    const result = await getResult();
     // Clean up resized temp file
     await resizedFile.unlink();
 
-    return {
-      buffer: resizedVideoBuffer,
-      thumbnail: thumbnailBuffer,
-    };
+    return result;
   }
 }
