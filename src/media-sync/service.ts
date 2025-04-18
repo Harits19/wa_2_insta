@@ -77,7 +77,7 @@ export default class MediaSyncService {
         caption,
         items: publishItems.map((item) => ({
           coverImage: item.video?.thumbnail!,
-          file: item.image,
+          file: item.image!,
           video: item.video?.buffer!,
         })),
       });

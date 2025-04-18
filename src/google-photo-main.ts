@@ -1,4 +1,5 @@
-import DateService from "./date/service";
+import MyDate from "./date/service";
+import { RawDate } from "./date/type";
 import { env, envService } from "./env/service";
 import GooglePhotoService from "./google-photo/service";
 import { InstagramService } from "./instagram/service";
@@ -16,24 +17,22 @@ async function main() {
 
   const mediaSyncService = new MediaSyncService({ googlePhoto, instagram });
 
-  const startDate = {
-    day: 21,
-    month: 6,
-    year: 2013,
-  };
+  const dates = [
+    "31 Dec 2016",
+    "10 May 2017",
+    "17 May 2017",
+    "18 May 2017",
+    "23 May 2017", 
+    "13 Jun 2017"
+  ];
 
-  const endDate = {
-    day: 21,
-    month: 6,
-    year: 2013,
-  };
+  for (const dateString of dates) {
+    if (!dateString) continue;
+    const date = new MyDate(dateString);
 
-  const dates = DateService.getDatesBetween(startDate, endDate);
-
-  for (const date of dates) {
     await mediaSyncService.syncGooglePhotoToInstagram({
       aspectRatio: "1x1",
-      date,
+      date: date.toRawDate(),
     });
   }
 }

@@ -182,7 +182,7 @@ export class InstagramService {
     items,
     caption,
   }: {
-    items: Array<PostingAlbumPhotoItem | PostingAlbumVideoItem>;
+    items: Array<PostingAlbumPhotoItem & PostingAlbumVideoItem>;
     caption?: string;
   }) {
     // return;
@@ -243,10 +243,12 @@ export class InstagramService {
     items: VideoImageBuffer[];
     leftOverItems?: VideoImageResizeResult[];
   }) {
-    if (items.length > instagramConstant.max.post)
+    if (items.length > instagramConstant.max.post) {
       throw new Error(
         `Can't more post media than ${instagramConstant.max.post} `
       );
+    }
+
     const promises = items.map(async (item) => {
       if (item.type === "video") {
         const result = await this.resizeVideo({

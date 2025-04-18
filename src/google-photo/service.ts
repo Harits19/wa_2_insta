@@ -51,7 +51,12 @@ export default class GooglePhotoService {
         pageToken,
         filters: {
           dateFilter: {
-            dates: [date],
+            ranges: [
+              {
+                startDate: date,
+                endDate: date,
+              },
+            ],
           },
         },
         orderBy: "MediaMetadata.creation_time",
