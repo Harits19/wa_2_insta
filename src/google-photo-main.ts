@@ -8,6 +8,8 @@ import MediaSyncService from "./media-sync/service";
 async function main() {
   envService.checkENV();
 
+  const dates = env.GOOGLE_PHOTO_DATES_BACKUP.split(",");
+
   const instagram = await InstagramService.login({
     cookiesKey: env.INSTAGRAM_USERNAME,
     password: env.INSTAGRAM_PASSWORD,
@@ -16,15 +18,6 @@ async function main() {
   const googlePhoto = await GooglePhotoService.create();
 
   const mediaSyncService = new MediaSyncService({ googlePhoto, instagram });
-
-  const dates = [
-    "31 Dec 2016",
-    "10 May 2017",
-    "17 May 2017",
-    "18 May 2017",
-    "23 May 2017", 
-    "13 Jun 2017"
-  ];
 
   for (const dateString of dates) {
     if (!dateString) continue;
