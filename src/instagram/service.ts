@@ -51,15 +51,13 @@ export class InstagramService {
   }
 
   static async login({
-    cookiesKey,
     password,
     username,
   }: {
-    cookiesKey: string;
     password: string;
     username: string;
   }) {
-    const instance = new InstagramService({ cookiesKey, password, username });
+    const instance = new InstagramService({ cookiesKey: username, password, username });
     await instance.initInstagramClient();
     return instance;
   }

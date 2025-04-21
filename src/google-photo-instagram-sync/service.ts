@@ -1,6 +1,5 @@
 import { RawDate } from "../date/type";
 import GooglePhotoService from "../google-photo/service";
-import { DownloadedMediaItem } from "../google-photo/type";
 import { instagramConstant } from "../instagram/constant";
 import { InstagramService } from "../instagram/service";
 import { VideoImageResizeResult } from "../instagram/type";
@@ -23,7 +22,23 @@ export default class MediaSyncService {
     this.instagram = instagram;
   }
 
-  async syncGooglePhotoToInstagram({
+  static async create({
+    password,
+    username,
+  }: {
+    password: string;
+    username: string;
+  }) {
+    const instagram = await InstagramService.login({
+      password,
+      username,
+    });
+    const googlePhoto = await GooglePhotoService.create();
+
+    return new MediaSyncService({ googlePhoto, instagram });
+  }
+
+  async uploadToInstagram({
     aspectRatio,
     date,
   }: {

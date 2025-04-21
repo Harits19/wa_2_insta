@@ -11,7 +11,6 @@ export async function startLocalFileUpload({
   username: string;
 }) {
   const instagramService = await InstagramService.login({
-    cookiesKey: "local",
     password,
     username,
   });
