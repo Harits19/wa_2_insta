@@ -9,6 +9,7 @@ import ResizeVideoService from "../resize/video/service";
 import VideoService from "../video/service";
 import FileService from "../file/service";
 import ResizeImageService from "../resize/base-64/service";
+import { VideoImageBuffer } from "../instagram/type";
 
 interface LocalInstagramSyncServiceInterface {
   instagram: InstagramService;
@@ -70,8 +71,6 @@ export default class LocalInstagramSyncService
       (a, b) => getTimestamp(a) - getTimestamp(b)
     );
 
-    console.log(sortedJsonFiles.map((item) => item.photoTakenTime.formatted));
-
     for (const date of dates) {
       const imagesMetadata = sortedJsonFiles.filter((item) => {
         const photoTakenTime = getTimestamp(item);
@@ -80,7 +79,7 @@ export default class LocalInstagramSyncService
         return formattedDate === date;
       });
 
-      const imageFiles: Buffer[] = [];
+      const imageFiles: VideoImageBuffer[] = [];
 
       for (const metadata of imagesMetadata) {
         const isFileExist = imageFilesPath.find(
@@ -100,23 +99,16 @@ export default class LocalInstagramSyncService
           continue;
         }
 
-        let result: undefined | Buffer;
+        const buffer = await readFile(filePath);
 
-        if (type === "image") {
-          const buffer = await readFile(filePath);
-          const resizer = new ResizeImageService({
-            aspectRatio: "1x1",
-            image: buffer,
-          });
-          result = await resizer.resizeImage();
-        } else if (type === "video") {
-          const resizer = new ResizeVideoService({
-            aspectRatio: "1x1",
-            filePath,
-          });
-          // result = await resizer.resizeVideo()
-        }
+        imageFiles.push({ buffer, type });
       }
+
+      await this.instagram.publishMultiplePost({
+        aspectRatio: "1x1",
+        caption: date,
+        items: imageFiles,
+      });
     }
   }
 }

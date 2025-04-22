@@ -21,6 +21,7 @@ import { instagramConstant } from "./constant";
 import { dirname } from "path";
 import { SECOND } from "../constants/size";
 import { readFile, unlink } from "fs/promises";
+import { ArrayService } from "../array/service";
 
 export class InstagramService {
   ig: IgApiClient;
@@ -184,7 +185,9 @@ export class InstagramService {
     items,
     caption,
   }: {
-    items: Array<PostingAlbumPhotoItem & PostingAlbumVideoItem>;
+    items: Array<
+      Partial<PostingAlbumPhotoItem> & Partial<PostingAlbumVideoItem>
+    >;
     caption?: string;
   }) {
     // return;
@@ -199,7 +202,7 @@ export class InstagramService {
 
       if (items.length > 1) {
         const publishResult = await this.ig.publish.album({
-          items: items,
+          items: items as Array<PostingAlbumPhotoItem | PostingAlbumVideoItem>,
           caption: caption,
         });
         console.log("Posted carousel:", publishResult.media.code);
@@ -236,21 +239,49 @@ export class InstagramService {
     }
   }
 
-  async processVideo({
+  async publishMultiplePost({
     aspectRatio,
     items,
-    leftOverItems: leftOverItemsParams = [],
+    caption,
   }: {
     aspectRatio: AspectRatio;
     items: VideoImageBuffer[];
-    leftOverItems?: VideoImageResizeResult[];
+    caption: string;
   }) {
-    if (items.length > instagramConstant.max.post) {
-      throw new Error(
-        `Can't more post media than ${instagramConstant.max.post} `
-      );
-    }
+    const allFiles = await this.processAllImageVideo({ aspectRatio, items });
+    const batchFiles = ArrayService.batch({
+      files: allFiles,
+      batchLength: instagramConstant.max.post,
+    });
 
+    console.log("total post", batchFiles.length);
+
+    const isMultipleUpload = batchFiles.length > 1;
+
+    await PromiseService.run({
+      promises: batchFiles.map(async (files, index) => {
+        const finalCaption = isMultipleUpload
+          ? `${caption} (${index + 1})`
+          : caption;
+        await this.publishAlbum({
+          caption: finalCaption,
+          items: files.map((item) => ({
+            coverImage: item.video?.thumbnail!,
+            file: item.image!,
+            video: item.video?.buffer!,
+          })),
+        });
+      }),
+    });
+  }
+
+  private async processAllImageVideo({
+    aspectRatio,
+    items,
+  }: {
+    aspectRatio: AspectRatio;
+    items: VideoImageBuffer[];
+  }): Promise<VideoImageResizeResult[]> {
     const promises = items.map(async (item) => {
       if (item.type === "video") {
         const result = await this.resizeVideo({
@@ -279,11 +310,28 @@ export class InstagramService {
       ];
     });
 
-    const resizeResult = await PromiseService.run({ promises });
+    const resizeResult = (await PromiseService.run({ promises })).flat();
+
+    return resizeResult;
+  }
+
+  async processImageVideo({
+    aspectRatio,
+    items,
+    leftOverItems: leftOverItemsParams = [],
+  }: {
+    aspectRatio: AspectRatio;
+    items: VideoImageBuffer[];
+    leftOverItems?: VideoImageResizeResult[];
+  }) {
+    const resizeResult = await this.processAllImageVideo({
+      aspectRatio,
+      items,
+    });
 
     const flattenResult: VideoImageResizeResult[] = [
       ...leftOverItemsParams,
-      ...resizeResult.flat(),
+      ...resizeResult,
     ];
 
     const maxPost = instagramConstant.max.post;
@@ -345,10 +393,9 @@ export class InstagramService {
     const resizeProcessor = new ResizeVideoService({
       aspectRatio,
       filePath: originalFilePath,
+      metadata: originalMetadata,
     });
-    const resizedVideoBuffer = await resizeProcessor.resizeVideo(
-      originalMetadata
-    );
+    const resizedVideoBuffer = await resizeProcessor.resizeVideo();
     // Save resized buffer to new temp file
     const resizedFile = new FsService({ value: resizedVideoBuffer });
     const resizedFilePath = await resizedFile.createTempFile();

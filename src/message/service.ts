@@ -5,6 +5,7 @@ import FileService from "../file/service";
 import { IgLoginBadPasswordError } from "instagram-private-api";
 import { instagramConstant } from "../instagram/constant";
 import { VideoImageBuffer } from "../instagram/type";
+import { ArrayService } from "../array/service";
 
 export class MessageService {
   client: MessageClientModel;
@@ -113,7 +114,7 @@ export class MessageService {
       console.log("start post multiple photo");
       let caption = body.split("-").at(1)?.trim();
 
-      const resultBatch = FileService.batchFile({
+      const resultBatch = ArrayService.batch({
         files: this.client.batchMedia,
         batchLength: instagramConstant.max.post,
       });
@@ -127,7 +128,7 @@ export class MessageService {
         }
 
         console.log("start post image with caption ", finalCaption);
-        const result = await this.client.instagramService.processVideo({
+        const result = await this.client.instagramService.processImageVideo({
           aspectRatio: this.client.aspectRatio,
           items: this.client.batchMedia,
         });
@@ -135,7 +136,7 @@ export class MessageService {
           caption: finalCaption,
           items: result.publishItems.map((item) => ({
             coverImage: item.video?.thumbnail!,
-            file: item.image,
+            file: item.image!,
             video: item.video?.buffer!,
           })),
         });

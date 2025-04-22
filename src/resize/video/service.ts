@@ -3,31 +3,45 @@ import ffmpeg, { FfprobeData, FfprobeStream } from "fluent-ffmpeg";
 import ffmpegInstaller from "@ffmpeg-installer/ffmpeg";
 import ffprobeInstaller from "@ffprobe-installer/ffprobe";
 import { AspectRatio } from "../types";
-import { writeFile } from "fs/promises";
-import FsService from "../../fs/service";
 import VideoService from "../../video/service";
-import path from "path";
 
 ffmpeg.setFfmpegPath(ffmpegInstaller.path);
 ffmpeg.setFfprobePath(ffprobeInstaller.path); // no weird regex needed
 
 export default class ResizeVideoService extends AnalyzeSizeService {
   filePath: string;
+  metadata: FfprobeData;
 
   constructor({
+    aspectRatio,
+    filePath,
+    metadata,
+  }: {
+    aspectRatio: AspectRatio;
+    filePath: string;
+    metadata: FfprobeData;
+  }) {
+    super({ aspectRatio });
+    this.filePath = filePath;
+    this.metadata = metadata;
+  }
+
+  static async create({
     aspectRatio,
     filePath,
   }: {
     aspectRatio: AspectRatio;
     filePath: string;
   }) {
-    super({ aspectRatio });
-    this.filePath = filePath;
+    const videoService = new VideoService({ path: filePath });
+
+    const metadata = await videoService.getVideoMetadata();
+
+    return new ResizeVideoService({ aspectRatio, filePath, metadata });
   }
 
-
-
-  async resizeVideo(metadata: FfprobeData) {
+  async resizeVideo() {
+    const metadata = this.metadata;
     const videoMetadata = metadata.streams.find(
       (item) => item.codec_type === "video"
     );

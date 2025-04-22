@@ -3,6 +3,7 @@ import path from "path";
 import { instagramConstant } from "../instagram/constant";
 import sharp from "sharp";
 import ffmpeg from "fluent-ffmpeg";
+import { ArrayService } from "../array/service";
 
 export default class FileService {
   static async getAllImageFiles(folderPath: string) {
@@ -54,28 +55,10 @@ export default class FileService {
     return result;
   }
 
-  static batchFile<T>({
-    batchLength,
-    files,
-  }: {
-    files: T[];
-    batchLength: number;
-  }) {
-    const result: T[][] = [];
-
-    for (let index = 0; index < files.length; index += batchLength) {
-      const batch = files.slice(index, index + batchLength);
-
-      result.push(batch);
-    }
-
-    return result;
-  }
-
   static async instagramFileReadyToUpload(folderPath: string) {
     const files = await FileService.getAllImageFiles(folderPath);
     const sortFiles = FileService.sortByNumber(files);
-    const batchFiles = FileService.batchFile({
+    const batchFiles = ArrayService.batch({
       files: sortFiles,
       batchLength: instagramConstant.max.post,
     });
@@ -91,34 +74,15 @@ export default class FileService {
   }
 
   static async getFileType(filePath: string) {
+    const ext = path.extname(filePath).toLowerCase();
 
-    function checkIsImage() {
-      return sharp(filePath)
-        .metadata()
-        .then(() => true)
-        .catch(() => false);
-    }
+    const imageExts = [".jpg", ".jpeg", ".png", ".webp", ".heic"];
+    const videoExts = [".mp4", ".mov", ".3gp", ".mkv"];
 
-    function checkIsVideo() {
-      return new Promise<boolean>((resolve) => {
-        ffmpeg.ffprobe(filePath, (err, metadata) => {
-          if (err || !metadata || !metadata.format) {
-            resolve(false);
-          } else if (metadata.streams.some((s) => s.codec_type === "video")) {
-            resolve(true);
-          } else {
-            resolve(false);
-          }
-        });
-      });
-    }
+    const isImage = imageExts.includes(ext);
+    const isVideo = videoExts.includes(ext);
 
-    const [isVideo, isImage] = await Promise.all([
-      checkIsVideo(),
-      checkIsImage(),
-    ]);
-
-    if (isVideo) return "video";
     if (isImage) return "image";
+    if (isVideo) return "video";
   }
 }

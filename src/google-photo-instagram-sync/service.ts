@@ -87,7 +87,7 @@ export default class MediaSyncService {
       pageToken = result.pageToken;
 
       const { leftoverItems: leftOverItemsResult, publishItems } =
-        await this.instagram.processVideo({
+        await this.instagram.processImageVideo({
           aspectRatio,
           leftOverItems,
           items: downloadedItems.map((item) => ({
