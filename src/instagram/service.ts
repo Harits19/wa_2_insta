@@ -7,6 +7,7 @@ import {
 import * as fs from "fs";
 import {
   AlbumResponse,
+  FilterMultiplePost as FilterMultiplePost,
   VideoImageBuffer,
   VideoImageResizeResult as VideoImageResizeResult,
 } from "./type";
@@ -22,6 +23,7 @@ import { dirname } from "path";
 import { SECOND } from "../constants/size";
 import { readFile, unlink } from "fs/promises";
 import { ArrayService } from "../array/service";
+import MyDate from "../date/service";
 
 export class InstagramService {
   ig: IgApiClient;
@@ -243,10 +245,12 @@ export class InstagramService {
     aspectRatio,
     items,
     caption,
+    filter,
   }: {
     aspectRatio: AspectRatio;
     items: VideoImageBuffer[];
     caption: string;
+    filter?: FilterMultiplePost;
   }) {
     const allFiles = await this.processAllImageVideo({ aspectRatio, items });
     const batchFiles = ArrayService.batch({
@@ -254,25 +258,39 @@ export class InstagramService {
       batchLength: instagramConstant.max.post,
     });
 
-    console.log("total post", batchFiles.length);
+    console.log("total post", batchFiles.length, "caption ", caption);
 
     const isMultipleUpload = batchFiles.length > 1;
 
-    await PromiseService.run({
-      promises: batchFiles.map(async (files, index) => {
-        const finalCaption = isMultipleUpload
-          ? `${caption} (${index + 1})`
-          : caption;
-        await this.publishAlbum({
-          caption: finalCaption,
-          items: files.map((item) => ({
-            coverImage: item.video?.thumbnail!,
-            file: item.image!,
-            video: item.video?.buffer!,
-          })),
-        });
-      }),
-    });
+    for (const [index, files] of batchFiles.entries()) {
+      let startIndex: number | undefined;
+
+      if (filter) {
+        const isFiltered = caption === filter.caption;
+        if (isFiltered) {
+          startIndex = filter.startIndex;
+        }
+      }
+
+      console.log({ startIndex });
+
+      if (startIndex !== undefined && index < startIndex) {
+        console.log("skip index", index);
+        return;
+      }
+
+      const finalCaption = isMultipleUpload
+        ? `${caption} (${index + 1})`
+        : caption;
+      await this.publishAlbum({
+        caption: finalCaption,
+        items: files.map((item) => ({
+          coverImage: item.video?.thumbnail!,
+          file: item.image!,
+          video: item.video?.buffer!,
+        })),
+      });
+    }
   }
 
   private async processAllImageVideo({

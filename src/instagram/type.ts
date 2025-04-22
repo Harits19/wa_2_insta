@@ -1,3 +1,4 @@
+import MyDate from "../date/service";
 import { Base64 } from "../resize/base-64/type";
 
 export interface AlbumResponse {
@@ -296,3 +297,8 @@ export type VideoImageResizeResult = {
   };
   image?: Buffer;
 };
+
+export interface FilterMultiplePost {
+  caption: string;
+  startIndex: number;
+}

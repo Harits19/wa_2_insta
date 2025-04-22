@@ -5,11 +5,8 @@ import fs, { readdir, readFile } from "fs/promises";
 import { SupplementalMetadataModel } from "./type";
 import { MILLISECOND } from "../constants/size";
 import MyDate from "../date/service";
-import ResizeVideoService from "../resize/video/service";
-import VideoService from "../video/service";
 import FileService from "../file/service";
-import ResizeImageService from "../resize/base-64/service";
-import { VideoImageBuffer } from "../instagram/type";
+import { FilterMultiplePost, VideoImageBuffer } from "../instagram/type";
 
 interface LocalInstagramSyncServiceInterface {
   instagram: InstagramService;
@@ -40,10 +37,12 @@ export default class LocalInstagramSyncService
     dates,
     aspectRatio,
     folderPath,
+    filter,
   }: {
-    dates: string[];
+    dates: MyDate[];
     aspectRatio: AspectRatio;
     folderPath: string;
+    filter?: FilterMultiplePost;
   }) {
     const files = await readdir(folderPath);
     const jsonExt = ".json";
@@ -76,7 +75,7 @@ export default class LocalInstagramSyncService
         const photoTakenTime = getTimestamp(item);
         const takenDate = new MyDate(photoTakenTime * MILLISECOND);
         const formattedDate = takenDate.formatDate();
-        return formattedDate === date;
+        return formattedDate === date.formatDate();
       });
 
       const imageFiles: VideoImageBuffer[] = [];
@@ -105,8 +104,9 @@ export default class LocalInstagramSyncService
       }
 
       await this.instagram.publishMultiplePost({
-        aspectRatio: "1x1",
-        caption: date,
+        filter,
+        aspectRatio,
+        caption: date.formatDate(),
         items: imageFiles,
       });
     }
