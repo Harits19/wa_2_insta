@@ -22,11 +22,34 @@ export default class MyDate extends Date {
     return result;
   }
 
-  toRawDate() {
+  toRawDate(): RawDate {
     return {
       day: this.getDate(),
       month: this.getMonth() + 1,
       year: this.getFullYear(),
     };
+  }
+
+  formatDate(): string {
+    const monthNames = [
+      "Jan",
+      "Feb",
+      "Mar",
+      "Apr",
+      "May",
+      "Jun",
+      "Jul",
+      "Aug",
+      "Sep",
+      "Oct",
+      "Nov",
+      "Dec",
+    ];
+
+    const date = this.toLocaleDateString();
+    const [month, day, year] = date.split("/");
+    const monthName = monthNames[Number(month) - 1];
+
+    return `${day} ${monthName} ${year}`;
   }
 }

@@ -1,6 +1,8 @@
 import * as fs from "fs/promises";
 import path from "path";
 import { instagramConstant } from "../instagram/constant";
+import sharp from "sharp";
+import ffmpeg from "fluent-ffmpeg";
 
 export default class FileService {
   static async getAllImageFiles(folderPath: string) {
@@ -86,5 +88,37 @@ export default class FileService {
       throw new Error("batch files is empty");
     }
     return batchFiles;
+  }
+
+  static async getFileType(filePath: string) {
+
+    function checkIsImage() {
+      return sharp(filePath)
+        .metadata()
+        .then(() => true)
+        .catch(() => false);
+    }
+
+    function checkIsVideo() {
+      return new Promise<boolean>((resolve) => {
+        ffmpeg.ffprobe(filePath, (err, metadata) => {
+          if (err || !metadata || !metadata.format) {
+            resolve(false);
+          } else if (metadata.streams.some((s) => s.codec_type === "video")) {
+            resolve(true);
+          } else {
+            resolve(false);
+          }
+        });
+      });
+    }
+
+    const [isVideo, isImage] = await Promise.all([
+      checkIsVideo(),
+      checkIsImage(),
+    ]);
+
+    if (isVideo) return "video";
+    if (isImage) return "image";
   }
 }

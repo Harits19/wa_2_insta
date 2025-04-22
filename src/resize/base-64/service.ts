@@ -1,14 +1,23 @@
 import ResizeService from "../service";
+import { AspectRatio } from "../types";
 import { Base64 } from "./type";
 
 export default class ResizeImageService extends ResizeService {
-  async resizeImages({ images }: { images: string[] }) {
-    const result = await Promise.all(images.map(this.resizeImage));
+  image: Base64 | Buffer;
 
-    return result;
+  constructor({
+    image,
+    aspectRatio,
+  }: {
+    image: Base64 | Buffer;
+    aspectRatio: AspectRatio;
+  }) {
+    super({ aspectRatio });
+    this.image = image;
   }
 
-  async resizeImage(item: Base64 | Buffer) {
+  async resizeImage() {
+    const item = this.image;
     const sharp = await this.runResize({
       input: typeof item === "string" ? Buffer.from(item, "base64") : item,
     });

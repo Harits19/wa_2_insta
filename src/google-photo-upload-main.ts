@@ -12,15 +12,10 @@ async function main() {
     username: env.INSTAGRAM_USERNAME,
   });
 
-  for (const dateString of dates) {
-    if (!dateString) continue;
-    const date = new MyDate(dateString);
-
-    await googlePhotoInstagram.uploadToInstagram({
-      aspectRatio: "1x1",
-      date: date.toRawDate(),
-    });
-  }
+  await googlePhotoInstagram.uploadWithListOfDate({
+    aspectRatio: "1x1",
+    dates: dates.map((date) => new MyDate(date)),
+  });
 }
 
 main();

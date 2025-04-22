@@ -1,3 +1,4 @@
+import MyDate from "../date/service";
 import { RawDate } from "../date/type";
 import GooglePhotoService from "../google-photo/service";
 import { instagramConstant } from "../instagram/constant";
@@ -36,6 +37,23 @@ export default class MediaSyncService {
     const googlePhoto = await GooglePhotoService.create();
 
     return new MediaSyncService({ googlePhoto, instagram });
+  }
+
+  async uploadWithListOfDate({
+    dates,
+    aspectRatio,
+  }: {
+    dates: MyDate[];
+    aspectRatio: AspectRatio;
+  }) {
+    for (const date of dates) {
+      if (!date) continue;
+
+      await this.uploadToInstagram({
+        aspectRatio,
+        date: date.toRawDate(),
+      });
+    }
   }
 
   async uploadToInstagram({

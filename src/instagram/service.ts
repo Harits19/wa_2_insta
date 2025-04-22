@@ -57,7 +57,11 @@ export class InstagramService {
     password: string;
     username: string;
   }) {
-    const instance = new InstagramService({ cookiesKey: username, password, username });
+    const instance = new InstagramService({
+      cookiesKey: username,
+      password,
+      username,
+    });
     await instance.initInstagramClient();
     return instance;
   }
@@ -301,9 +305,12 @@ export class InstagramService {
     aspectRatio: AspectRatio;
     buffer: Buffer | Base64;
   }) {
-    const resizeService = new ResizeImageService({ aspectRatio });
+    const resizeService = new ResizeImageService({
+      aspectRatio,
+      image: buffer,
+    });
 
-    return await resizeService.resizeImage(buffer);
+    return await resizeService.resizeImage();
   }
 
   async resizeVideo({

@@ -25,6 +25,8 @@ export default class ResizeVideoService extends AnalyzeSizeService {
     this.filePath = filePath;
   }
 
+
+
   async resizeVideo(metadata: FfprobeData) {
     const videoMetadata = metadata.streams.find(
       (item) => item.codec_type === "video"

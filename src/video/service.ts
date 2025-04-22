@@ -84,7 +84,13 @@ export default class VideoService {
     });
   }
 
-  async splitVideo({ maxDurationPerFile, totalDuration }: { maxDurationPerFile: number, totalDuration?: number }) {
+  async splitVideo({
+    maxDurationPerFile,
+    totalDuration,
+  }: {
+    maxDurationPerFile: number;
+    totalDuration?: number;
+  }) {
     if (!totalDuration) {
       const metadata = await this.getVideoMetadata();
       totalDuration = metadata.format.duration;
@@ -110,9 +116,9 @@ export default class VideoService {
 
       let duration = maxDurationPerFile;
 
-      const isLastFile = (totalChunks -1) === index;
+      const isLastFile = totalChunks - 1 === index;
 
-      if(isLastFile){
+      if (isLastFile) {
         duration = totalDuration % maxDurationPerFile;
       }
 
@@ -122,7 +128,7 @@ export default class VideoService {
           .setDuration(maxDurationPerFile)
           .output(outputPath)
           .on("end", (value) => {
-            console.log('end split video', value);
+            console.log("end split video", value);
             resolve();
           })
           .on("error", reject)
@@ -133,9 +139,22 @@ export default class VideoService {
         duration,
         path: outputPath,
       });
-
     }
 
     return buffers;
+  }
+
+  isVideo() {
+    return new Promise((resolve) => {
+      ffmpeg.ffprobe(this.path, (err, metadata) => {
+        if (err || !metadata || !metadata.format) {
+          resolve(false);
+        } else if (metadata.streams.some((s) => s.codec_type === "video")) {
+          resolve(true);
+        } else {
+          resolve(false);
+        }
+      });
+    });
   }
 }
