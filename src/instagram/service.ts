@@ -24,6 +24,8 @@ import { SECOND } from "../constants/size";
 import { readFile, unlink } from "fs/promises";
 import { ArrayService } from "../array/service";
 import MyDate from "../date/service";
+import FileService from "../file/service";
+import LogService from "../log/service";
 
 export class InstagramService {
   ig: IgApiClient;
@@ -192,52 +194,88 @@ export class InstagramService {
     >;
     caption?: string;
   }) {
-    // return;
+    console.log(
+      `try upload post with length ${items.length} and caption ${caption}`
+    );
     if (items.length > instagramConstant.max.post) {
       throw new Error(
         `can't post more than ${instagramConstant.max.post}, current value is ${items.length}`
       );
     }
 
-    try {
-      if (items.length === 0) return;
+    const totalFileSize = items.reduce((prev, curr) => {
+      const getSize = FileService.getFileSizeBuffer;
 
-      if (items.length > 1) {
-        const publishResult = await this.ig.publish.album({
-          items: items as Array<PostingAlbumPhotoItem | PostingAlbumVideoItem>,
-          caption: caption,
-        });
-        console.log("Posted carousel:", publishResult.media.code);
-      } else {
-        const item = items[0] as PostingAlbumVideoItem & PostingAlbumPhotoItem;
+      const videoSize = getSize(curr.video);
+      const coverImageSize = getSize(curr.coverImage);
+      const imageSize = getSize(curr.file);
 
-        const isPhoto = Boolean(item.file);
-        const isVideo = Boolean(item.video);
+      return prev + videoSize + coverImageSize + imageSize;
+    }, 0);
 
-        if (isPhoto) {
-          const publishResult = await this.ig.publish.photo({
-            file: item.file,
+    console.log("totalFileSize in MB ", totalFileSize);
+
+    const maxAttempt = 3;
+    if (items.length === 0) {
+      console.log(`items length is empty,`);
+      return;
+    }
+
+    const isMultiplePost = items.length > 1;
+
+    const timerKey = "time to post";
+
+    for (let attempt = 1; attempt <= maxAttempt; attempt++) {
+      const { end, start } = LogService.countTime("time to post ");
+      start();
+      try {
+        if (isMultiplePost) {
+          const publishResult = await this.ig.publish.album({
+            items: items as Array<
+              PostingAlbumPhotoItem | PostingAlbumVideoItem
+            >,
             caption: caption,
           });
-          console.log("Image posted successfully!", publishResult.upload_id);
-        } else if (isVideo) {
-          const publishResult = await this.ig.publish.video({
-            video: item.video,
-            coverImage: item.coverImage,
-            caption: caption,
-          });
-          console.log("Video posted successfully!", publishResult.upload_id);
+          console.log("Posted carousel:", publishResult.media.code);
+        } else {
+          const item = items[0] as PostingAlbumVideoItem &
+            PostingAlbumPhotoItem;
+
+          const isPhoto = Boolean(item.file);
+          const isVideo = Boolean(item.video);
+
+          if (isPhoto) {
+            const publishResult = await this.ig.publish.photo({
+              file: item.file,
+              caption: caption,
+            });
+            console.log("Image posted successfully!", publishResult.upload_id);
+          } else if (isVideo) {
+            const publishResult = await this.ig.publish.video({
+              video: item.video,
+              coverImage: item.coverImage,
+              caption: caption,
+            });
+            console.log("Video posted successfully!", publishResult.upload_id);
+          }
         }
-      }
-    } catch (error) {
-      if (error instanceof IgLoginRequiredError) {
-        await this.initInstagramClient();
-        await this.publishAlbum({ items, caption });
-
+        end();
         return;
-      }
+      } catch (error) {
+        end();
+        if (error instanceof IgLoginRequiredError) {
+          await this.initInstagramClient();
+          await this.publishAlbum({ items, caption });
+          return;
+        }
 
-      throw error;
+        if (attempt !== maxAttempt) {
+          console.error(error);
+          return;
+        }
+
+        throw error;
+      }
     }
   }
 
@@ -252,13 +290,18 @@ export class InstagramService {
     caption: string;
     filter?: FilterMultiplePost;
   }) {
+    console.log("before process items length", items.length);
     const allFiles = await this.processAllImageVideo({ aspectRatio, items });
+    console.log("after process items length", allFiles.length);
+
     const batchFiles = ArrayService.batch({
       files: allFiles,
       batchLength: instagramConstant.max.post,
     });
 
-    console.log("total post", batchFiles.length, "caption ", caption);
+    console.log(
+      `total file ${allFiles.length} total post ${batchFiles.length} caption ${caption}`
+    );
 
     const isMultipleUpload = batchFiles.length > 1;
 
@@ -272,16 +315,15 @@ export class InstagramService {
         }
       }
 
-      console.log({ startIndex });
-
       if (startIndex !== undefined && index < startIndex) {
         console.log("skip index", index);
-        return;
+        continue;
       }
 
       const finalCaption = isMultipleUpload
         ? `${caption} (${index + 1})`
         : caption;
+
       await this.publishAlbum({
         caption: finalCaption,
         items: files.map((item) => ({

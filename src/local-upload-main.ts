@@ -2,7 +2,6 @@ import { env } from "./env/service";
 import LocalInstagramSyncService from "./local-instagram-sync/service";
 import path from "path";
 import os from "os";
-import { readdir, readFile } from "fs/promises";
 import MyDate from "./date/service";
 
 export default async function main() {
@@ -18,11 +17,12 @@ export default async function main() {
     "result",
     "Takeout",
     "Google Foto",
-    "Photos from 2018"
+    "Photos from 2019",
+    "Kuliah"
   );
 
-  const dates = new MyDate("23 Jan 2018").getDatesBetween(
-    new MyDate("27 Dec 2018")
+  const dates = new MyDate("1 Jan 2019").getDatesBetween(
+    new MyDate("31 Dec 2019")
   );
 
   console.log(
@@ -31,10 +31,6 @@ export default async function main() {
   );
 
   localUpload.uploadWithListOfDates({
-    filter: {
-      caption: "23 Jan 2018",
-      startIndex: 0,
-    },
     aspectRatio: "1x1",
     dates,
     folderPath,

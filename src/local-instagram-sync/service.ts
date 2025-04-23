@@ -71,6 +71,8 @@ export default class LocalInstagramSyncService
     );
 
     for (const date of dates) {
+      console.log("start read files with date ", date.formatDate());
+
       const imagesMetadata = sortedJsonFiles.filter((item) => {
         const photoTakenTime = getTimestamp(item);
         const takenDate = new MyDate(photoTakenTime * MILLISECOND);
@@ -86,21 +88,25 @@ export default class LocalInstagramSyncService
         );
 
         if (!isFileExist) {
-          // throw new Error(`file ${metadata.title} does'nt exist`);
-          continue;
+          throw new Error(`file ${metadata.title} does'nt exist`);
         }
         const filePath = join(folderPath, metadata.title);
 
         const type = await FileService.getFileType(filePath);
 
         if (!type) {
-          console.error("Unsupported file type");
-          continue;
+          throw new Error(`${metadata.title} Unsupported file type ${type}`);
         }
 
         const buffer = await readFile(filePath);
 
         imageFiles.push({ buffer, type });
+      }
+
+      if (imageFiles.length !== imagesMetadata.length) {
+        throw new Error(
+          `image and metadata length not match, image ${imageFiles.length}, metadata ${imagesMetadata.length} `
+        );
       }
 
       await this.instagram.publishMultiplePost({

@@ -76,7 +76,7 @@ export default class FileService {
   static async getFileType(filePath: string) {
     const ext = path.extname(filePath).toLowerCase();
 
-    const imageExts = [".jpg", ".jpeg", ".png", ".webp", ".heic"];
+    const imageExts = [".jpg", ".jpeg", ".png", ".webp", ".heic", ".gif"];
     const videoExts = [".mp4", ".mov", ".3gp", ".mkv"];
 
     const isImage = imageExts.includes(ext);
@@ -84,5 +84,14 @@ export default class FileService {
 
     if (isImage) return "image";
     if (isVideo) return "video";
+  }
+
+  static getFileSizeBuffer(value?: Buffer) {
+    if (!value) {
+      return 0;
+    }
+    const sizeInBytes = value.length;
+    const sizeInMB = sizeInBytes / (1024 * 1024);
+    return Number(sizeInMB.toFixed(2));
   }
 }
