@@ -20,7 +20,7 @@ import VideoService from "../video/service";
 import { Base64 } from "../resize/base-64/type";
 import { instagramConstant } from "./constant";
 import { dirname } from "path";
-import { SECOND } from "../constants/size";
+import { MINUTE, SECOND } from "../constants/size";
 import { readFile, unlink } from "fs/promises";
 import { ArrayService } from "../array/service";
 import MyDate from "../date/service";
@@ -223,58 +223,67 @@ export class InstagramService {
 
     const isMultiplePost = items.length > 1;
 
-    const timerKey = "time to post";
-
     for (let attempt = 1; attempt <= maxAttempt; attempt++) {
       const { end, start } = LogService.countTime("time to post ");
       start();
       try {
-        if (isMultiplePost) {
-          const publishResult = await this.ig.publish.album({
-            items: items as Array<
-              PostingAlbumPhotoItem | PostingAlbumVideoItem
-            >,
-            caption: caption,
-          });
-          console.log("Posted carousel:", publishResult.media.code);
-        } else {
-          const item = items[0] as PostingAlbumVideoItem &
-            PostingAlbumPhotoItem;
-
-          const isPhoto = Boolean(item.file);
-          const isVideo = Boolean(item.video);
-
-          if (isPhoto) {
-            const publishResult = await this.ig.publish.photo({
-              file: item.file,
+        const publish = async () => {
+          if (isMultiplePost) {
+            const publishResult = await this.ig.publish.album({
+              items: items as Array<
+                PostingAlbumPhotoItem | PostingAlbumVideoItem
+              >,
               caption: caption,
             });
-            console.log("Image posted successfully!", publishResult.upload_id);
-          } else if (isVideo) {
-            const publishResult = await this.ig.publish.video({
-              video: item.video,
-              coverImage: item.coverImage,
-              caption: caption,
-            });
-            console.log("Video posted successfully!", publishResult.upload_id);
+            console.log("Posted carousel:", publishResult.media.code);
+          } else {
+            const item = items[0] as PostingAlbumVideoItem &
+              PostingAlbumPhotoItem;
+
+            const isPhoto = Boolean(item.file);
+            const isVideo = Boolean(item.video);
+
+            if (isPhoto) {
+              const publishResult = await this.ig.publish.photo({
+                file: item.file,
+                caption: caption,
+              });
+              console.log(
+                "Image posted successfully!",
+                publishResult.upload_id
+              );
+            } else if (isVideo) {
+              const publishResult = await this.ig.publish.video({
+                video: item.video,
+                coverImage: item.coverImage,
+                caption: caption,
+              });
+              console.log(
+                "Video posted successfully!",
+                publishResult.upload_id
+              );
+            }
           }
-        }
-        end();
+        };
+
+        await PromiseService.withTimeout({
+          promise: publish(),
+        });
         return;
       } catch (error) {
-        end();
+        console.error(error);
         if (error instanceof IgLoginRequiredError) {
           await this.initInstagramClient();
-          await this.publishAlbum({ items, caption });
-          return;
+          continue;
         }
 
         if (attempt !== maxAttempt) {
-          console.error(error);
-          return;
+          continue;
         }
 
         throw error;
+      } finally {
+        end();
       }
     }
   }
@@ -332,6 +341,15 @@ export class InstagramService {
           video: item.video?.buffer!,
         })),
       });
+
+      const sleepTimes = [3, 5, 7];
+
+      const sleepTime =
+        sleepTimes[Math.floor(Math.random() * sleepTimes.length)];
+
+      console.info("start sleep in %d minutes", sleepTime);
+
+      await PromiseService.sleep(sleepTime * SECOND * MINUTE);
     }
   }
 
@@ -447,7 +465,7 @@ export class InstagramService {
       throw new Error("No duration found in original video");
     }
 
-    const maxDuration = instagramConstant.max.duration * SECOND;
+    const maxDuration = instagramConstant.max.duration * MINUTE;
 
     // Resize video based on aspect ratio
     const resizeProcessor = new ResizeVideoService({

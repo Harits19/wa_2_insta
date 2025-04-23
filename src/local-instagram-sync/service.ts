@@ -3,7 +3,7 @@ import { InstagramService } from "../instagram/service";
 import { AspectRatio } from "../resize/types";
 import fs, { readdir, readFile } from "fs/promises";
 import { SupplementalMetadataModel } from "./type";
-import { MILLISECOND } from "../constants/size";
+import { SECOND } from "../constants/size";
 import MyDate from "../date/service";
 import FileService from "../file/service";
 import { FilterMultiplePost, VideoImageBuffer } from "../instagram/type";
@@ -75,7 +75,7 @@ export default class LocalInstagramSyncService
 
       const imagesMetadata = sortedJsonFiles.filter((item) => {
         const photoTakenTime = getTimestamp(item);
-        const takenDate = new MyDate(photoTakenTime * MILLISECOND);
+        const takenDate = new MyDate(photoTakenTime * SECOND);
         const formattedDate = takenDate.formatDate();
         return formattedDate === date.formatDate();
       });

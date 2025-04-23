@@ -1,3 +1,5 @@
+import { SECOND, MINUTE } from "../constants/size";
+
 export default class PromiseService {
   static async run<T>({
     promises,
@@ -17,5 +19,23 @@ export default class PromiseService {
       result.push(value);
     }
     return result;
+  }
+
+  static async withTimeout<T>({
+    promise,
+    timeout = 5 * MINUTE * SECOND,
+  }: {
+    promise: Promise<T>;
+    timeout?: number;
+  }) {
+    const timeoutPromise = new Promise<T>((resolve, reject) =>
+      setTimeout(() => reject(new Error("timeout!!")), timeout)
+    );
+
+    return Promise.race([timeoutPromise, promise]);
+  }
+
+  static async sleep(duration: number) {
+    return new Promise<void>((resolve) => setTimeout(resolve, duration));
   }
 }

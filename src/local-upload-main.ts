@@ -21,7 +21,7 @@ export default async function main() {
     "Kuliah"
   );
 
-  const dates = new MyDate("1 Jan 2019").getDatesBetween(
+  const dates = new MyDate("12 Feb 2019").getDatesBetween(
     new MyDate("31 Dec 2019")
   );
 
