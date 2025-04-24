@@ -38,4 +38,14 @@ export default class PromiseService {
   static async sleep(duration: number) {
     return new Promise<void>((resolve) => setTimeout(resolve, duration));
   }
+
+  static async randomSleep() {
+    const sleepTimes = [3, 5, 7];
+
+    const sleepTime = sleepTimes[Math.floor(Math.random() * sleepTimes.length)];
+
+    console.info("start sleep in %d minutes", sleepTime);
+
+    await this.sleep(sleepTime * SECOND * MINUTE);
+  }
 }

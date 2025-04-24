@@ -5,7 +5,6 @@ import GooglePhotoInstagramSync from "./google-photo-instagram-sync/service";
 async function main() {
   envService.checkENV();
 
-  const dates = env.GOOGLE_PHOTO_DATES_BACKUP.split(",");
 
   const googlePhotoInstagram = await GooglePhotoInstagramSync.create({
     password: env.INSTAGRAM_PASSWORD,
@@ -14,7 +13,7 @@ async function main() {
 
   await googlePhotoInstagram.uploadWithListOfDate({
     aspectRatio: "1x1",
-    dates: dates.map((date) => new MyDate(date)),
+    dates: [].map((date) => new MyDate(date)),
   });
 }
 

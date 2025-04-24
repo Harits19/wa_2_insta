@@ -26,6 +26,7 @@ import { ArrayService } from "../array/service";
 import MyDate from "../date/service";
 import FileService from "../file/service";
 import LogService from "../log/service";
+import AppStateService from "../app-state/service";
 
 export class InstagramService {
   ig: IgApiClient;
@@ -88,14 +89,15 @@ export class InstagramService {
     console.log("Session loaded!");
   }
 
-  private async initInstagramClient() {
+  private async initInstagramClient(overrideSession: boolean = false) {
     const password = this.password;
     const username = this.username;
     const sessionPath = this.sessionPath;
 
-    if (this.isHaveSession) {
+    if (this.isHaveSession && !overrideSession) {
       await this.loadSession();
     } else {
+      this.ig = new IgApiClient();
       if (!password || !username) {
         throw new Error("empty username or password");
       }
@@ -224,6 +226,7 @@ export class InstagramService {
     const isMultiplePost = items.length > 1;
 
     for (let attempt = 1; attempt <= maxAttempt; attempt++) {
+      console.log(`attempt ${attempt} caption ${caption}`);
       const { end, start } = LogService.countTime("time to post ");
       start();
       try {
@@ -273,7 +276,7 @@ export class InstagramService {
       } catch (error) {
         console.error(error);
         if (error instanceof IgLoginRequiredError) {
-          await this.initInstagramClient();
+          await this.initInstagramClient(true);
           continue;
         }
 
@@ -281,6 +284,7 @@ export class InstagramService {
           continue;
         }
 
+        AppStateService.state;
         throw error;
       } finally {
         end();
@@ -292,12 +296,10 @@ export class InstagramService {
     aspectRatio,
     items,
     caption,
-    filter,
   }: {
     aspectRatio: AspectRatio;
     items: VideoImageBuffer[];
     caption: string;
-    filter?: FilterMultiplePost;
   }) {
     console.log("before process items length", items.length);
     const allFiles = await this.processAllImageVideo({ aspectRatio, items });
@@ -315,14 +317,28 @@ export class InstagramService {
     const isMultipleUpload = batchFiles.length > 1;
 
     for (const [index, files] of batchFiles.entries()) {
-      let startIndex: number | undefined;
+      await PromiseService.randomSleep();
 
-      if (filter) {
-        const isFiltered = caption === filter.caption;
-        if (isFiltered) {
-          startIndex = filter.startIndex;
-        }
+      const state = await AppStateService.state();
+
+      console.log("current state", state.post);
+
+      const maxDailyUpload = instagramConstant.max.dailyUpload;
+
+      if (state.post.totalPost > maxDailyUpload) {
+        throw new Error(`Reached max daily upload ${maxDailyUpload}`);
       }
+
+      let startIndex: number | undefined;
+      const filter = state.filter;
+
+      if (state)
+        if (filter) {
+          const isFiltered = caption === filter.caption;
+          if (isFiltered) {
+            startIndex = filter.startIndex;
+          }
+        }
 
       if (startIndex !== undefined && index < startIndex) {
         console.log("skip index", index);
@@ -342,14 +358,8 @@ export class InstagramService {
         })),
       });
 
-      const sleepTimes = [3, 5, 7];
-
-      const sleepTime =
-        sleepTimes[Math.floor(Math.random() * sleepTimes.length)];
-
-      console.info("start sleep in %d minutes", sleepTime);
-
-      await PromiseService.sleep(sleepTime * SECOND * MINUTE);
+      await AppStateService.updateDaily();
+      await AppStateService.resetFilter();
     }
   }
 

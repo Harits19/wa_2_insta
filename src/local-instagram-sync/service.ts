@@ -7,7 +7,7 @@ import { SECOND } from "../constants/size";
 import MyDate from "../date/service";
 import FileService from "../file/service";
 import { FilterMultiplePost, VideoImageBuffer } from "../instagram/type";
-
+import AppStateService from "../app-state/service";
 interface LocalInstagramSyncServiceInterface {
   instagram: InstagramService;
 }
@@ -37,12 +37,10 @@ export default class LocalInstagramSyncService
     dates,
     aspectRatio,
     folderPath,
-    filter,
   }: {
     dates: MyDate[];
     aspectRatio: AspectRatio;
     folderPath: string;
-    filter?: FilterMultiplePost;
   }) {
     const files = await readdir(folderPath);
     const jsonExt = ".json";
@@ -72,6 +70,7 @@ export default class LocalInstagramSyncService
 
     for (const date of dates) {
       console.log("start read files with date ", date.formatDate());
+      await AppStateService.updateStartDate(date.formatDate());
 
       const imagesMetadata = sortedJsonFiles.filter((item) => {
         const photoTakenTime = getTimestamp(item);
@@ -110,7 +109,6 @@ export default class LocalInstagramSyncService
       }
 
       await this.instagram.publishMultiplePost({
-        filter,
         aspectRatio,
         caption: date.formatDate(),
         items: imageFiles,

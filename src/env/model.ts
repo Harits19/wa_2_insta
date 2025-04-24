@@ -5,7 +5,6 @@ export const ENVKeyList = [
   "INSTAGRAM_USERNAME",
   "CLIENT_ID",
   "CLIENT_SECRET",
-  "GOOGLE_PHOTO_DATES_BACKUP",
   ...ENVKeyListNullable,
 ] as const;
 
