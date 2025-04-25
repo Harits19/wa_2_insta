@@ -6,7 +6,7 @@ import { SupplementalMetadataModel } from "./type";
 import { SECOND } from "../constants/size";
 import MyDate from "../date/service";
 import FileService from "../file/service";
-import { FilterMultiplePost, VideoImageBuffer } from "../instagram/type";
+import { ErrorMultiplePost, VideoImageBuffer } from "../instagram/type";
 import AppStateService from "../app-state/service";
 interface LocalInstagramSyncServiceInterface {
   instagram: InstagramService;
@@ -68,51 +68,82 @@ export default class LocalInstagramSyncService
       (a, b) => getTimestamp(a) - getTimestamp(b)
     );
 
-    for (const date of dates) {
-      console.log("start read files with date ", date.formatDate());
-      await AppStateService.updateStartDate(date.formatDate());
+    for (const [index, date] of dates.entries()) {
+      try {
+        console.log("start read files with date ", date.formatDate());
 
-      const imagesMetadata = sortedJsonFiles.filter((item) => {
-        const photoTakenTime = getTimestamp(item);
-        const takenDate = new MyDate(photoTakenTime * SECOND);
-        const formattedDate = takenDate.formatDate();
-        return formattedDate === date.formatDate();
-      });
+        await AppStateService.updateStartDate(date.formatDate());
 
-      const imageFiles: VideoImageBuffer[] = [];
+        const imagesMetadata = sortedJsonFiles.filter((item) => {
+          const photoTakenTime = getTimestamp(item);
+          const takenDate = new MyDate(photoTakenTime * SECOND);
+          const formattedDate = takenDate.formatDate();
+          return formattedDate === date.formatDate();
+        });
 
-      for (const metadata of imagesMetadata) {
-        const isFileExist = imageFilesPath.find(
-          (image) => image.toLowerCase() === metadata.title.toLowerCase()
-        );
+        const imageFiles: VideoImageBuffer[] = [];
 
-        if (!isFileExist) {
-          throw new Error(`file ${metadata.title} does'nt exist`);
+        for (const metadata of imagesMetadata) {
+          const isFileExist = imageFilesPath.find(
+            (image) => image.toLowerCase() === metadata.title.toLowerCase()
+          );
+
+          if (!isFileExist) {
+            throw new Error(`file ${metadata.title} does'nt exist`);
+          }
+          const filePath = join(folderPath, metadata.title);
+
+          const type = await FileService.getFileType(filePath);
+
+          if (!type) {
+            throw new Error(`${metadata.title} Unsupported file type ${type}`);
+          }
+
+          const buffer = await readFile(filePath);
+
+          imageFiles.push({ buffer, type });
         }
-        const filePath = join(folderPath, metadata.title);
 
-        const type = await FileService.getFileType(filePath);
-
-        if (!type) {
-          throw new Error(`${metadata.title} Unsupported file type ${type}`);
+        if (imageFiles.length !== imagesMetadata.length) {
+          throw new Error(
+            `image and metadata length not match, image ${imageFiles.length}, metadata ${imagesMetadata.length} `
+          );
         }
 
-        const buffer = await readFile(filePath);
+        await this.instagram.publishMultiplePost({
+          aspectRatio,
+          caption: date.formatDate(),
+          items: imageFiles,
+          onSuccess: async () => {
+            const nextDate = dates.at(index + 1);
+            console.log("nextDate", nextDate?.formatDate());
+            if (nextDate) {
+              await AppStateService.updateStartDate(nextDate.formatDate());
+            }
+          },
+        });
+      } catch (error) {
+        if (error instanceof ErrorMultiplePost) {
+          await AppStateService.handleErrorUpload({
+            date: date.formatDate(),
+            error,
+            startIndex: error.startIndex,
+          });
+          continue;
+        } else if (error instanceof Error) {
+          await AppStateService.handleErrorUpload({
+            date: date.formatDate(),
+            error,
+          });
+        } else {
+          await AppStateService.handleErrorUpload({
+            date: date.formatDate(),
+            error: new Error(`Unexpected error ${JSON.stringify(error)}`),
+          });
+        }
 
-        imageFiles.push({ buffer, type });
+        throw error;
       }
-
-      if (imageFiles.length !== imagesMetadata.length) {
-        throw new Error(
-          `image and metadata length not match, image ${imageFiles.length}, metadata ${imagesMetadata.length} `
-        );
-      }
-
-      await this.instagram.publishMultiplePost({
-        aspectRatio,
-        caption: date.formatDate(),
-        items: imageFiles,
-      });
     }
   }
 }

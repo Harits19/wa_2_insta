@@ -7,6 +7,7 @@ import {
 import * as fs from "fs";
 import {
   AlbumResponse,
+  ErrorMultiplePost,
   FilterMultiplePost as FilterMultiplePost,
   VideoImageBuffer,
   VideoImageResizeResult as VideoImageResizeResult,
@@ -284,7 +285,6 @@ export class InstagramService {
           continue;
         }
 
-        AppStateService.state;
         throw error;
       } finally {
         end();
@@ -296,10 +296,12 @@ export class InstagramService {
     aspectRatio,
     items,
     caption,
+    onSuccess,
   }: {
     aspectRatio: AspectRatio;
     items: VideoImageBuffer[];
     caption: string;
+    onSuccess: () => void;
   }) {
     console.log("before process items length", items.length);
     const allFiles = await this.processAllImageVideo({ aspectRatio, items });
@@ -317,9 +319,8 @@ export class InstagramService {
     const isMultipleUpload = batchFiles.length > 1;
 
     for (const [index, files] of batchFiles.entries()) {
-      await PromiseService.randomSleep();
-
-      const state = await AppStateService.state();
+      const isLastIndex = index === batchFiles.length - 1;
+      const state = AppStateService.state;
 
       console.log("current state", state.post);
 
@@ -349,15 +350,31 @@ export class InstagramService {
         ? `${caption} (${index + 1})`
         : caption;
 
-      await this.publishAlbum({
-        caption: finalCaption,
-        items: files.map((item) => ({
-          coverImage: item.video?.thumbnail!,
-          file: item.image!,
-          video: item.video?.buffer!,
-        })),
-      });
+      try {
+        await this.publishAlbum({
+          caption: finalCaption,
+          items: files.map((item) => ({
+            coverImage: item.video?.thumbnail!,
+            file: item.image!,
+            video: item.video?.buffer!,
+          })),
+        });
+        await AppStateService.updateFilter({ caption, startIndex: index + 1 });
 
+        if (isLastIndex) {
+          onSuccess();
+        }
+      } catch (error) {
+        if (error instanceof Error) {
+          throw new ErrorMultiplePost({
+            message: error.message,
+            startIndex: index,
+          });
+        }
+        throw error;
+      }
+
+      await PromiseService.sleep(2.5 * MINUTE * SECOND);
       await AppStateService.updateDaily();
       await AppStateService.resetFilter();
     }

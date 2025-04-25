@@ -46,6 +46,6 @@ export default class PromiseService {
 
     console.info("start sleep in %d minutes", sleepTime);
 
-    await this.sleep(sleepTime * SECOND * MINUTE);
+    await this.sleep(sleepTime * MINUTE * SECOND);
   }
 }

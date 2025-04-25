@@ -1,17 +1,22 @@
 import { join } from "path";
 import MyDate from "../date/service";
 import FsService from "../fs/service";
-import { AppState } from "./type";
+import { AppState, AppStateError } from "./type";
 import { writeFile } from "fs/promises";
 
 export default class AppStateService {
   private static _state: AppState;
   private static path = join(__dirname, "state.json");
 
-  static async state() {
-    if (this._state) return this._state;
-    this._state = await FsService.readJsonFile<AppState>(this.path);
+  static get state() {
+    if (!this._state)
+      throw new Error("AppStateService.init to access the app state");
+
     return this._state;
+  }
+
+  static async init() {
+    this._state = await FsService.readJsonFile<AppState>(this.path);
   }
 
   static async updateStartDate(value: string) {
@@ -52,4 +57,26 @@ export default class AppStateService {
 
     await this.updateState();
   }
+
+  static async handleErrorUpload(value: Omit<AppStateError, "path">) {
+    const errors = this._state.errors ?? [];
+
+    const error = value.error;
+
+    errors.push({
+      ...value,
+      path: this._state.uploadFolder,
+      startIndex: value.startIndex,
+      error: {
+        message: error.message,
+        name: error.name,
+        stack: error.stack,
+      },
+    });
+    this._state.errors = errors;
+
+    await this.updateState();
+  }
+
+ 
 }

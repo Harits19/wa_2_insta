@@ -9,7 +9,9 @@ export default async function main() {
     password: env.INSTAGRAM_PASSWORD,
   });
 
-  const appState = await AppStateService.state();
+  await AppStateService.init();
+
+  const appState = AppStateService.state;
 
   const folderPath = appState.uploadFolder;
 

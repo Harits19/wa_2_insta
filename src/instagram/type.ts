@@ -302,3 +302,17 @@ export interface FilterMultiplePost {
   caption: string;
   startIndex: number;
 }
+
+export class ErrorMultiplePost extends Error {
+  startIndex: number;
+  constructor({
+    message,
+    startIndex,
+  }: {
+    message: string;
+    startIndex: number;
+  }) {
+    super(message);
+    this.startIndex = startIndex;
+  }
+}

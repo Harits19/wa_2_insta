@@ -12,4 +12,16 @@ export interface AppState {
     caption: string;
     startIndex: number;
   };
+  errors?: AppStateError[];
+}
+
+export interface AppStateError {
+  date: string;
+  path: string;
+  startIndex?: number;
+  error: {
+    message: string;
+    name: string;
+    stack?: string;
+  };
 }
