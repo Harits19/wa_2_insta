@@ -84,6 +84,7 @@ export default class FileService {
 
     if (isImage) return "image";
     if (isVideo) return "video";
+    throw new Error(`${filePath} Unsupported file type with extension ${ext}`);
   }
 
   static getFileSizeBuffer(value?: Buffer) {
@@ -93,5 +94,17 @@ export default class FileService {
     const sizeInBytes = value.length;
     const sizeInMB = sizeInBytes / (1024 * 1024);
     return Number(sizeInMB.toFixed(2));
+  }
+
+  static totalFileSize(items: Buffer[]) {
+    const totalFileSize = items.reduce((prev, curr) => {
+      const getSize = this.getFileSizeBuffer;
+
+      const size = getSize(curr);
+
+      return prev + size;
+    }, 0);
+
+    return totalFileSize;
   }
 }

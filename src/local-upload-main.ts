@@ -20,11 +20,6 @@ export default async function main() {
     new MyDate(appState.date.end)
   );
 
-  console.log(
-    "dates",
-    dates.map((item) => item.formatDate())
-  );
-
   await localUpload.uploadWithListOfDates({
     aspectRatio: "1x1",
     dates,

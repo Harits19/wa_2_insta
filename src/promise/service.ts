@@ -33,7 +33,6 @@ export default class PromiseService {
   }
 
   static async sleep(duration: number) {
-    return;
     return new Promise<void>((resolve) => setTimeout(resolve, duration));
   }
 

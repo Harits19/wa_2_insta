@@ -42,6 +42,7 @@ export default class LocalInstagramSyncService
     aspectRatio: AspectRatio;
     folderPath: string;
   }) {
+    console.log("start read directory ", folderPath);
     const files = await readdir(folderPath);
     const jsonExt = ".json";
 
@@ -60,6 +61,13 @@ export default class LocalInstagramSyncService
       const jsonData = JSON.parse(rawData) as SupplementalMetadataModel;
       jsonFiles.push(jsonData);
     }
+
+    console.log(
+      "total json files",
+      jsonFiles.length,
+      "total image files",
+      jsonFiles.length
+    );
 
     const getTimestamp = (value: SupplementalMetadataModel) =>
       Number(value.photoTakenTime.timestamp);
@@ -95,14 +103,14 @@ export default class LocalInstagramSyncService
 
           const type = await FileService.getFileType(filePath);
 
-          if (!type) {
-            throw new Error(`${metadata.title} Unsupported file type ${type}`);
-          }
-
           const buffer = await readFile(filePath);
 
           imageFiles.push({ buffer, type });
         }
+
+        console.log(
+          `image files length ${imageFiles.length}, image metadata length ${imagesMetadata.length}`
+        );
 
         if (imageFiles.length !== imagesMetadata.length) {
           throw new Error(

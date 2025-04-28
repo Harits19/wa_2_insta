@@ -201,21 +201,17 @@ export class InstagramService {
     console.log(
       `try upload post with length ${items.length} and caption ${caption}`
     );
-    if (items.length > instagramConstant.max.post) {
-      throw new Error(
-        `can't post more than ${instagramConstant.max.post}, current value is ${items.length}`
-      );
-    }
 
-    const totalFileSize = items.reduce((prev, curr) => {
-      const getSize = FileService.getFileSizeBuffer;
+    const allBuffer = items
+      .map((item) => {
+        const buffers = [item.coverImage, item.file, item.video].filter(
+          (item) => item !== undefined
+        );
+        return buffers;
+      })
+      .flat();
 
-      const videoSize = getSize(curr.video);
-      const coverImageSize = getSize(curr.coverImage);
-      const imageSize = getSize(curr.file);
-
-      return prev + videoSize + coverImageSize + imageSize;
-    }, 0);
+    const totalFileSize = FileService.totalFileSize(allBuffer);
 
     console.log("totalFileSize in MB ", totalFileSize);
 
@@ -306,7 +302,6 @@ export class InstagramService {
   }) {
     console.log("before process items length", items.length);
     const allFiles = await this.processAllImageVideo({ aspectRatio, items });
-    console.log("after process items length", allFiles.length);
 
     const batchFiles = ArrayService.batch({
       files: allFiles,
@@ -324,6 +319,7 @@ export class InstagramService {
       const state = AppStateService.state;
 
       console.log("current state", state.post);
+      console.log(`upload ${index + 1} total file ${files.length}`);
 
       const maxDailyUpload = instagramConstant.max.dailyUpload;
 
@@ -377,7 +373,6 @@ export class InstagramService {
         throw error;
       }
 
-      await PromiseService.sleep(2.5 * MINUTE * SECOND);
       await AppStateService.updateDaily();
       await AppStateService.resetFilter();
     }
