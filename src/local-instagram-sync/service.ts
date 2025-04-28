@@ -142,7 +142,6 @@ export default class LocalInstagramSyncService
             error,
             startIndex: error.startIndex,
           });
-          continue;
         } else if (error instanceof Error) {
           await AppStateService.handleErrorUpload({
             date: date.formatDate(),

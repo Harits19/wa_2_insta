@@ -1,27 +1,87 @@
 {
-  "uploadFolder": "/Users/abdullah.harits/Downloads/Backup Google Photo/result/Takeout/Google Foto/Photos from 2020/Keluarga",
+  "uploadFolder": "/Users/abdullah.harits/Downloads/Backup Google Photo/result/Takeout/Google Foto/Photos from 2021/Keluarga",
   "date": {
-    "start": "27 Dec 2020",
-    "end": "31 Dec 2020"
+    "start": "3 Mar 2021",
+    "end": "31 Dec 2021"
   },
   "post": {
     "lastUpdate": "28 Apr 2025",
-    "totalPost": 2
-  },
-  "filter": {
-    "caption": "26 Dec 2020",
-    "startIndex": 5
+    "totalPost": 38
   },
   "errors": [
     {
-      "date": "26 Dec 2020",
+      "date": "19 Jan 2021",
       "error": {
-        "message": "Error: write EPIPE",
+        "message": "POST /api/v1/media/configure_sidecar/ - 202 Accepted; Transcode not finished yet.",
         "name": "Error",
-        "stack": "Error: Error: write EPIPE\n    at InstagramService.<anonymous> (/Users/abdullah.harits/Documents/pribadi/project/wa_2_insta/src/instagram/service.ts:372:17)\n    at Generator.throw (<anonymous>)\n    at rejected (/Users/abdullah.harits/Documents/pribadi/project/wa_2_insta/src/instagram/service.ts:39:65)\n    at runNextTicks (node:internal/process/task_queues:65:5)\n    at processImmediate (node:internal/timers:459:9)"
+        "stack": "Error: POST /api/v1/media/configure_sidecar/ - 202 Accepted; Transcode not finished yet.\n    at InstagramService.<anonymous> (/Users/abdullah.harits/Documents/pribadi/project/wa_2_insta/src/instagram/service.ts:368:17)\n    at Generator.throw (<anonymous>)\n    at rejected (/Users/abdullah.harits/Documents/pribadi/project/wa_2_insta/src/instagram/service.ts:39:65)"
       },
-      "startIndex": 1,
-      "path": "/Users/abdullah.harits/Downloads/Backup Google Photo/result/Takeout/Google Foto/Photos from 2020/Keluarga"
+      "startIndex": 0,
+      "path": "/Users/abdullah.harits/Downloads/Backup Google Photo/result/Takeout/Google Foto/Photos from 2021/Keluarga"
+    },
+    {
+      "date": "7 Feb 2021",
+      "error": {
+        "message": "POST /rupload_igphoto/1745816897887_0_1743555929 - 400 Bad Request; ",
+        "name": "Error",
+        "stack": "Error: POST /rupload_igphoto/1745816897887_0_1743555929 - 400 Bad Request; \n    at InstagramService.<anonymous> (/Users/abdullah.harits/Documents/pribadi/project/wa_2_insta/src/instagram/service.ts:379:17)\n    at Generator.throw (<anonymous>)\n    at rejected (/Users/abdullah.harits/Documents/pribadi/project/wa_2_insta/src/instagram/service.ts:39:65)"
+      },
+      "startIndex": 0,
+      "path": "/Users/abdullah.harits/Downloads/Backup Google Photo/result/Takeout/Google Foto/Photos from 2021/Keluarga"
+    },
+    {
+      "date": "7 Feb 2021",
+      "error": {
+        "message": "POST /rupload_igphoto/1745817077419_0_8525208760 - 400 Bad Request; ",
+        "name": "Error",
+        "stack": "Error: POST /rupload_igphoto/1745817077419_0_8525208760 - 400 Bad Request; \n    at InstagramService.<anonymous> (/Users/abdullah.harits/Documents/pribadi/project/wa_2_insta/src/instagram/service.ts:379:17)\n    at Generator.throw (<anonymous>)\n    at rejected (/Users/abdullah.harits/Documents/pribadi/project/wa_2_insta/src/instagram/service.ts:39:65)"
+      },
+      "startIndex": 0,
+      "path": "/Users/abdullah.harits/Downloads/Backup Google Photo/result/Takeout/Google Foto/Photos from 2021/Keluarga"
+    },
+    {
+      "date": "7 Feb 2021",
+      "error": {
+        "message": "POST /api/v1/media/configure_sidecar/ - 202 Accepted; Transcode not finished yet.",
+        "name": "Error",
+        "stack": "Error: POST /api/v1/media/configure_sidecar/ - 202 Accepted; Transcode not finished yet.\n    at InstagramService.<anonymous> (/Users/abdullah.harits/Documents/pribadi/project/wa_2_insta/src/instagram/service.ts:379:17)\n    at Generator.throw (<anonymous>)\n    at rejected (/Users/abdullah.harits/Documents/pribadi/project/wa_2_insta/src/instagram/service.ts:39:65)"
+      },
+      "startIndex": 0,
+      "path": "/Users/abdullah.harits/Downloads/Backup Google Photo/result/Takeout/Google Foto/Photos from 2021/Keluarga"
+    },
+    {
+      "date": "7 Feb 2021",
+      "error": {
+        "message": "POST /api/v1/media/configure_sidecar/ - 202 Accepted; Transcode not finished yet.",
+        "name": "Error",
+        "stack": "Error: POST /api/v1/media/configure_sidecar/ - 202 Accepted; Transcode not finished yet.\n    at InstagramService.<anonymous> (/Users/abdullah.harits/Documents/pribadi/project/wa_2_insta/src/instagram/service.ts:497:17)\n    at Generator.throw (<anonymous>)\n    at rejected (/Users/abdullah.harits/Documents/pribadi/project/wa_2_insta/src/instagram/service.ts:39:65)"
+      },
+      "startIndex": 0,
+      "path": "/Users/abdullah.harits/Downloads/Backup Google Photo/result/Takeout/Google Foto/Photos from 2021/Keluarga"
+    },
+    {
+      "date": "7 Feb 2021",
+      "error": {
+        "message": "POST /rupload_igphoto/1745829491374_0_8519507209 - 400 Bad Request; ",
+        "name": "Error",
+        "stack": "Error: POST /rupload_igphoto/1745829491374_0_8519507209 - 400 Bad Request; \n    at InstagramService.<anonymous> (/Users/abdullah.harits/Documents/pribadi/project/wa_2_insta/src/instagram/service.ts:508:17)\n    at Generator.throw (<anonymous>)\n    at rejected (/Users/abdullah.harits/Documents/pribadi/project/wa_2_insta/src/instagram/service.ts:39:65)"
+      },
+      "startIndex": 0,
+      "path": "/Users/abdullah.harits/Downloads/Backup Google Photo/result/Takeout/Google Foto/Photos from 2021/Keluarga"
+    },
+    {
+      "date": "7 Feb 2021",
+      "error": {
+        "message": "POST /rupload_igphoto/1745831595402_0_2311115344 - 400 Bad Request; ",
+        "name": "Error",
+        "stack": "Error: POST /rupload_igphoto/1745831595402_0_2311115344 - 400 Bad Request; \n    at InstagramService.<anonymous> (/Users/abdullah.harits/Documents/pribadi/project/wa_2_insta/src/instagram/service.ts:508:17)\n    at Generator.throw (<anonymous>)\n    at rejected (/Users/abdullah.harits/Documents/pribadi/project/wa_2_insta/src/instagram/service.ts:39:65)"
+      },
+      "startIndex": 0,
+      "path": "/Users/abdullah.harits/Downloads/Backup Google Photo/result/Takeout/Google Foto/Photos from 2021/Keluarga"
     }
-  ]
+  ],
+  "filter": {
+    "caption": "3 Mar 2021",
+    "startIndex": 0
+  }
 }

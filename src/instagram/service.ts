@@ -1,6 +1,7 @@
 import {
   IgApiClient,
   IgLoginRequiredError,
+  IgResponseError,
   PostingAlbumPhotoItem,
   PostingAlbumVideoItem,
 } from "instagram-private-api";
@@ -28,7 +29,6 @@ import MyDate from "../date/service";
 import FileService from "../file/service";
 import LogService from "../log/service";
 import AppStateService from "../app-state/service";
-import { TimeoutError } from "../promise/type";
 
 export class InstagramService {
   ig: IgApiClient;
@@ -215,13 +215,17 @@ export class InstagramService {
 
     console.log("totalFileSize in MB ", totalFileSize);
 
-    const maxAttempt = 3;
+    let useTranscodeDelay = false;
+
+    let maxAttempt = 3;
     if (items.length === 0) {
       console.log(`items length is empty,`);
       return;
     }
 
     const isMultiplePost = items.length > 1;
+
+    const defaultTranscodeDelay = 3 * MINUTE * SECOND;
 
     for (let attempt = 1; attempt <= maxAttempt; attempt++) {
       console.log(`attempt ${attempt} caption ${caption}`);
@@ -230,10 +234,39 @@ export class InstagramService {
       try {
         const publish = async () => {
           if (isMultiplePost) {
+            const transcodeDelay = attempt * defaultTranscodeDelay;
+
+            console.log({ transcodeDelay });
+
             const publishResult = await this.ig.publish.album({
-              items: items as Array<
-                PostingAlbumPhotoItem | PostingAlbumVideoItem
-              >,
+              items: (
+                items as Array<PostingAlbumPhotoItem & PostingAlbumVideoItem>
+              ).map((item, index) => {
+                if (item.coverImage) {
+                  console.log(
+                    "cover image content length index",
+                    index,
+                    "content length",
+                    item.coverImage.byteLength
+                  );
+                }
+
+                if (item.file) {
+                  console.log(
+                    "file content length index",
+                    index,
+                    "content length",
+                    item.file.byteLength
+                  );
+                }
+                return {
+                  ...item,
+                  transcodeDelay:
+                    useTranscodeDelay && item.video !== undefined
+                      ? transcodeDelay
+                      : undefined,
+                };
+              }),
               caption: caption,
             });
             console.log("Posted carousel:", publishResult.media.code);
@@ -276,6 +309,23 @@ export class InstagramService {
         if (error instanceof IgLoginRequiredError) {
           await this.initInstagramClient(true);
           continue;
+        }
+
+        if (error instanceof IgResponseError) {
+          console.error({
+            name: error.name,
+            message: error.message,
+            response: JSON.stringify(error.response?.toJSON().body),
+            stack: error.stack,
+            text: error.text,
+          });
+          if (
+            attempt === maxAttempt &&
+            error.text === "Transcode not finished yet."
+          ) {
+            maxAttempt = maxAttempt + 1;
+            useTranscodeDelay = true;
+          }
         }
 
         if (attempt !== maxAttempt) {
@@ -519,9 +569,7 @@ export class InstagramService {
         const result = await PromiseService.run({
           promises: splitVideoResult.map(async (video) => {
             const videoService = new VideoService({ path: video.path });
-            const thumbnail = await videoService.getVideoThumbnail({
-              duration: video.duration,
-            });
+            const thumbnail = await videoService.getVideoThumbnail();
 
             const buffer = await readFile(video.path);
             await unlink(video.path);
@@ -537,9 +585,7 @@ export class InstagramService {
       } else {
         // Extract thumbnail from resized video
         const resizedVideo = new VideoService({ path: resizedFilePath });
-        const thumbnailBuffer = await resizedVideo.getVideoThumbnail({
-          duration,
-        });
+        const thumbnailBuffer = await resizedVideo.getVideoThumbnail();
 
         return {
           buffer: resizedVideoBuffer,

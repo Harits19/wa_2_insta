@@ -1,16 +1,157 @@
 {
   "uploadFolder": "/Users/abdullah.harits/Downloads/Backup Google Photo/result/Takeout/Google Foto/Photos from 2019/Harits",
   "date": {
-    "start": "3 Apr 2019",
+    "start": "10 Oct 2019",
     "end": "31 Dec 2019"
   },
   "post": {
     "lastUpdate": "28 Apr 2025",
-    "totalPost": 17
+    "totalPost": 45
   },
   "filter": {
-    "caption": "3 Apr 2019",
-    "startIndex": 2
+    "caption": "10 Oct 2019",
+    "startIndex": 0
   },
-  "errors": []
+  "errors": [
+    {
+      "date": "18 Jun 2019",
+      "error": {
+        "message": "POST /rupload_igphoto/1745810297245_0_9962451660 - 400 Bad Request; {\"message\":\"User restricted from uploading, please try later.\",\"status\":\"fail\"}",
+        "name": "Error",
+        "stack": "Error: POST /rupload_igphoto/1745810297245_0_9962451660 - 400 Bad Request; {\"message\":\"User restricted from uploading, please try later.\",\"status\":\"fail\"}\n    at InstagramService.<anonymous> (/Users/abdullah.harits/Documents/pribadi/project/wa_2_insta/src/instagram/service.ts:372:17)\n    at Generator.throw (<anonymous>)\n    at rejected (/Users/abdullah.harits/Documents/pribadi/project/wa_2_insta/src/instagram/service.ts:39:65)"
+      },
+      "startIndex": 0,
+      "path": "/Users/abdullah.harits/Downloads/Backup Google Photo/result/Takeout/Google Foto/Photos from 2019/Harits"
+    },
+    {
+      "date": "20 Jun 2019",
+      "error": {
+        "message": "POST /rupload_igphoto/1745810306537_0_6229765896 - 400 Bad Request; {\"message\":\"User restricted from uploading, please try later.\",\"status\":\"fail\"}",
+        "name": "Error",
+        "stack": "Error: POST /rupload_igphoto/1745810306537_0_6229765896 - 400 Bad Request; {\"message\":\"User restricted from uploading, please try later.\",\"status\":\"fail\"}\n    at InstagramService.<anonymous> (/Users/abdullah.harits/Documents/pribadi/project/wa_2_insta/src/instagram/service.ts:372:17)\n    at Generator.throw (<anonymous>)\n    at rejected (/Users/abdullah.harits/Documents/pribadi/project/wa_2_insta/src/instagram/service.ts:39:65)"
+      },
+      "startIndex": 0,
+      "path": "/Users/abdullah.harits/Downloads/Backup Google Photo/result/Takeout/Google Foto/Photos from 2019/Harits"
+    },
+    {
+      "date": "25 Jun 2019",
+      "error": {
+        "message": "POST /rupload_igphoto/1745810310021_0_1517333970 - 400 Bad Request; {\"message\":\"User restricted from uploading, please try later.\",\"status\":\"fail\"}",
+        "name": "Error",
+        "stack": "Error: POST /rupload_igphoto/1745810310021_0_1517333970 - 400 Bad Request; {\"message\":\"User restricted from uploading, please try later.\",\"status\":\"fail\"}\n    at InstagramService.<anonymous> (/Users/abdullah.harits/Documents/pribadi/project/wa_2_insta/src/instagram/service.ts:372:17)\n    at Generator.throw (<anonymous>)\n    at rejected (/Users/abdullah.harits/Documents/pribadi/project/wa_2_insta/src/instagram/service.ts:39:65)"
+      },
+      "startIndex": 0,
+      "path": "/Users/abdullah.harits/Downloads/Backup Google Photo/result/Takeout/Google Foto/Photos from 2019/Harits"
+    },
+    {
+      "date": "26 Jun 2019",
+      "error": {
+        "message": "POST /rupload_igphoto/1745810311833_0_5942954602 - 400 Bad Request; {\"message\":\"User restricted from uploading, please try later.\",\"status\":\"fail\"}",
+        "name": "Error",
+        "stack": "Error: POST /rupload_igphoto/1745810311833_0_5942954602 - 400 Bad Request; {\"message\":\"User restricted from uploading, please try later.\",\"status\":\"fail\"}\n    at InstagramService.<anonymous> (/Users/abdullah.harits/Documents/pribadi/project/wa_2_insta/src/instagram/service.ts:372:17)\n    at Generator.throw (<anonymous>)\n    at rejected (/Users/abdullah.harits/Documents/pribadi/project/wa_2_insta/src/instagram/service.ts:39:65)"
+      },
+      "startIndex": 0,
+      "path": "/Users/abdullah.harits/Downloads/Backup Google Photo/result/Takeout/Google Foto/Photos from 2019/Harits"
+    },
+    {
+      "date": "29 Jun 2019",
+      "error": {
+        "message": "POST /rupload_igphoto/1745810314516_0_2610439331 - 400 Bad Request; {\"message\":\"User restricted from uploading, please try later.\",\"status\":\"fail\"}",
+        "name": "Error",
+        "stack": "Error: POST /rupload_igphoto/1745810314516_0_2610439331 - 400 Bad Request; {\"message\":\"User restricted from uploading, please try later.\",\"status\":\"fail\"}\n    at InstagramService.<anonymous> (/Users/abdullah.harits/Documents/pribadi/project/wa_2_insta/src/instagram/service.ts:372:17)\n    at Generator.throw (<anonymous>)\n    at rejected (/Users/abdullah.harits/Documents/pribadi/project/wa_2_insta/src/instagram/service.ts:39:65)"
+      },
+      "startIndex": 0,
+      "path": "/Users/abdullah.harits/Downloads/Backup Google Photo/result/Takeout/Google Foto/Photos from 2019/Harits"
+    },
+    {
+      "date": "30 Jun 2019",
+      "error": {
+        "message": "POST /rupload_igphoto/1745810317071_0_9943625993 - 400 Bad Request; {\"message\":\"User restricted from uploading, please try later.\",\"status\":\"fail\"}",
+        "name": "Error",
+        "stack": "Error: POST /rupload_igphoto/1745810317071_0_9943625993 - 400 Bad Request; {\"message\":\"User restricted from uploading, please try later.\",\"status\":\"fail\"}\n    at InstagramService.<anonymous> (/Users/abdullah.harits/Documents/pribadi/project/wa_2_insta/src/instagram/service.ts:372:17)\n    at Generator.throw (<anonymous>)\n    at rejected (/Users/abdullah.harits/Documents/pribadi/project/wa_2_insta/src/instagram/service.ts:39:65)"
+      },
+      "startIndex": 0,
+      "path": "/Users/abdullah.harits/Downloads/Backup Google Photo/result/Takeout/Google Foto/Photos from 2019/Harits"
+    },
+    {
+      "date": "13 Jul 2019",
+      "error": {
+        "message": "POST /rupload_igphoto/1745810318666_0_3389349562 - 400 Bad Request; {\"message\":\"User restricted from uploading, please try later.\",\"status\":\"fail\"}",
+        "name": "Error",
+        "stack": "Error: POST /rupload_igphoto/1745810318666_0_3389349562 - 400 Bad Request; {\"message\":\"User restricted from uploading, please try later.\",\"status\":\"fail\"}\n    at InstagramService.<anonymous> (/Users/abdullah.harits/Documents/pribadi/project/wa_2_insta/src/instagram/service.ts:372:17)\n    at Generator.throw (<anonymous>)\n    at rejected (/Users/abdullah.harits/Documents/pribadi/project/wa_2_insta/src/instagram/service.ts:39:65)"
+      },
+      "startIndex": 0,
+      "path": "/Users/abdullah.harits/Downloads/Backup Google Photo/result/Takeout/Google Foto/Photos from 2019/Harits"
+    },
+    {
+      "date": "9 Aug 2019",
+      "error": {
+        "message": "POST /rupload_igphoto/1745810321270_0_8794082780 - 400 Bad Request; {\"message\":\"User restricted from uploading, please try later.\",\"status\":\"fail\"}",
+        "name": "Error",
+        "stack": "Error: POST /rupload_igphoto/1745810321270_0_8794082780 - 400 Bad Request; {\"message\":\"User restricted from uploading, please try later.\",\"status\":\"fail\"}\n    at InstagramService.<anonymous> (/Users/abdullah.harits/Documents/pribadi/project/wa_2_insta/src/instagram/service.ts:372:17)\n    at Generator.throw (<anonymous>)\n    at rejected (/Users/abdullah.harits/Documents/pribadi/project/wa_2_insta/src/instagram/service.ts:39:65)"
+      },
+      "startIndex": 0,
+      "path": "/Users/abdullah.harits/Downloads/Backup Google Photo/result/Takeout/Google Foto/Photos from 2019/Harits"
+    },
+    {
+      "date": "6 Sep 2019",
+      "error": {
+        "message": "POST /rupload_igphoto/1745810323579_0_5610783407 - 400 Bad Request; {\"message\":\"User restricted from uploading, please try later.\",\"status\":\"fail\"}",
+        "name": "Error",
+        "stack": "Error: POST /rupload_igphoto/1745810323579_0_5610783407 - 400 Bad Request; {\"message\":\"User restricted from uploading, please try later.\",\"status\":\"fail\"}\n    at InstagramService.<anonymous> (/Users/abdullah.harits/Documents/pribadi/project/wa_2_insta/src/instagram/service.ts:372:17)\n    at Generator.throw (<anonymous>)\n    at rejected (/Users/abdullah.harits/Documents/pribadi/project/wa_2_insta/src/instagram/service.ts:39:65)"
+      },
+      "startIndex": 0,
+      "path": "/Users/abdullah.harits/Downloads/Backup Google Photo/result/Takeout/Google Foto/Photos from 2019/Harits"
+    },
+    {
+      "date": "11 Sep 2019",
+      "error": {
+        "message": "POST /rupload_igphoto/1745810325026_0_5348793205 - 400 Bad Request; {\"message\":\"User restricted from uploading, please try later.\",\"status\":\"fail\"}",
+        "name": "Error",
+        "stack": "Error: POST /rupload_igphoto/1745810325026_0_5348793205 - 400 Bad Request; {\"message\":\"User restricted from uploading, please try later.\",\"status\":\"fail\"}\n    at InstagramService.<anonymous> (/Users/abdullah.harits/Documents/pribadi/project/wa_2_insta/src/instagram/service.ts:372:17)\n    at Generator.throw (<anonymous>)\n    at rejected (/Users/abdullah.harits/Documents/pribadi/project/wa_2_insta/src/instagram/service.ts:39:65)"
+      },
+      "startIndex": 0,
+      "path": "/Users/abdullah.harits/Downloads/Backup Google Photo/result/Takeout/Google Foto/Photos from 2019/Harits"
+    },
+    {
+      "date": "21 Sep 2019",
+      "error": {
+        "message": "POST /rupload_igphoto/1745810327305_0_4921458967 - 400 Bad Request; {\"message\":\"User restricted from uploading, please try later.\",\"status\":\"fail\"}",
+        "name": "Error",
+        "stack": "Error: POST /rupload_igphoto/1745810327305_0_4921458967 - 400 Bad Request; {\"message\":\"User restricted from uploading, please try later.\",\"status\":\"fail\"}\n    at InstagramService.<anonymous> (/Users/abdullah.harits/Documents/pribadi/project/wa_2_insta/src/instagram/service.ts:372:17)\n    at Generator.throw (<anonymous>)\n    at rejected (/Users/abdullah.harits/Documents/pribadi/project/wa_2_insta/src/instagram/service.ts:39:65)"
+      },
+      "startIndex": 0,
+      "path": "/Users/abdullah.harits/Downloads/Backup Google Photo/result/Takeout/Google Foto/Photos from 2019/Harits"
+    },
+    {
+      "date": "22 Sep 2019",
+      "error": {
+        "message": "POST /rupload_igphoto/1745810329847_0_1385252859 - 400 Bad Request; {\"message\":\"User restricted from uploading, please try later.\",\"status\":\"fail\"}",
+        "name": "Error",
+        "stack": "Error: POST /rupload_igphoto/1745810329847_0_1385252859 - 400 Bad Request; {\"message\":\"User restricted from uploading, please try later.\",\"status\":\"fail\"}\n    at InstagramService.<anonymous> (/Users/abdullah.harits/Documents/pribadi/project/wa_2_insta/src/instagram/service.ts:372:17)\n    at Generator.throw (<anonymous>)\n    at rejected (/Users/abdullah.harits/Documents/pribadi/project/wa_2_insta/src/instagram/service.ts:39:65)"
+      },
+      "startIndex": 0,
+      "path": "/Users/abdullah.harits/Downloads/Backup Google Photo/result/Takeout/Google Foto/Photos from 2019/Harits"
+    },
+    {
+      "date": "26 Sep 2019",
+      "error": {
+        "message": "POST /rupload_igphoto/1745811367171_0_7084991366 - 400 Bad Request; {\"message\":\"User restricted from uploading, please try later.\",\"status\":\"fail\"}",
+        "name": "Error",
+        "stack": "Error: POST /rupload_igphoto/1745811367171_0_7084991366 - 400 Bad Request; {\"message\":\"User restricted from uploading, please try later.\",\"status\":\"fail\"}\n    at InstagramService.<anonymous> (/Users/abdullah.harits/Documents/pribadi/project/wa_2_insta/src/instagram/service.ts:372:17)\n    at Generator.throw (<anonymous>)\n    at rejected (/Users/abdullah.harits/Documents/pribadi/project/wa_2_insta/src/instagram/service.ts:39:65)"
+      },
+      "startIndex": 0,
+      "path": "/Users/abdullah.harits/Downloads/Backup Google Photo/result/Takeout/Google Foto/Photos from 2019/Harits"
+    },
+    {
+      "date": "1 Oct 2019",
+      "error": {
+        "message": "POST /rupload_igphoto/1745811369412_0_9358300808 - 400 Bad Request; {\"message\":\"User restricted from uploading, please try later.\",\"status\":\"fail\"}",
+        "name": "Error",
+        "stack": "Error: POST /rupload_igphoto/1745811369412_0_9358300808 - 400 Bad Request; {\"message\":\"User restricted from uploading, please try later.\",\"status\":\"fail\"}\n    at InstagramService.<anonymous> (/Users/abdullah.harits/Documents/pribadi/project/wa_2_insta/src/instagram/service.ts:372:17)\n    at Generator.throw (<anonymous>)\n    at rejected (/Users/abdullah.harits/Documents/pribadi/project/wa_2_insta/src/instagram/service.ts:39:65)"
+      },
+      "startIndex": 0,
+      "path": "/Users/abdullah.harits/Downloads/Backup Google Photo/result/Takeout/Google Foto/Photos from 2019/Harits"
+    }
+  ]
 }

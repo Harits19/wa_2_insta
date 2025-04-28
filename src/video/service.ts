@@ -12,14 +12,13 @@ export default class VideoService {
     this.path = path;
   }
 
-  async getVideoThumbnail({ duration }: { duration: number }): Promise<Buffer> {
+  async getVideoThumbnail(): Promise<Buffer> {
     const outputChunks: Buffer[] = [];
 
-    const timestamp = +(Math.random() * Math.max(1, duration - 1)).toFixed(2);
 
     return new Promise(async (resolve, reject) => {
       ffmpeg(this.path)
-        .seekInput(timestamp)
+        .seekInput(0)
         .frames(1)
         .outputOptions("-vframes", "1")
         .format("mjpeg") // 💥 JPG output!
@@ -27,7 +26,12 @@ export default class VideoService {
           reject(err);
         })
         .on("end", async () => {
-          resolve(Buffer.concat(outputChunks));
+          const result = Buffer.concat(outputChunks);
+          if (result.byteLength === 0) {
+            reject(new Error("Empty length when get video thumbnail"));
+            return;
+          }
+          resolve(result);
         })
         .pipe()
         .on("data", (chunk: Buffer) => outputChunks.push(chunk));
