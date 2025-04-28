@@ -118,6 +118,11 @@ export default class LocalInstagramSyncService
           );
         }
 
+        if (imageFiles.length === 0 && imagesMetadata.length === 0) {
+          console.log(`empty file, skip date ${date.formatDate()}`);
+          continue;
+        }
+
         await this.instagram.publishMultiplePost({
           aspectRatio,
           caption: date.formatDate(),
