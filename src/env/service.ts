@@ -3,11 +3,27 @@ import dotenv from "dotenv";
 import path from "path";
 import * as fs from "fs";
 
-dotenv.config();
+const NODE_ENV = process.env.NODE_ENV;
+
+console.log({ NODE_ENV });
+const envPath = path.join(
+  __dirname,
+  "..",
+  "..",
+  NODE_ENV ? `.env.${NODE_ENV}` : ".env"
+);
+
+console.log({ envPath });
+
+dotenv.config({
+  path: envPath,
+});
 
 export default class ENVService {
   checkENV() {
-    const env: Partial<ENVModel> = {};
+    const env: Partial<ENVModel> = {
+      NODE_ENV,
+    };
 
     for (const key of ENVKeyList) {
       const value = process.env[key];

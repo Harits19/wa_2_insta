@@ -3,10 +3,14 @@ import MyDate from "../date/service";
 import FsService from "../fs/service";
 import { AppState, AppStateError } from "./type";
 import { writeFile } from "fs/promises";
+import { env } from "../env/service";
 
 export default class AppStateService {
   private static _state: AppState;
-  private static path = join(__dirname, "state.json");
+  private static path = join(
+    __dirname,
+    env.NODE_ENV ? `state.${env.NODE_ENV}.json` : "state.json"
+  );
 
   static get state() {
     if (!this._state)
@@ -77,6 +81,4 @@ export default class AppStateService {
 
     await this.updateState();
   }
-
- 
 }

@@ -1,4 +1,5 @@
 import { SECOND, MINUTE } from "../constants/size";
+import { TimeoutError } from "./type";
 
 export default class PromiseService {
   static async run<T>({
@@ -28,14 +29,11 @@ export default class PromiseService {
     promise: Promise<T>;
     timeout?: number;
   }) {
-    const timeoutPromise = new Promise<T>((resolve, reject) =>
-      setTimeout(() => reject(new Error("timeout!!")), timeout)
-    );
-
-    return Promise.race([timeoutPromise, promise]);
+    return promise;
   }
 
   static async sleep(duration: number) {
+    return;
     return new Promise<void>((resolve) => setTimeout(resolve, duration));
   }
 

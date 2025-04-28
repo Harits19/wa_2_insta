@@ -8,6 +8,8 @@
     "start-whatsapp-upload": "npx ts-node src/whatsapp-main.ts",
     "start-google-photo-upload": "npx ts-node src/google-photo-main.ts",
     "start-local-upload": "npx ts-node src/local-upload-main.ts",
+    "harits": "NODE_ENV=harits npx ts-node src/local-upload-main.ts",
+    "keluargaqu": "NODE_ENV=keluargaqu npx ts-node src/local-upload-main.ts",
     "build": "npx tsc --outDir ./dist",
     "prod": "node dist/main.js"
   },

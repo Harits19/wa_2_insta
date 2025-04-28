@@ -28,6 +28,7 @@ import MyDate from "../date/service";
 import FileService from "../file/service";
 import LogService from "../log/service";
 import AppStateService from "../app-state/service";
+import { TimeoutError } from "../promise/type";
 
 export class InstagramService {
   ig: IgApiClient;
@@ -351,6 +352,8 @@ export class InstagramService {
         : caption;
 
       try {
+        await AppStateService.updateFilter({ caption, startIndex: index });
+
         await this.publishAlbum({
           caption: finalCaption,
           items: files.map((item) => ({

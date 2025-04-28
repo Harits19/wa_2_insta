@@ -1,0 +1,27 @@
+{
+  "uploadFolder": "/Users/abdullah.harits/Downloads/Backup Google Photo/result/Takeout/Google Foto/Photos from 2020/Keluarga",
+  "date": {
+    "start": "27 Dec 2020",
+    "end": "31 Dec 2020"
+  },
+  "post": {
+    "lastUpdate": "28 Apr 2025",
+    "totalPost": 2
+  },
+  "filter": {
+    "caption": "26 Dec 2020",
+    "startIndex": 5
+  },
+  "errors": [
+    {
+      "date": "26 Dec 2020",
+      "error": {
+        "message": "Error: write EPIPE",
+        "name": "Error",
+        "stack": "Error: Error: write EPIPE\n    at InstagramService.<anonymous> (/Users/abdullah.harits/Documents/pribadi/project/wa_2_insta/src/instagram/service.ts:372:17)\n    at Generator.throw (<anonymous>)\n    at rejected (/Users/abdullah.harits/Documents/pribadi/project/wa_2_insta/src/instagram/service.ts:39:65)\n    at runNextTicks (node:internal/process/task_queues:65:5)\n    at processImmediate (node:internal/timers:459:9)"
+      },
+      "startIndex": 1,
+      "path": "/Users/abdullah.harits/Downloads/Backup Google Photo/result/Takeout/Google Foto/Photos from 2020/Keluarga"
+    }
+  ]
+}

@@ -4,6 +4,7 @@ import MyDate from "./date/service";
 import AppStateService from "./app-state/service";
 
 export default async function main() {
+
   const localUpload = await LocalInstagramSyncService.create({
     username: env.INSTAGRAM_USERNAME,
     password: env.INSTAGRAM_PASSWORD,
