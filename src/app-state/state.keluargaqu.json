@@ -1,18 +1,16 @@
 {
-  "uploadFolder": "/Users/abdullah.harits/Downloads/Backup Google Photo/result/Takeout/Google Foto/Photos from 2021/Keluarga",
+  "uploadFolder": "/Users/abdullah.harits/Downloads/Backup Google Photo/result/Takeout/Google Foto/Photos from 2022/Keluarga",
   "date": {
-    "start": "19 Jan 2021",
-    "end": "19 Jan 2021"
+    "start": "16 Jan 2022",
+    "end": "31 Dec 2022"
   },
   "post": {
     "lastUpdate": "29 Apr 2025",
-    "totalPost": 41
+    "totalPost": 43
   },
-  "errors": [
-   
-  ],
+  "errors": [],
   "filter": {
-    "caption": "19 Jan 2021",
+    "caption": "16 Jan 2022",
     "startIndex": 0
   }
 }

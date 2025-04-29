@@ -292,6 +292,7 @@ export class InstagramService {
 
         await PromiseService.withTimeout({
           promise: publish(),
+          timeout: 7 *MINUTE *SECOND
         });
         return;
       } catch (error) {

@@ -29,7 +29,10 @@ export default class PromiseService {
     promise: Promise<T>;
     timeout?: number;
   }) {
-    return promise;
+    const timeoutPromise = new Promise<T>((resolve, reject) =>
+      setTimeout(() => reject(new TimeoutError("timeout!!")), timeout)
+    );
+    return Promise.race([timeoutPromise, promise]);
   }
 
   static async sleep(duration: number) {
