@@ -47,13 +47,13 @@ export default class LocalInstagramSyncService
     const jsonExt = ".json";
 
     const jsonFiles: SupplementalMetadataModel[] = [];
-    const imageFilesPath: string[] = [];
+    const mediaFilesPath: string[] = [];
 
     for (const file of files) {
       const ext = path.extname(file).toLowerCase();
 
       if (ext !== jsonExt) {
-        imageFilesPath.push(file);
+        mediaFilesPath.push(file);
         continue;
       }
       const filePath = join(folderPath, file);
@@ -76,6 +76,8 @@ export default class LocalInstagramSyncService
       (a, b) => getTimestamp(a) - getTimestamp(b)
     );
 
+    const successUpload: string[] = [];
+
     for (const [index, date] of dates.entries()) {
       try {
         console.log("start read files with date ", date.formatDate());
@@ -92,7 +94,8 @@ export default class LocalInstagramSyncService
         const imageFiles: VideoImageBuffer[] = [];
 
         for (const metadata of imagesMetadata) {
-          const isFileExist = imageFilesPath.find(
+          console.log("filename", metadata.title);
+          const isFileExist = mediaFilesPath.find(
             (image) => image.toLowerCase() === metadata.title.toLowerCase()
           );
 
@@ -105,7 +108,7 @@ export default class LocalInstagramSyncService
 
           const buffer = await readFile(filePath);
 
-          imageFiles.push({ buffer, type });
+          imageFiles.push({ buffer, type, filename: metadata.title });
         }
 
         console.log(
@@ -135,6 +138,7 @@ export default class LocalInstagramSyncService
             }
           },
         });
+        successUpload.push(...imageFiles.map((item) => item.filename));
       } catch (error) {
         if (error instanceof ErrorMultiplePost) {
           await AppStateService.handleErrorUpload({

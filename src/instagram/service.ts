@@ -7,6 +7,7 @@ import {
 } from "instagram-private-api";
 import * as fs from "fs";
 import {
+  AlbumModel,
   AlbumResponse,
   ErrorMultiplePost,
   FilterMultiplePost as FilterMultiplePost,
@@ -29,9 +30,11 @@ import MyDate from "../date/service";
 import FileService from "../file/service";
 import LogService from "../log/service";
 import AppStateService from "../app-state/service";
+import { PublishService } from "instagram-private-api/dist/services/publish.service";
+import ImageService from "../image/service";
 
 export class InstagramService {
-  ig: IgApiClient;
+  client: IgApiClient;
   cookiesKey: string;
   password?: string;
   username?: string;
@@ -45,7 +48,7 @@ export class InstagramService {
     username?: string;
     password?: string;
   }) {
-    this.ig = new IgApiClient();
+    this.client = new IgApiClient();
     this.cookiesKey = cookiesKey;
     this.username = username;
     this.password = password;
@@ -86,7 +89,7 @@ export class InstagramService {
 
   async loadSession() {
     const session = JSON.parse(fs.readFileSync(this.sessionPath, "utf-8"));
-    await this.ig.state.deserialize(session);
+    await this.client.state.deserialize(session);
     await new Promise((resolve) => setTimeout(resolve, 3000));
     console.log("Session loaded!");
   }
@@ -99,19 +102,19 @@ export class InstagramService {
     if (this.isHaveSession && !overrideSession) {
       await this.loadSession();
     } else {
-      this.ig = new IgApiClient();
+      this.client = new IgApiClient();
       if (!password || !username) {
         throw new Error("empty username or password");
       }
       console.log("start init instagram client");
 
-      this.ig.state.generateDevice(username);
-      await this.ig.simulate.preLoginFlow();
-      const loggedInUser = await this.ig.account.login(username, password);
+      this.client.state.generateDevice(username);
+      await this.client.simulate.preLoginFlow();
+      const loggedInUser = await this.client.account.login(username, password);
       console.log("loggedInUser", loggedInUser);
 
       // Save session data
-      const serialized = await this.ig.state.serialize();
+      const serialized = await this.client.state.serialize();
       delete serialized.constants; // Remove unneeded constants
       await fs.promises.mkdir(dirname(sessionPath), { recursive: true });
       fs.writeFileSync(sessionPath, JSON.stringify(serialized));
@@ -127,7 +130,7 @@ export class InstagramService {
     value: string | Buffer;
     caption?: string;
   }) {
-    const publishResult = await this.ig.publish.photo({
+    const publishResult = await this.client.publish.photo({
       file: typeof value === "string" ? Buffer.from(value, "base64") : value,
       caption: caption, // Caption for the post
     });
@@ -153,7 +156,7 @@ export class InstagramService {
         file: item,
       };
     });
-    const publishResult: AlbumResponse = await this.ig.publish.album({
+    const publishResult: AlbumResponse = await this.client.publish.album({
       items,
       caption,
     });
@@ -171,7 +174,7 @@ export class InstagramService {
     const items: PostingAlbumPhotoItem[] = photos.map((item) => ({
       file: fs.readFileSync(item),
     }));
-    const publishResult: AlbumResponse = await this.ig.publish.album({
+    const publishResult: AlbumResponse = await this.client.publish.album({
       items,
       caption,
     });
@@ -180,7 +183,7 @@ export class InstagramService {
   }
 
   async publishVideo({ buffer }: { buffer: Buffer }) {
-    const publishResult = await this.ig.publish.video({
+    const publishResult = await this.client.publish.video({
       video: buffer,
       coverImage: buffer,
       caption: "Video caption",
@@ -215,7 +218,6 @@ export class InstagramService {
 
     console.log("totalFileSize in MB ", totalFileSize);
 
-    let useTranscodeDelay = false;
 
     let maxAttempt = 3;
     if (items.length === 0) {
@@ -225,8 +227,6 @@ export class InstagramService {
 
     const isMultiplePost = items.length > 1;
 
-    const defaultTranscodeDelay = 3 * MINUTE * SECOND;
-
     for (let attempt = 1; attempt <= maxAttempt; attempt++) {
       console.log(`attempt ${attempt} caption ${caption}`);
       const { end, start } = LogService.countTime("time to post ");
@@ -234,11 +234,7 @@ export class InstagramService {
       try {
         const publish = async () => {
           if (isMultiplePost) {
-            const transcodeDelay = attempt * defaultTranscodeDelay;
-
-            console.log({ transcodeDelay });
-
-            const publishResult = await this.ig.publish.album({
+            const publishResult = await this.client.publish.album({
               items: (
                 items as Array<PostingAlbumPhotoItem & PostingAlbumVideoItem>
               ).map((item, index) => {
@@ -259,13 +255,7 @@ export class InstagramService {
                     item.file.byteLength
                   );
                 }
-                return {
-                  ...item,
-                  transcodeDelay:
-                    useTranscodeDelay && item.video !== undefined
-                      ? transcodeDelay
-                      : undefined,
-                };
+                return item;
               }),
               caption: caption,
             });
@@ -278,7 +268,7 @@ export class InstagramService {
             const isVideo = Boolean(item.video);
 
             if (isPhoto) {
-              const publishResult = await this.ig.publish.photo({
+              const publishResult = await this.client.publish.photo({
                 file: item.file,
                 caption: caption,
               });
@@ -287,7 +277,7 @@ export class InstagramService {
                 publishResult.upload_id
               );
             } else if (isVideo) {
-              const publishResult = await this.ig.publish.video({
+              const publishResult = await this.client.publish.video({
                 video: item.video,
                 coverImage: item.coverImage,
                 caption: caption,
@@ -319,13 +309,6 @@ export class InstagramService {
             stack: error.stack,
             text: error.text,
           });
-          if (
-            attempt === maxAttempt &&
-            error.text === "Transcode not finished yet."
-          ) {
-            maxAttempt = maxAttempt + 1;
-            useTranscodeDelay = true;
-          }
         }
 
         if (attempt !== maxAttempt) {

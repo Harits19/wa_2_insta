@@ -1,3 +1,7 @@
+import {
+  PostingAlbumPhotoItem,
+  PostingAlbumVideoItem,
+} from "instagram-private-api";
 import MyDate from "../date/service";
 import { Base64 } from "../resize/base-64/type";
 
@@ -286,9 +290,11 @@ export interface SharingFrictionInfo2 {
   sharing_friction_payload: any;
 }
 
-export type VideoImageBuffer =
-  | { type: "image"; buffer: Buffer | Base64 }
-  | { type: "video"; buffer: Buffer | Base64; filename?: string };
+export type VideoImageBuffer = {
+  type: "image" | "video";
+  buffer: Buffer | Base64;
+  filename: string;
+};
 
 export type VideoImageResizeResult = {
   video?: {
@@ -316,3 +322,6 @@ export class ErrorMultiplePost extends Error {
     this.startIndex = startIndex;
   }
 }
+
+export type AlbumModel = Partial<PostingAlbumPhotoItem> &
+  Partial<PostingAlbumVideoItem>;
