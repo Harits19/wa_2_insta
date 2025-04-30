@@ -10,6 +10,10 @@ export interface SupplementalMetadataModel {
   googlePhotosOrigin: GooglePhotosOrigin
 }
 
+
+export const getTimestamp = (value: SupplementalMetadataModel) =>
+  Number(value.photoTakenTime.timestamp);
+
 export interface CreationTime {
   timestamp: string
   formatted: string

@@ -4,7 +4,6 @@ import MyDate from "./date/service";
 import AppStateService from "./app-state/service";
 
 export default async function main() {
-
   const localUpload = await LocalInstagramSyncService.create({
     username: env.INSTAGRAM_USERNAME,
     password: env.INSTAGRAM_PASSWORD,
@@ -16,14 +15,9 @@ export default async function main() {
 
   const folderPath = appState.uploadFolder;
 
-  const dates = new MyDate(appState.date.start).getDatesBetween(
-    new MyDate(appState.date.end)
-  );
-
   await localUpload.uploadWithListOfDates({
-    aspectRatio: "1x1",
-    dates,
     folderPath,
+    year: appState.year,
   });
 }
 

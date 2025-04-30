@@ -2,12 +2,14 @@ import path, { join } from "path";
 import { InstagramService } from "../instagram/service";
 import { AspectRatio } from "../resize/types";
 import fs, { readdir, readFile } from "fs/promises";
-import { SupplementalMetadataModel } from "./type";
+import { getTimestamp, SupplementalMetadataModel } from "./type";
 import { SECOND } from "../constants/size";
 import MyDate from "../date/service";
-import FileService from "../file/service";
+import FsService from "../fs/service";
 import { ErrorMultiplePost, VideoImageBuffer } from "../instagram/type";
 import AppStateService from "../app-state/service";
+import FileService from "../file/service";
+import PromiseService from "../promise/service";
 interface LocalInstagramSyncServiceInterface {
   instagram: InstagramService;
 }
@@ -34,132 +36,161 @@ export default class LocalInstagramSyncService
   }
 
   async uploadWithListOfDates({
-    dates,
-    aspectRatio,
     folderPath,
+    year,
   }: {
-    dates: MyDate[];
-    aspectRatio: AspectRatio;
     folderPath: string;
+    year: string;
   }) {
-    console.log("start read directory ", folderPath);
-    const files = await readdir(folderPath);
-    const jsonExt = ".json";
 
-    const jsonFiles: SupplementalMetadataModel[] = [];
-    const mediaFilesPath: string[] = [];
+    await this.organizeFilesByDate(folderPath);
 
-    for (const file of files) {
-      const ext = path.extname(file).toLowerCase();
-
-      if (ext !== jsonExt) {
-        mediaFilesPath.push(file);
-        continue;
-      }
-      const filePath = join(folderPath, file);
-      const rawData = await readFile(filePath, "utf-8");
-      const jsonData = JSON.parse(rawData) as SupplementalMetadataModel;
-      jsonFiles.push(jsonData);
-    }
-
-    console.log(
-      "total json files",
-      jsonFiles.length,
-      "total image files",
-      jsonFiles.length
-    );
-
-    const getTimestamp = (value: SupplementalMetadataModel) =>
-      Number(value.photoTakenTime.timestamp);
-
-    const sortedJsonFiles = jsonFiles.sort(
-      (a, b) => getTimestamp(a) - getTimestamp(b)
-    );
-
+    const appState = AppStateService.state;
+    const startDate = new MyDate(appState.filter?.caption || `1 Jan ${year}`);
+    const endDate = new MyDate(`31 Dec ${year}`);
+    const dates = startDate.getDatesBetween(endDate);
 
     for (const [index, date] of dates.entries()) {
-      try {
-        console.log("start read files with date ", date.formatDate());
+      await this.processPostsByDate({
+        date,
+        folderPath,
+        dates,
+        index,
+      });
+    }
+  }
 
-        await AppStateService.updateStartDate(date.formatDate());
+  private async organizeFilesByDate(folderPath: string) {
+    console.info("Scanning directory for JSON metadata files", folderPath);
 
-        const imagesMetadata = sortedJsonFiles.filter((item) => {
-          const photoTakenTime = getTimestamp(item);
-          const takenDate = new MyDate(photoTakenTime * SECOND);
-          const formattedDate = takenDate.formatDate();
-          return formattedDate === date.formatDate();
-        });
+    const directoryEntries = await readdir(folderPath);
 
-        const imageFiles: VideoImageBuffer[] = [];
+    for (const entry of directoryEntries) {
+      if (path.extname(entry).toLowerCase() !== FsService.extension.json)
+        continue;
 
-        for (const metadata of imagesMetadata) {
-          console.log("filename", metadata.title);
-          const isFileExist = mediaFilesPath.find(
-            (image) => image.toLowerCase() === metadata.title.toLowerCase()
-          );
+      const metadataPath = join(folderPath, entry);
+      const rawJson = await readFile(metadataPath, "utf-8");
+      const metadata = JSON.parse(rawJson) as SupplementalMetadataModel;
 
-          if (!isFileExist) {
-            throw new Error(`file ${metadata.title} does'nt exist`);
-          }
-          const filePath = join(folderPath, metadata.title);
+      const imageFilename = metadata.title;
+      const imagePath = join(folderPath, imageFilename);
 
-          const type = await FileService.getFileType(filePath);
+      const takenDate = new MyDate(getTimestamp(metadata) * SECOND);
+      const datedFolderPath = join(folderPath, takenDate.formatDate());
 
-          const buffer = await readFile(filePath);
+      await fs.mkdir(datedFolderPath, { recursive: true });
 
-          imageFiles.push({ buffer, type, filename: metadata.title });
-        }
+      await FsService.tryMoveFile(
+        imagePath,
+        join(datedFolderPath, imageFilename)
+      );
+      await FsService.tryMoveFile(metadataPath, join(datedFolderPath, entry));
+    }
+  }
 
-        console.log(
-          `image files length ${imageFiles.length}, image metadata length ${imagesMetadata.length}`
-        );
+  private async loadImageBuffers(
+    metadataList: SupplementalMetadataModel[],
+    folder: string
+  ) {
+    // Use Promise.all to read and process image files concurrently
+    const buffers: VideoImageBuffer[] = await PromiseService.run({
+      promises: metadataList.map(async (metadata) => {
+        const filePath = join(folder, metadata.title);
+        const type = await FileService.getFileType(filePath);
+        const buffer = await readFile(filePath);
+        return { buffer, type, filename: metadata.title } as VideoImageBuffer;
+      }),
+    });
 
-        if (imageFiles.length !== imagesMetadata.length) {
-          throw new Error(
-            `image and metadata length not match, image ${imageFiles.length}, metadata ${imagesMetadata.length} `
-          );
-        }
+    return buffers;
+  }
 
-        if (imageFiles.length === 0 && imagesMetadata.length === 0) {
-          console.log(`empty file, skip date ${date.formatDate()}`);
-          continue;
-        }
+  private async loadJsonMetadata(folder: string) {
+    const metadataList =
+      await FsService.loadJsonFileInFolder<SupplementalMetadataModel>(folder);
 
-        await AppStateService.updateFilename(imageFiles.at(0)?.filename)
+    return metadataList.sort((a, b) => getTimestamp(a) - getTimestamp(b));
+  }
 
-        await this.instagram.publishMultiplePost({
-          aspectRatio,
-          caption: date.formatDate(),
-          items: imageFiles,
-          onSuccess: async () => {
-            const nextDate = dates.at(index + 1);
-            console.log("nextDate", nextDate?.formatDate());
-            if (nextDate) {
-              await AppStateService.updateStartDate(nextDate.formatDate());
-            }
-          },
-        });
-      } catch (error) {
-        if (error instanceof ErrorMultiplePost) {
-          await AppStateService.handleErrorUpload({
-            date: date.formatDate(),
-            error,
-            startIndex: error.startIndex,
-          });
-        } else if (error instanceof Error) {
-          await AppStateService.handleErrorUpload({
-            date: date.formatDate(),
-            error,
-          });
-        } else {
-          await AppStateService.handleErrorUpload({
-            date: date.formatDate(),
-            error: new Error(`Unexpected error ${JSON.stringify(error)}`),
-          });
-        }
+  private async handleError(date: MyDate, error: unknown) {
+    const dateString = date.formatDate();
 
-        throw error;
+    if (error instanceof ErrorMultiplePost) {
+      console.error(`Upload failed for ${dateString}:`, error.message);
+      await AppStateService.handleErrorUpload({
+        date: dateString,
+        error,
+        startIndex: error.startIndex,
+      });
+    } else if (error instanceof Error) {
+      console.error(`Unexpected error on ${dateString}:`, error.message);
+      await AppStateService.handleErrorUpload({
+        date: dateString,
+        error,
+      });
+    } else {
+      console.error(`Unknown error for ${dateString}:`, error);
+      await AppStateService.handleErrorUpload({
+        date: dateString,
+        error: new Error(`Unexpected error: ${JSON.stringify(error)}`),
+      });
+    }
+  }
+
+  private async processPostsByDate({
+    date,
+    folderPath,
+    dates,
+    index,
+  }: {
+    date: MyDate;
+    folderPath: string;
+    dates: MyDate[];
+    index: number;
+  }) {
+    try {
+      const dateString = date.formatDate();
+      console.info("Processing posts for date", dateString);
+
+      await AppStateService.updateFilter({
+        caption: dateString,
+        startIndex: 0,
+      });
+
+      const dailyFolder = join(folderPath, dateString);
+      const folderExists = await FsService.folderExist(dailyFolder);
+
+      if (!folderExists) {
+        console.warn(`Folder not found: ${dailyFolder}`);
+        return;
       }
+
+      const metadataList = await this.loadJsonMetadata(dailyFolder);
+      const imageBuffers = await this.loadImageBuffers(
+        metadataList,
+        dailyFolder
+      );
+
+      await AppStateService.updateFilename(imageBuffers.at(0)?.filename);
+
+      await this.instagram.publishMultiplePost({
+        aspectRatio: "1x1",
+        caption: dateString,
+        items: imageBuffers,
+        onSuccess: async () => {
+          const nextDate = dates.at(index + 1)?.formatDate();
+          if (nextDate) {
+            await AppStateService.updateFilter({
+              caption: nextDate,
+              startIndex: 0,
+            });
+          }
+        },
+      });
+    } catch (error) {
+      await this.handleError(date, error);
+      throw error;
     }
   }
 }

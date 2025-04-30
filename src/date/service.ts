@@ -1,6 +1,15 @@
+import { SECOND } from "../constants/size";
 import { RawDate } from "./type";
 
 export default class MyDate extends Date {
+
+  static fromTimestamp(value: number){
+
+    const instance = new MyDate(value * SECOND);
+
+    return instance;
+  }
+
   getDatesBetween(end: Date) {
     const result: MyDate[] = [];
 

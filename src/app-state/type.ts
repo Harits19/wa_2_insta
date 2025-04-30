@@ -1,9 +1,6 @@
 export interface AppState {
   uploadFolder: string;
-  date: {
-    start: string;
-    end: string;
-  };
+  year: string;
   post: {
     lastUpdate: string;
     totalPost: number;

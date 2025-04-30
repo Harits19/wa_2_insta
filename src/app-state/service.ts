@@ -23,10 +23,6 @@ export default class AppStateService {
     this._state = await FsService.readJsonFile<AppState>(this.path);
   }
 
-  static async updateStartDate(value: string) {
-    this._state.date.start = value;
-    await this.updateState();
-  }
 
   static async updateState() {
     await writeFile(

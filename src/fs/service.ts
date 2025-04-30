@@ -1,12 +1,17 @@
-import { dirname, join } from "path";
+import path, { dirname, join } from "path";
 import { randomUUID } from "crypto";
-import { access, mkdir, readFile, stat, unlink, writeFile } from "fs/promises";
+import { access, mkdir, readdir, readFile, rename, stat, unlink, writeFile } from "fs/promises";
 import constants from "constants";
+import PromiseService from "../promise/service";
 
 export default class FsService {
   value: string | Buffer;
   randomUUID: string;
   extension: string;
+
+  static extension = {
+    json: '.json'
+  }
 
   constructor({
     value,
@@ -65,4 +70,47 @@ export default class FsService {
     const raw = await readFile(path, 'utf8');   // non‑blocking I/O
     return JSON.parse(raw) as T;
   }
+
+  static async fileExists(path: string): Promise<boolean> {
+    try {
+      await access(path, constants.F_OK); // Cek apakah file bisa diakses (ada)
+      return true;
+    } catch {
+      return false;
+    }
+  }
+
+  static async tryMoveFile(sourcePath: string, targetPath: string) {
+    const exists = await FsService.fileExists(sourcePath);
+  
+    if (!exists) {
+      console.warn(`File does not exist, skipping move: ${sourcePath}`);
+      return;
+    }
+  
+    await rename(sourcePath, targetPath);
+    console.info(`Moved file`, { from: sourcePath, to: targetPath });
+  }
+
+  static async loadJsonFileInFolder<T>(folder: string) {
+      const entries = await readdir(folder);
+  
+      // Use Promise.all to read all JSON files concurrently
+      const metadataList: (T | null)[] =
+        await PromiseService.run({
+          promises: entries.map(async (entry) => {
+            if (path.extname(entry).toLowerCase() === ".json") {
+              const metadataPath = join(folder, entry);
+              const rawJson = await readFile(metadataPath, "utf-8");
+              return JSON.parse(rawJson) as T;
+            }
+            return null; // Return null for non-JSON files, filtered out later
+          }),
+        });
+  
+      // Filter out any null values in case non-JSON files were included
+  
+      return (metadataList.filter(Boolean) as T[]);
+    }
+  
 }
