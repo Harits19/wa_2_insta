@@ -18,6 +18,20 @@
         "stack": "Error: file Screenshot_2022-10-04-12-53-21-334_com.shopee.id.jpg does'nt exist\n    at LocalInstagramSyncService.<anonymous> (/Users/abdullah.harits/Documents/pribadi/project/wa_2_insta/src/local-instagram-sync/service.ts:103:19)\n    at Generator.next (<anonymous>)\n    at fulfilled (/Users/abdullah.harits/Documents/pribadi/project/wa_2_insta/src/local-instagram-sync/service.ts:38:58)"
       },
       "path": "/Users/abdullah.harits/Downloads/Backup Google Photo/result/Takeout/Google Foto/Photos from 2022/Keluarga"
+    },
+    {
+      "date": "16 Oct 2022",
+      "error": {
+        "message": "POST /rupload_igphoto/1745982337303_0_1396298102 - 400 Bad Request; {\"message\":\"User restricted from uploading, please try later.\",\"status\":\"fail\"}",
+        "name": "Error",
+        "stack": "Error: POST /rupload_igphoto/1745982337303_0_1396298102 - 400 Bad Request; {\"message\":\"User restricted from uploading, please try later.\",\"status\":\"fail\"}\n    at InstagramService.<anonymous> (/Users/abdullah.harits/Documents/pribadi/project/wa_2_insta/src/instagram/service.ts:398:17)\n    at Generator.throw (<anonymous>)\n    at rejected (/Users/abdullah.harits/Documents/pribadi/project/wa_2_insta/src/instagram/service.ts:39:65)"
+      },
+      "startIndex": 0,
+      "path": "/Users/abdullah.harits/Downloads/Backup Google Photo/result/Takeout/Google Foto/Photos from 2022/Keluarga"
     }
-  ]
+  ],
+  "filter": {
+    "caption": "16 Oct 2022",
+    "startIndex": 0
+  }
 }
