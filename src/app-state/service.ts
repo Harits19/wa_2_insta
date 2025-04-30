@@ -52,6 +52,15 @@ export default class AppStateService {
     await this.updateState();
   }
 
+  static async updateCaption(caption: string){
+    this._state.filter = {
+      caption,
+      startIndex: this._state.filter?.startIndex ?? 0,
+    }
+    await this.updateState();
+
+  }
+
   static async resetFilter() {
     this._state.filter = undefined;
 

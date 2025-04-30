@@ -153,10 +153,7 @@ export default class LocalInstagramSyncService
       const dateString = date.formatDate();
       console.info("Processing posts for date", dateString);
 
-      await AppStateService.updateFilter({
-        caption: dateString,
-        startIndex: 0,
-      });
+      await AppStateService.updateCaption(dateString);
 
       const dailyFolder = join(folderPath, dateString);
       const folderExists = await FsService.folderExist(dailyFolder);
@@ -181,10 +178,7 @@ export default class LocalInstagramSyncService
         onSuccess: async () => {
           const nextDate = dates.at(index + 1)?.formatDate();
           if (nextDate) {
-            await AppStateService.updateFilter({
-              caption: nextDate,
-              startIndex: 0,
-            });
+            await AppStateService.updateCaption(nextDate);
           }
         },
       });

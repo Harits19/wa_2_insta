@@ -1,10 +1,45 @@
 {
-  "uploadFolder": "/Users/abdullah.harits/Downloads/Backup Google Photo/result/Takeout/Google Foto/Photos from 2019/Harits",
-  "year": "2019",
+  "uploadFolder": "/Users/abdullah.harits/Downloads/Backup Google Photo/result/Takeout/Google Foto/Photos from 2020/Harits",
+  "year": "2020",
   "post": {
     "lastUpdate": "30 Apr 2025",
-    "totalPost": 15,
-    "filename": "IMG20191231133035.jpg"
+    "totalPost": 25,
+    "filename": "IMG20200111175121.jpg"
   },
-  "errors": []
+  "errors": [
+    {
+      "date": "8 Jan 2020",
+      "error": {
+        "message": "Error: write EPIPE",
+        "name": "Error",
+        "stack": "Error: Error: write EPIPE\n    at InstagramService.<anonymous> (/Users/abdullah.harits/Documents/pribadi/project/dev/wa_2_insta/src/instagram/service.ts:398:17)\n    at Generator.throw (<anonymous>)\n    at rejected (/Users/abdullah.harits/Documents/pribadi/project/dev/wa_2_insta/src/instagram/service.ts:39:65)"
+      },
+      "startIndex": 1,
+      "path": "/Users/abdullah.harits/Downloads/Backup Google Photo/result/Takeout/Google Foto/Photos from 2020/Harits"
+    },
+    {
+      "date": "11 Jan 2020",
+      "error": {
+        "message": "POST /rupload_igphoto/1745997651603_0_2327413359 - 400 Bad Request; {\"message\":\"User restricted from uploading, please try later.\",\"status\":\"fail\"}",
+        "name": "Error",
+        "stack": "Error: POST /rupload_igphoto/1745997651603_0_2327413359 - 400 Bad Request; {\"message\":\"User restricted from uploading, please try later.\",\"status\":\"fail\"}\n    at InstagramService.<anonymous> (/Users/abdullah.harits/Documents/pribadi/project/dev/wa_2_insta/src/instagram/service.ts:398:17)\n    at Generator.throw (<anonymous>)\n    at rejected (/Users/abdullah.harits/Documents/pribadi/project/dev/wa_2_insta/src/instagram/service.ts:39:65)"
+      },
+      "startIndex": 3,
+      "path": "/Users/abdullah.harits/Downloads/Backup Google Photo/result/Takeout/Google Foto/Photos from 2020/Harits"
+    },
+    {
+      "date": "11 Jan 2020",
+      "error": {
+        "message": "POST /rupload_igphoto/1745998663737_0_9307493464 - 400 Bad Request; {\"message\":\"User restricted from uploading, please try later.\",\"status\":\"fail\"}",
+        "name": "Error",
+        "stack": "Error: POST /rupload_igphoto/1745998663737_0_9307493464 - 400 Bad Request; {\"message\":\"User restricted from uploading, please try later.\",\"status\":\"fail\"}\n    at InstagramService.<anonymous> (/Users/abdullah.harits/Documents/pribadi/project/dev/wa_2_insta/src/instagram/service.ts:398:17)\n    at Generator.throw (<anonymous>)\n    at rejected (/Users/abdullah.harits/Documents/pribadi/project/dev/wa_2_insta/src/instagram/service.ts:39:65)"
+      },
+      "startIndex": 3,
+      "path": "/Users/abdullah.harits/Downloads/Backup Google Photo/result/Takeout/Google Foto/Photos from 2020/Harits"
+    }
+  ],
+  "filter": {
+    "caption": "11 Jan 2020",
+    "startIndex": 3
+  }
 }
