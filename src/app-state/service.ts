@@ -62,6 +62,12 @@ export default class AppStateService {
     await this.updateState();
   }
 
+  static async updateFilename(value?: string) {
+    this._state.post.filename = value;
+
+    await this.updateState();
+  }
+
   static async handleErrorUpload(value: Omit<AppStateError, "path">) {
     const errors = this._state.errors ?? [];
 

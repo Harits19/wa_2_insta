@@ -7,6 +7,7 @@ export interface AppState {
   post: {
     lastUpdate: string;
     totalPost: number;
+    filename?: string;
   };
   filter?: {
     caption: string;

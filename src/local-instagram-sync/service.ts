@@ -76,7 +76,6 @@ export default class LocalInstagramSyncService
       (a, b) => getTimestamp(a) - getTimestamp(b)
     );
 
-    const successUpload: string[] = [];
 
     for (const [index, date] of dates.entries()) {
       try {
@@ -126,6 +125,8 @@ export default class LocalInstagramSyncService
           continue;
         }
 
+        await AppStateService.updateFilename(imageFiles.at(0)?.filename)
+
         await this.instagram.publishMultiplePost({
           aspectRatio,
           caption: date.formatDate(),
@@ -138,7 +139,6 @@ export default class LocalInstagramSyncService
             }
           },
         });
-        successUpload.push(...imageFiles.map((item) => item.filename));
       } catch (error) {
         if (error instanceof ErrorMultiplePost) {
           await AppStateService.handleErrorUpload({

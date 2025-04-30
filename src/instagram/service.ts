@@ -218,7 +218,6 @@ export class InstagramService {
 
     console.log("totalFileSize in MB ", totalFileSize);
 
-
     let maxAttempt = 3;
     if (items.length === 0) {
       console.log(`items length is empty,`);
@@ -292,17 +291,14 @@ export class InstagramService {
 
         await PromiseService.withTimeout({
           promise: publish(),
-          timeout: 7 *MINUTE *SECOND
+          timeout: 7 * MINUTE * SECOND,
         });
         return;
       } catch (error) {
         console.error(error);
         if (error instanceof IgLoginRequiredError) {
           await this.initInstagramClient(true);
-          continue;
-        }
-
-        if (error instanceof IgResponseError) {
+        } else if (error instanceof IgResponseError) {
           console.error({
             name: error.name,
             message: error.message,

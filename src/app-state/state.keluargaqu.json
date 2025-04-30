@@ -1,16 +1,23 @@
 {
   "uploadFolder": "/Users/abdullah.harits/Downloads/Backup Google Photo/result/Takeout/Google Foto/Photos from 2022/Keluarga",
   "date": {
-    "start": "16 Jan 2022",
+    "start": "16 Oct 2022",
     "end": "31 Dec 2022"
   },
   "post": {
-    "lastUpdate": "29 Apr 2025",
-    "totalPost": 43
+    "lastUpdate": "30 Apr 2025",
+    "totalPost": 24,
+    "filename": "IMG_20221016_081532.jpg"
   },
-  "errors": [],
-  "filter": {
-    "caption": "16 Jan 2022",
-    "startIndex": 0
-  }
+  "errors": [
+    {
+      "date": "4 Oct 2022",
+      "error": {
+        "message": "file Screenshot_2022-10-04-12-53-21-334_com.shopee.id.jpg does'nt exist",
+        "name": "Error",
+        "stack": "Error: file Screenshot_2022-10-04-12-53-21-334_com.shopee.id.jpg does'nt exist\n    at LocalInstagramSyncService.<anonymous> (/Users/abdullah.harits/Documents/pribadi/project/wa_2_insta/src/local-instagram-sync/service.ts:103:19)\n    at Generator.next (<anonymous>)\n    at fulfilled (/Users/abdullah.harits/Documents/pribadi/project/wa_2_insta/src/local-instagram-sync/service.ts:38:58)"
+      },
+      "path": "/Users/abdullah.harits/Downloads/Backup Google Photo/result/Takeout/Google Foto/Photos from 2022/Keluarga"
+    }
+  ]
 }
