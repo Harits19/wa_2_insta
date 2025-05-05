@@ -1,8 +1,19 @@
 import path, { dirname, join } from "path";
 import { randomUUID } from "crypto";
-import { access, mkdir, readdir, readFile, rename, stat, unlink, writeFile } from "fs/promises";
+import {
+  access,
+  copyFile,
+  mkdir,
+  readdir,
+  readFile,
+  rename,
+  stat,
+  unlink,
+  writeFile,
+} from "fs/promises";
 import constants from "constants";
 import PromiseService from "../promise/service";
+// import { existsSync, mkdirSync, readdirSync, renameSync, statSync } from "fs";
 
 export default class FsService {
   value: string | Buffer;
@@ -10,8 +21,8 @@ export default class FsService {
   extension: string;
 
   static extension = {
-    json: '.json'
-  }
+    json: ".json",
+  };
 
   constructor({
     value,
@@ -67,7 +78,7 @@ export default class FsService {
   }
 
   static async readJsonFile<T = unknown>(path: string): Promise<T> {
-    const raw = await readFile(path, 'utf8');   // non‑blocking I/O
+    const raw = await readFile(path, "utf8"); // non‑blocking I/O
     return JSON.parse(raw) as T;
   }
 
@@ -82,35 +93,66 @@ export default class FsService {
 
   static async tryMoveFile(sourcePath: string, targetPath: string) {
     const exists = await FsService.fileExists(sourcePath);
-  
+
     if (!exists) {
       console.warn(`File does not exist, skipping move: ${sourcePath}`);
       return;
     }
-  
+
     await rename(sourcePath, targetPath);
     console.info(`Moved file`, { from: sourcePath, to: targetPath });
   }
 
   static async loadJsonFileInFolder<T>(folder: string) {
-      const entries = await readdir(folder);
-  
-      // Use Promise.all to read all JSON files concurrently
-      const metadataList: (T | null)[] =
-        await PromiseService.run({
-          promises: entries.map(async (entry) => {
-            if (path.extname(entry).toLowerCase() === ".json") {
-              const metadataPath = join(folder, entry);
-              const rawJson = await readFile(metadataPath, "utf-8");
-              return JSON.parse(rawJson) as T;
-            }
-            return null; // Return null for non-JSON files, filtered out later
-          }),
-        });
-  
-      // Filter out any null values in case non-JSON files were included
-  
-      return (metadataList.filter(Boolean) as T[]);
+    const entries = await readdir(folder);
+
+    // Use Promise.all to read all JSON files concurrently
+    const metadataList: (T | null)[] = await PromiseService.run({
+      promises: entries.map(async (entry) => {
+        if (path.extname(entry).toLowerCase() === ".json") {
+          const metadataPath = join(folder, entry);
+          const rawJson = await readFile(metadataPath, "utf-8");
+          return JSON.parse(rawJson) as T;
+        }
+        return null; // Return null for non-JSON files, filtered out later
+      }),
+    });
+
+    // Filter out any null values in case non-JSON files were included
+
+    return metadataList.filter(Boolean) as T[];
+  }
+
+  static async findFile(dir: string, targetFilename: string): Promise<string | undefined> {
+    const files = await readdir(dir);
+    for (const file of files) {
+      const fullPath = path.join(dir, file);
+      const stats = await stat(fullPath);
+
+      if (stats.isDirectory()) {
+        const result = await this.findFile(fullPath, targetFilename);
+        if (result) return result;
+      } else if (file === targetFilename) {
+        return fullPath;
+      }
     }
-  
+    return undefined;
+  }
+
+  static async moveFileIfFound(filename: string, searchPath: string, targetDir: string) {
+    const foundPath = await this.findFile(searchPath, filename);
+
+    if (!foundPath) {
+      console.error(`❌ File not found: ${filename}`);
+      return;
+    }
+
+    if (!this.folderExist(targetDir)) {
+      await mkdir(targetDir, { recursive: true });
+    }
+
+    const targetPath = path.join(targetDir, filename);
+    await copyFile(foundPath, targetPath);
+    console.log(`✅ Copied: ${foundPath} → ${targetPath}`);
+  }
 }

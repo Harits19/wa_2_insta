@@ -42,13 +42,14 @@ export default class LocalInstagramSyncService
     folderPath: string;
     year: string;
   }) {
-
     await this.organizeFilesByDate(folderPath);
 
     const appState = AppStateService.state;
     const startDate = new MyDate(appState.filter?.caption || `1 Jan ${year}`);
     const endDate = new MyDate(`31 Dec ${year}`);
     const dates = startDate.getDatesBetween(endDate);
+
+    console.log({ dates, startDate, endDate, year });
 
     for (const [index, date] of dates.entries()) {
       await this.processPostsByDate({
@@ -92,16 +93,45 @@ export default class LocalInstagramSyncService
   private async loadImageBuffers(
     metadataList: SupplementalMetadataModel[],
     folder: string
-  ) {
+  ): Promise<VideoImageBuffer[]> {
     // Use Promise.all to read and process image files concurrently
-    const buffers: VideoImageBuffer[] = await PromiseService.run({
-      promises: metadataList.map(async (metadata) => {
+    const buffers: VideoImageBuffer[] = [];
+
+    const errors: { error: any; metadata: SupplementalMetadataModel }[] = [];
+
+    for (const metadata of metadataList) {
+      try {
         const filePath = join(folder, metadata.title);
         const type = await FileService.getFileType(filePath);
         const buffer = await readFile(filePath);
-        return { buffer, type, filename: metadata.title } as VideoImageBuffer;
-      }),
-    });
+        buffers.push({
+          buffer,
+          type,
+          filename: metadata.title,
+        } as VideoImageBuffer);
+      } catch (error: any) {
+        errors.push({ error, metadata });
+      }
+    }
+
+    for (const error of errors) {
+      const code = error?.error?.code;
+
+      if (code === "ENOENT") {
+        await FsService.moveFileIfFound(
+          error.metadata.title,
+          join(folder, ".."),
+          folder
+        );
+        continue;
+      }
+
+      throw error;
+    }
+
+    if (errors.length > 0) {
+      return this.loadImageBuffers(metadataList, folder);
+    }
 
     return buffers;
   }

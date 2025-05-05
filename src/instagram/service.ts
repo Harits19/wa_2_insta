@@ -306,6 +306,12 @@ export class InstagramService {
             stack: error.stack,
             text: error.text,
           });
+
+          if (
+            error.text === "User restricted from uploading, please try later."
+          ) {
+            throw error;
+          }
         }
 
         if (attempt !== maxAttempt) {
@@ -386,6 +392,7 @@ export class InstagramService {
             coverImage: item.video?.thumbnail!,
             file: item.image!,
             video: item.video?.buffer!,
+            transcodeDelay: 4000,
           })),
         });
         await AppStateService.updateFilter({ caption, startIndex: index + 1 });

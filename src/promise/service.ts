@@ -22,6 +22,31 @@ export default class PromiseService {
     return result;
   }
 
+
+  static async runV2({promises}:{
+    promises: Promise<void>[];
+  }){
+
+    const maxTask = 5;
+
+    const running: Promise<void>[] = [];
+
+    for(const promise of promises){
+      running.push(promise);
+
+    running.splice
+
+      if(running.length >= maxTask){
+        console.log('start run concurrency task');
+        await Promise.race(running);
+
+      }
+    }
+
+
+
+  }
+
   static async withTimeout<T>({
     promise,
     timeout = 5 * MINUTE * SECOND,
