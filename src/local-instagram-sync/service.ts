@@ -2,7 +2,7 @@ import path, { join } from "path";
 import { InstagramService } from "../instagram/service";
 import { AspectRatio } from "../resize/types";
 import fs, { readdir, readFile } from "fs/promises";
-import { getTimestamp, SupplementalMetadataModel } from "./type";
+import { getTimestamp, SupplementalMetadataModel } from "../google-takeout/type";
 import { SECOND } from "../constants/size";
 import MyDate from "../date/service";
 import FsService from "../fs/service";
@@ -10,6 +10,7 @@ import { ErrorMultiplePost, VideoImageBuffer } from "../instagram/type";
 import AppStateService from "../app-state/service";
 import FileService from "../file/service";
 import PromiseService from "../promise/service";
+import GoogleTakeoutService from "../google-takeout/service";
 interface LocalInstagramSyncServiceInterface {
   instagram: InstagramService;
 }
@@ -42,7 +43,7 @@ export default class LocalInstagramSyncService
     folderPath: string;
     year: string;
   }) {
-    await this.organizeFilesByDate(folderPath);
+    await GoogleTakeoutService.organizeGooglePhotoByDate(folderPath);
 
     const appState = AppStateService.state;
     const startDate = new MyDate(appState.filter?.caption || `1 Jan ${year}`);
@@ -61,34 +62,7 @@ export default class LocalInstagramSyncService
     }
   }
 
-  private async organizeFilesByDate(folderPath: string) {
-    console.info("Scanning directory for JSON metadata files", folderPath);
-
-    const directoryEntries = await readdir(folderPath);
-
-    for (const entry of directoryEntries) {
-      if (path.extname(entry).toLowerCase() !== FsService.extension.json)
-        continue;
-
-      const metadataPath = join(folderPath, entry);
-      const rawJson = await readFile(metadataPath, "utf-8");
-      const metadata = JSON.parse(rawJson) as SupplementalMetadataModel;
-
-      const imageFilename = metadata.title;
-      const imagePath = join(folderPath, imageFilename);
-
-      const takenDate = new MyDate(getTimestamp(metadata) * SECOND);
-      const datedFolderPath = join(folderPath, takenDate.formatDate());
-
-      await fs.mkdir(datedFolderPath, { recursive: true });
-
-      await FsService.tryMoveFile(
-        imagePath,
-        join(datedFolderPath, imageFilename)
-      );
-      await FsService.tryMoveFile(metadataPath, join(datedFolderPath, entry));
-    }
-  }
+ 
 
   private async loadImageBuffers(
     metadataList: SupplementalMetadataModel[],

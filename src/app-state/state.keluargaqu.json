@@ -1,109 +1,75 @@
 {
-  "uploadFolder": "/Users/abdullah.harits/Downloads/Backup Google Photo/result/Takeout/Google Foto/Photos from 2022/Keluarga",
+  "uploadFolder": "/Users/abdullah.harits/Downloads/Backup Google Photo/result/Takeout/Google Foto/Photos from 2023/Keluarga",
   "post": {
-    "lastUpdate": "5 May 2025",
+    "lastUpdate": "8 May 2025",
     "totalPost": 19,
-    "filename": "DSC_0041.JPG"
+    "filename": "VID_20230819_052638.mp4"
   },
-  "year": "2022",
+  "year": "2023",
   "errors": [
     {
-      "date": "4 Oct 2022",
+      "date": "2 Jan 2023",
       "error": {
-        "message": "file Screenshot_2022-10-04-12-53-21-334_com.shopee.id.jpg does'nt exist",
+        "message": "POST /rupload_igphoto/1746503173654_0_3379041320 - 400 Bad Request; challenge_required",
         "name": "Error",
-        "stack": "Error: file Screenshot_2022-10-04-12-53-21-334_com.shopee.id.jpg does'nt exist\n    at LocalInstagramSyncService.<anonymous> (/Users/abdullah.harits/Documents/pribadi/project/wa_2_insta/src/local-instagram-sync/service.ts:103:19)\n    at Generator.next (<anonymous>)\n    at fulfilled (/Users/abdullah.harits/Documents/pribadi/project/wa_2_insta/src/local-instagram-sync/service.ts:38:58)"
+        "stack": "Error: POST /rupload_igphoto/1746503173654_0_3379041320 - 400 Bad Request; challenge_required\n    at InstagramService.<anonymous> (/Users/abdullah.harits/Documents/pribadi/project/dev/wa_2_insta/src/instagram/service.ts:405:17)\n    at Generator.throw (<anonymous>)\n    at rejected (/Users/abdullah.harits/Documents/pribadi/project/dev/wa_2_insta/src/instagram/service.ts:39:65)"
       },
-      "path": "/Users/abdullah.harits/Downloads/Backup Google Photo/result/Takeout/Google Foto/Photos from 2022/Keluarga"
+      "startIndex": 3,
+      "path": "/Users/abdullah.harits/Downloads/Backup Google Photo/result/Takeout/Google Foto/Photos from 2023/Keluarga"
     },
     {
-      "date": "16 Oct 2022",
+      "date": "7 Apr 2023",
       "error": {
-        "message": "POST /rupload_igphoto/1745982337303_0_1396298102 - 400 Bad Request; {\"message\":\"User restricted from uploading, please try later.\",\"status\":\"fail\"}",
+        "message": "GET /rupload_igvideo/1746514006956_0_9699359215 - 400 Bad Request; User restricted from uploading, please try later.",
         "name": "Error",
-        "stack": "Error: POST /rupload_igphoto/1745982337303_0_1396298102 - 400 Bad Request; {\"message\":\"User restricted from uploading, please try later.\",\"status\":\"fail\"}\n    at InstagramService.<anonymous> (/Users/abdullah.harits/Documents/pribadi/project/wa_2_insta/src/instagram/service.ts:398:17)\n    at Generator.throw (<anonymous>)\n    at rejected (/Users/abdullah.harits/Documents/pribadi/project/wa_2_insta/src/instagram/service.ts:39:65)"
+        "stack": "Error: GET /rupload_igvideo/1746514006956_0_9699359215 - 400 Bad Request; User restricted from uploading, please try later.\n    at InstagramService.<anonymous> (/Users/abdullah.harits/Documents/pribadi/project/dev/wa_2_insta/src/instagram/service.ts:405:17)\n    at Generator.throw (<anonymous>)\n    at rejected (/Users/abdullah.harits/Documents/pribadi/project/dev/wa_2_insta/src/instagram/service.ts:39:65)\n    at runNextTicks (node:internal/process/task_queues:65:5)\n    at processImmediate (node:internal/timers:459:9)"
       },
       "startIndex": 0,
-      "path": "/Users/abdullah.harits/Downloads/Backup Google Photo/result/Takeout/Google Foto/Photos from 2022/Keluarga"
+      "path": "/Users/abdullah.harits/Downloads/Backup Google Photo/result/Takeout/Google Foto/Photos from 2023/Keluarga"
     },
     {
-      "date": "16 Oct 2022",
+      "date": "7 Apr 2023",
       "error": {
-        "message": "Output stream closed",
+        "message": "GET /rupload_igvideo/1746583549817_0_9467872557 - 400 Bad Request; User restricted from uploading, please try later.",
         "name": "Error",
-        "stack": "Error: Output stream closed\n    at Timeout._onTimeout (/Users/abdullah.harits/Documents/pribadi/project/dev/wa_2_insta/node_modules/fluent-ffmpeg/lib/processor.js:489:25)\n    at listOnTimeout (node:internal/timers:594:17)\n    at processTimers (node:internal/timers:529:7)"
-      },
-      "path": "/Users/abdullah.harits/Downloads/Backup Google Photo/result/Takeout/Google Foto/Photos from 2022/Keluarga"
-    },
-    {
-      "date": "28 Dec 2022",
-      "error": {
-        "message": "POST /api/v1/media/configure_sidecar/ - 202 Accepted; Transcode not finished yet.",
-        "name": "Error",
-        "stack": "Error: POST /api/v1/media/configure_sidecar/ - 202 Accepted; Transcode not finished yet.\n    at InstagramService.<anonymous> (/Users/abdullah.harits/Documents/pribadi/project/dev/wa_2_insta/src/instagram/service.ts:398:17)\n    at Generator.throw (<anonymous>)\n    at rejected (/Users/abdullah.harits/Documents/pribadi/project/dev/wa_2_insta/src/instagram/service.ts:39:65)"
-      },
-      "startIndex": 6,
-      "path": "/Users/abdullah.harits/Downloads/Backup Google Photo/result/Takeout/Google Foto/Photos from 2022/Keluarga"
-    },
-    {
-      "date": "28 Dec 2022",
-      "error": {
-        "message": "POST /api/v1/media/configure_sidecar/ - 202 Accepted; Transcode not finished yet.",
-        "name": "Error",
-        "stack": "Error: POST /api/v1/media/configure_sidecar/ - 202 Accepted; Transcode not finished yet.\n    at InstagramService.<anonymous> (/Users/abdullah.harits/Documents/pribadi/project/dev/wa_2_insta/src/instagram/service.ts:398:17)\n    at Generator.throw (<anonymous>)\n    at rejected (/Users/abdullah.harits/Documents/pribadi/project/dev/wa_2_insta/src/instagram/service.ts:39:65)"
-      },
-      "startIndex": 6,
-      "path": "/Users/abdullah.harits/Downloads/Backup Google Photo/result/Takeout/Google Foto/Photos from 2022/Keluarga"
-    },
-    {
-      "date": "28 Dec 2022",
-      "error": {
-        "message": "POST /rupload_igphoto/1746416998360_0_1813455703 - 400 Bad Request; challenge_required",
-        "name": "Error",
-        "stack": "Error: POST /rupload_igphoto/1746416998360_0_1813455703 - 400 Bad Request; challenge_required\n    at InstagramService.<anonymous> (/Users/abdullah.harits/Documents/pribadi/project/dev/wa_2_insta/src/instagram/service.ts:398:17)\n    at Generator.throw (<anonymous>)\n    at rejected (/Users/abdullah.harits/Documents/pribadi/project/dev/wa_2_insta/src/instagram/service.ts:39:65)"
-      },
-      "startIndex": 6,
-      "path": "/Users/abdullah.harits/Downloads/Backup Google Photo/result/Takeout/Google Foto/Photos from 2022/Keluarga"
-    },
-    {
-      "date": "28 Dec 2022",
-      "error": {
-        "message": "POST /rupload_igphoto/1746419538862_0_7792778140 - 400 Bad Request; challenge_required",
-        "name": "Error",
-        "stack": "Error: POST /rupload_igphoto/1746419538862_0_7792778140 - 400 Bad Request; challenge_required\n    at InstagramService.<anonymous> (/Users/abdullah.harits/Documents/pribadi/project/dev/wa_2_insta/src/instagram/service.ts:398:17)\n    at Generator.throw (<anonymous>)\n    at rejected (/Users/abdullah.harits/Documents/pribadi/project/dev/wa_2_insta/src/instagram/service.ts:39:65)"
-      },
-      "startIndex": 6,
-      "path": "/Users/abdullah.harits/Downloads/Backup Google Photo/result/Takeout/Google Foto/Photos from 2022/Keluarga"
-    },
-    {
-      "date": "28 Dec 2022",
-      "error": {
-        "message": "POST /api/v1/media/configure_sidecar/ - 202 Accepted; Transcode not finished yet.",
-        "name": "Error",
-        "stack": "Error: POST /api/v1/media/configure_sidecar/ - 202 Accepted; Transcode not finished yet.\n    at InstagramService.<anonymous> (/Users/abdullah.harits/Documents/pribadi/project/dev/wa_2_insta/src/instagram/service.ts:398:17)\n    at Generator.throw (<anonymous>)\n    at rejected (/Users/abdullah.harits/Documents/pribadi/project/dev/wa_2_insta/src/instagram/service.ts:39:65)"
-      },
-      "startIndex": 6,
-      "path": "/Users/abdullah.harits/Downloads/Backup Google Photo/result/Takeout/Google Foto/Photos from 2022/Keluarga"
-    },
-    {
-      "date": "28 Dec 2022",
-      "error": {
-        "message": "POST /api/v1/media/configure_sidecar/ - 202 Accepted; Transcode not finished yet.",
-        "name": "Error",
-        "stack": "Error: POST /api/v1/media/configure_sidecar/ - 202 Accepted; Transcode not finished yet.\n    at InstagramService.<anonymous> (/Users/abdullah.harits/Documents/pribadi/project/dev/wa_2_insta/src/instagram/service.ts:398:17)\n    at Generator.throw (<anonymous>)\n    at rejected (/Users/abdullah.harits/Documents/pribadi/project/dev/wa_2_insta/src/instagram/service.ts:39:65)"
-      },
-      "startIndex": 6,
-      "path": "/Users/abdullah.harits/Downloads/Backup Google Photo/result/Takeout/Google Foto/Photos from 2022/Keluarga"
-    },
-    {
-      "date": "31 Dec 2022",
-      "error": {
-        "message": "POST /rupload_igphoto/1746422528686_0_4650889977 - 400 Bad Request; challenge_required",
-        "name": "Error",
-        "stack": "Error: POST /rupload_igphoto/1746422528686_0_4650889977 - 400 Bad Request; challenge_required\n    at InstagramService.<anonymous> (/Users/abdullah.harits/Documents/pribadi/project/dev/wa_2_insta/src/instagram/service.ts:399:17)\n    at Generator.throw (<anonymous>)\n    at rejected (/Users/abdullah.harits/Documents/pribadi/project/dev/wa_2_insta/src/instagram/service.ts:39:65)"
+        "stack": "Error: GET /rupload_igvideo/1746583549817_0_9467872557 - 400 Bad Request; User restricted from uploading, please try later.\n    at InstagramService.<anonymous> (/Users/abdullah.harits/Documents/pribadi/project/dev/wa_2_insta/src/instagram/service.ts:405:17)\n    at Generator.throw (<anonymous>)\n    at rejected (/Users/abdullah.harits/Documents/pribadi/project/dev/wa_2_insta/src/instagram/service.ts:39:65)\n    at runNextTicks (node:internal/process/task_queues:65:5)\n    at processImmediate (node:internal/timers:459:9)"
       },
       "startIndex": 0,
-      "path": "/Users/abdullah.harits/Downloads/Backup Google Photo/result/Takeout/Google Foto/Photos from 2022/Keluarga"
+      "path": "/Users/abdullah.harits/Downloads/Backup Google Photo/result/Takeout/Google Foto/Photos from 2023/Keluarga"
+    },
+    {
+      "date": "7 Apr 2023",
+      "error": {
+        "message": "GET /rupload_igvideo/1746597709133_0_1308839725 - 400 Bad Request; User restricted from uploading, please try later.",
+        "name": "Error",
+        "stack": "Error: GET /rupload_igvideo/1746597709133_0_1308839725 - 400 Bad Request; User restricted from uploading, please try later.\n    at InstagramService.<anonymous> (/Users/abdullah.harits/Documents/pribadi/project/dev/wa_2_insta/src/instagram/service.ts:405:17)\n    at Generator.throw (<anonymous>)\n    at rejected (/Users/abdullah.harits/Documents/pribadi/project/dev/wa_2_insta/src/instagram/service.ts:39:65)\n    at runNextTicks (node:internal/process/task_queues:65:5)\n    at processImmediate (node:internal/timers:459:9)"
+      },
+      "startIndex": 0,
+      "path": "/Users/abdullah.harits/Downloads/Backup Google Photo/result/Takeout/Google Foto/Photos from 2023/Keluarga"
+    },
+    {
+      "date": "18 Aug 2023",
+      "error": {
+        "message": "POST /rupload_igphoto/1746684881894_0_5893010546 - 400 Bad Request; challenge_required",
+        "name": "Error",
+        "stack": "Error: POST /rupload_igphoto/1746684881894_0_5893010546 - 400 Bad Request; challenge_required\n    at InstagramService.<anonymous> (/Users/abdullah.harits/Documents/pribadi/project/dev/wa_2_insta/src/instagram/service.ts:405:17)\n    at Generator.throw (<anonymous>)\n    at rejected (/Users/abdullah.harits/Documents/pribadi/project/dev/wa_2_insta/src/instagram/service.ts:39:65)"
+      },
+      "startIndex": 1,
+      "path": "/Users/abdullah.harits/Downloads/Backup Google Photo/result/Takeout/Google Foto/Photos from 2023/Keluarga"
+    },
+    {
+      "date": "19 Aug 2023",
+      "error": {
+        "message": "GET /rupload_igvideo/1746690154118_0_5445700859 - 400 Bad Request; challenge_required",
+        "name": "Error",
+        "stack": "Error: GET /rupload_igvideo/1746690154118_0_5445700859 - 400 Bad Request; challenge_required\n    at InstagramService.<anonymous> (/Users/abdullah.harits/Documents/pribadi/project/dev/wa_2_insta/src/instagram/service.ts:405:17)\n    at Generator.throw (<anonymous>)\n    at rejected (/Users/abdullah.harits/Documents/pribadi/project/dev/wa_2_insta/src/instagram/service.ts:39:65)\n    at runNextTicks (node:internal/process/task_queues:65:5)\n    at processImmediate (node:internal/timers:459:9)"
+      },
+      "startIndex": 0,
+      "path": "/Users/abdullah.harits/Downloads/Backup Google Photo/result/Takeout/Google Foto/Photos from 2023/Keluarga"
     }
-  ]
+  ],
+  "filter": {
+    "caption": "19 Aug 2023",
+    "startIndex": 2
+  }
 }

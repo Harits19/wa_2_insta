@@ -10,6 +10,8 @@
     "start-local-upload": "npx ts-node src/local-upload-main.ts",
     "harits": "NODE_ENV=harits npx ts-node src/local-upload-main.ts",
     "keluargaqu": "NODE_ENV=keluargaqu npx ts-node src/local-upload-main.ts",
+    "group-google-photo-file": "NODE_ENV=keluargaqu npx ts-node src/google-takeout-google-photo-group-file-by-date.ts",
+
     "build": "npx tsc --outDir ./dist",
     "prod": "node dist/main.js"
   },

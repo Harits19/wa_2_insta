@@ -9,9 +9,9 @@ export default class PromiseService {
     promises: Promise<T>[];
     parallel?: boolean;
   }) {
-    if (parallel) {
-      return Promise.all(promises);
-    }
+    // if (parallel) {
+    //   return Promise.all(promises);
+    // }
 
     const result: T[] = [];
 

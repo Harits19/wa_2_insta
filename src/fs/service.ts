@@ -103,6 +103,19 @@ export default class FsService {
     console.info(`Moved file`, { from: sourcePath, to: targetPath });
   }
 
+
+  static async tryCopyFile(sourcePath: string, targetPath: string) {
+    const exists = await FsService.fileExists(sourcePath);
+
+    if (!exists) {
+      console.warn(`File does not exist, skipping move: ${sourcePath}`);
+      return;
+    }
+
+    await copyFile(sourcePath, targetPath);
+    console.info(`Copied file`, { from: sourcePath, to: targetPath });
+  }
+
   static async loadJsonFileInFolder<T>(folder: string) {
     const entries = await readdir(folder);
 

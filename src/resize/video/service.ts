@@ -57,13 +57,27 @@ export default class ResizeVideoService extends AnalyzeSizeService {
       width,
     });
 
-    console.log("convert height from ", height, " to ", targetHeight);
-    console.log("convert width from ", width, " to ", targetWidth);
+    console.log(
+      this.filePath,
+      " convert height from ",
+      height,
+      " to ",
+      targetHeight
+    );
+    console.log(
+      this.filePath,
+      "convert width from ",
+      width,
+      " to ",
+      targetWidth
+    );
 
     const result = await this.resizeVideoStream({
       targetHeight,
       targetWidth,
     });
+
+    console.log(this.filePath, "success convert", width, " to ", targetWidth);
 
     return result;
   }

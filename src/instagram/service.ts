@@ -422,37 +422,34 @@ export class InstagramService {
     aspectRatio: AspectRatio;
     items: VideoImageBuffer[];
   }): Promise<VideoImageResizeResult[]> {
-    const promises = items.map(async (item) => {
+    const result: VideoImageResizeResult[] = [];
+    for (const item of items) {
       if (item.type === "video") {
-        const result = await this.resizeVideo({
+        const videoResult = await this.resizeVideo({
           aspectRatio,
           buffer: item.buffer,
           filename: item.filename,
         });
 
-        if (Array.isArray(result)) {
-          return result.map((item) => ({
-            video: item,
-          }));
+        if (Array.isArray(videoResult)) {
+          result.push(
+            ...videoResult.map((item) => ({
+              video: item,
+            }))
+          );
+          continue;
         }
 
-        return [
-          {
-            video: result,
-          },
-        ];
-      }
-
-      return [
-        {
+        result.push({
+          video: videoResult,
+        });
+      } else {
+        result.push({
           image: await this.resizeImage({ aspectRatio, buffer: item.buffer }),
-        },
-      ];
-    });
-
-    const resizeResult = (await PromiseService.run({ promises })).flat();
-
-    return resizeResult;
+        });
+      }
+    }
+    return result;
   }
 
   async processImageVideo({

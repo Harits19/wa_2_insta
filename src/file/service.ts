@@ -1,8 +1,6 @@
 import * as fs from "fs/promises";
 import path from "path";
 import { instagramConstant } from "../instagram/constant";
-import sharp from "sharp";
-import ffmpeg from "fluent-ffmpeg";
 import { ArrayService } from "../array/service";
 
 export default class FileService {

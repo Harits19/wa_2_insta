@@ -1,25 +1,34 @@
 {
-  "uploadFolder": "/Users/abdullah.harits/Downloads/Backup Google Photo/result/Takeout/Google Foto/Photos from 2021/Harits",
-  "year": "2021",
+  "uploadFolder": "/Users/abdullah.harits/Downloads/Backup Google Photo/result/Takeout/Google Foto/Photos from 2023/Harits",
+  "year": "2023",
   "post": {
-    "lastUpdate": "5 May 2025",
-    "totalPost": 64,
-    "filename": "IMG_20210613_054551.jpg"
+    "lastUpdate": "8 May 2025",
+    "totalPost": 19,
+    "filename": "IMG_20231126_133817_578.jpg"
   },
   "errors": [
     {
-      "date": "13 Jun 2021",
+      "date": "20 Apr 2022",
       "error": {
-        "message": "POST /rupload_igphoto/1746440218689_0_8153087133 - 400 Bad Request; User restricted from uploading, please try later.",
+        "message": "Error: getaddrinfo ENOTFOUND i.instagram.com",
         "name": "Error",
-        "stack": "Error: POST /rupload_igphoto/1746440218689_0_8153087133 - 400 Bad Request; User restricted from uploading, please try later.\n    at InstagramService.<anonymous> (/Users/abdullah.harits/Documents/pribadi/project/dev/wa_2_insta/src/instagram/service.ts:399:17)\n    at Generator.throw (<anonymous>)\n    at rejected (/Users/abdullah.harits/Documents/pribadi/project/dev/wa_2_insta/src/instagram/service.ts:39:65)"
+        "stack": "Error: Error: getaddrinfo ENOTFOUND i.instagram.com\n    at InstagramService.<anonymous> (/Users/abdullah.harits/Documents/pribadi/project/dev/wa_2_insta/src/instagram/service.ts:405:17)\n    at Generator.throw (<anonymous>)\n    at rejected (/Users/abdullah.harits/Documents/pribadi/project/dev/wa_2_insta/src/instagram/service.ts:39:65)"
       },
-      "startIndex": 2,
-      "path": "/Users/abdullah.harits/Downloads/Backup Google Photo/result/Takeout/Google Foto/Photos from 2021/Harits"
+      "startIndex": 0,
+      "path": "/Users/abdullah.harits/Downloads/Backup Google Photo/result/Takeout/Google Foto/Photos from 2022/Harits"
+    },
+    {
+      "date": "9 Dec 2022",
+      "error": {
+        "message": "Reached max daily upload 80",
+        "name": "Error",
+        "stack": "Error: Reached max daily upload 80\n    at InstagramService.<anonymous> (/Users/abdullah.harits/Documents/pribadi/project/dev/wa_2_insta/src/instagram/service.ts:363:15)\n    at Generator.next (<anonymous>)\n    at fulfilled (/Users/abdullah.harits/Documents/pribadi/project/dev/wa_2_insta/src/instagram/service.ts:38:58)"
+      },
+      "path": "/Users/abdullah.harits/Downloads/Backup Google Photo/result/Takeout/Google Foto/Photos from 2022/Harits"
     }
   ],
   "filter": {
-    "caption": "13 Jun 2021",
-    "startIndex": 2
+    "caption": "31 Dec 2023",
+    "startIndex": 0
   }
 }

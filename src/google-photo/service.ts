@@ -1,11 +1,6 @@
 import GoogleOauthService from "../google-oauth/service";
 import axios, { AxiosError } from "axios";
-import PromiseService from "../promise/service";
 import { DownloadedMediaItem, MediaItem, SearchResponse } from "./type";
-import { AspectRatio } from "../resize/types";
-import { RawDate } from "../date/type";
-import { VideoImageResizeResult } from "../instagram/type";
-import { instagramConstant } from "../instagram/constant";
 
 export default class GooglePhotoService {
   googleOauth: GoogleOauthService;
