@@ -432,10 +432,6 @@ export class InstagramService {
         });
 
         if (Array.isArray(videoResult)) {
-          await AppStateService.pushCurrentVideoProcess({
-            path: item.path,
-            resizedPath: videoResult.map((item) => item.resizedPath),
-          });
           result.push(
             ...videoResult.map((item) => ({
               video: item,
@@ -443,10 +439,7 @@ export class InstagramService {
           );
           continue;
         }
-        await AppStateService.pushCurrentVideoProcess({
-          path: item.path,
-          resizedPath: videoResult.resizedPath,
-        });
+
         result.push({
           video: videoResult,
         });
@@ -583,6 +576,10 @@ export class InstagramService {
         });
         const result = await PromiseService.run({
           promises: splitVideoResult.map(async (video) => {
+            await AppStateService.pushCurrentVideoProcess({
+              path: path,
+              resizedPath: video.path,
+            });
             return this.getVideoThumbnailBuffer(video.path);
           }),
         });
@@ -591,6 +588,10 @@ export class InstagramService {
 
         return result;
       } else {
+        await AppStateService.pushCurrentVideoProcess({
+          path: path,
+          resizedPath: resizedFilePath,
+        });
         return this.getVideoThumbnailBuffer(resizedFilePath);
       }
     };

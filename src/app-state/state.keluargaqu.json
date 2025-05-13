@@ -174,6 +174,36 @@
         "stack": "Error: Unexpected error: {\"error\":{\"code\":\"ERR_FS_FILE_TOO_LARGE\"},\"metadata\":{\"title\":\"VID_20250125_193429.mp4\",\"description\":\"\",\"imageViews\":\"10\",\"creationTime\":{\"timestamp\":\"1737843210\",\"formatted\":\"25 Jan 2025, 22.13.30 UTC\"},\"photoTakenTime\":{\"timestamp\":\"1737808468\",\"formatted\":\"25 Jan 2025, 12.34.28 UTC\"},\"geoData\":{\"latitude\":0,\"longitude\":0,\"altitude\":0,\"latitudeSpan\":0,\"longitudeSpan\":0},\"people\":[{\"name\":\"Mahardien Luthfiyah Nuradenia\"}],\"url\":\"https://photos.google.com/photo/AF1QipMMU7NDsPCtAVMJWtyila--_8visvlrPggNEhCj\",\"googlePhotosOrigin\":{\"mobileUpload\":{\"deviceFolder\":{\"localFolderName\":\"\"},\"deviceType\":\"ANDROID_PHONE\"}},\"appSource\":{\"androidPackageName\":\"com.transsion.camera\"}}}\n    at LocalInstagramSyncService.<anonymous> (/Users/abdullah.harits/Documents/pribadi/project/dev/wa_2_insta/src/local-instagram-sync/service.ts:147:16)\n    at Generator.next (<anonymous>)\n    at /Users/abdullah.harits/Documents/pribadi/project/dev/wa_2_insta/src/local-instagram-sync/service.ts:8:71\n    at new Promise (<anonymous>)\n    at __awaiter (/Users/abdullah.harits/Documents/pribadi/project/dev/wa_2_insta/src/local-instagram-sync/service.ts:4:12)\n    at LocalInstagramSyncService.handleError (/Users/abdullah.harits/Documents/pribadi/project/dev/wa_2_insta/src/local-instagram-sync/service.ts:100:16)\n    at LocalInstagramSyncService.<anonymous> (/Users/abdullah.harits/Documents/pribadi/project/dev/wa_2_insta/src/local-instagram-sync/service.ts:197:18)\n    at Generator.throw (<anonymous>)\n    at rejected (/Users/abdullah.harits/Documents/pribadi/project/dev/wa_2_insta/src/local-instagram-sync/service.ts:6:65)"
       },
       "path": "/Users/abdullah.harits/Downloads/Backup Google Photo/result/Takeout/Google Foto/Photos from 2025/Keluarga"
+    },
+    {
+      "date": "25 Jan 2025",
+      "error": {
+        "message": "POST /rupload_igphoto/1747119879399_0_9231713116 - 400 Bad Request; User restricted from uploading, please try later.",
+        "name": "Error",
+        "stack": "Error: POST /rupload_igphoto/1747119879399_0_9231713116 - 400 Bad Request; User restricted from uploading, please try later.\n    at InstagramService.<anonymous> (/Users/abdullah.harits/Documents/pribadi/project/dev/wa_2_insta/src/instagram/service.ts:406:17)\n    at Generator.throw (<anonymous>)\n    at rejected (/Users/abdullah.harits/Documents/pribadi/project/dev/wa_2_insta/src/instagram/service.ts:39:65)"
+      },
+      "startIndex": 0,
+      "path": "/Users/abdullah.harits/Downloads/Backup Google Photo/result/Takeout/Google Foto/Photos from 2025/Keluarga"
+    },
+    {
+      "date": "25 Jan 2025",
+      "error": {
+        "message": "POST /rupload_igphoto/1747119914628_0_2725644135 - 400 Bad Request; User restricted from uploading, please try later.",
+        "name": "Error",
+        "stack": "Error: POST /rupload_igphoto/1747119914628_0_2725644135 - 400 Bad Request; User restricted from uploading, please try later.\n    at InstagramService.<anonymous> (/Users/abdullah.harits/Documents/pribadi/project/dev/wa_2_insta/src/instagram/service.ts:406:17)\n    at Generator.throw (<anonymous>)\n    at rejected (/Users/abdullah.harits/Documents/pribadi/project/dev/wa_2_insta/src/instagram/service.ts:39:65)"
+      },
+      "startIndex": 0,
+      "path": "/Users/abdullah.harits/Downloads/Backup Google Photo/result/Takeout/Google Foto/Photos from 2025/Keluarga"
+    },
+    {
+      "date": "25 Jan 2025",
+      "error": {
+        "message": "POST /rupload_igphoto/1747120094429_0_6117151783 - 400 Bad Request; User restricted from uploading, please try later.",
+        "name": "Error",
+        "stack": "Error: POST /rupload_igphoto/1747120094429_0_6117151783 - 400 Bad Request; User restricted from uploading, please try later.\n    at InstagramService.<anonymous> (/Users/abdullah.harits/Documents/pribadi/project/dev/wa_2_insta/src/instagram/service.ts:406:17)\n    at Generator.throw (<anonymous>)\n    at rejected (/Users/abdullah.harits/Documents/pribadi/project/dev/wa_2_insta/src/instagram/service.ts:39:65)"
+      },
+      "startIndex": 0,
+      "path": "/Users/abdullah.harits/Downloads/Backup Google Photo/result/Takeout/Google Foto/Photos from 2025/Keluarga"
     }
   ],
   "filter": {
@@ -231,6 +261,61 @@
         "temporary/19a8c09b-453c-435b-99d5-2479fc97e288-13.mp4",
         "temporary/19a8c09b-453c-435b-99d5-2479fc97e288-14.mp4",
         "temporary/19a8c09b-453c-435b-99d5-2479fc97e288-15.mp4"
+      ]
+    },
+    {
+      "path": "/Users/abdullah.harits/Downloads/Backup Google Photo/result/Takeout/Google Foto/Photos from 2025/Keluarga/25 Jan 2025/VID_20250125_202624.mp4",
+      "resizedPath": [
+        "temporary/924b1bed-9a87-4c33-b9af-49feaad09dd1-1.mp4",
+        "temporary/924b1bed-9a87-4c33-b9af-49feaad09dd1-2.mp4",
+        "temporary/924b1bed-9a87-4c33-b9af-49feaad09dd1-3.mp4",
+        "temporary/924b1bed-9a87-4c33-b9af-49feaad09dd1-4.mp4",
+        "temporary/924b1bed-9a87-4c33-b9af-49feaad09dd1-5.mp4",
+        "temporary/924b1bed-9a87-4c33-b9af-49feaad09dd1-6.mp4",
+        "temporary/924b1bed-9a87-4c33-b9af-49feaad09dd1-7.mp4",
+        "temporary/924b1bed-9a87-4c33-b9af-49feaad09dd1-8.mp4",
+        "temporary/924b1bed-9a87-4c33-b9af-49feaad09dd1-9.mp4",
+        "temporary/924b1bed-9a87-4c33-b9af-49feaad09dd1-10.mp4",
+        "temporary/924b1bed-9a87-4c33-b9af-49feaad09dd1-11.mp4",
+        "temporary/924b1bed-9a87-4c33-b9af-49feaad09dd1-12.mp4",
+        "temporary/924b1bed-9a87-4c33-b9af-49feaad09dd1-13.mp4",
+        "temporary/924b1bed-9a87-4c33-b9af-49feaad09dd1-14.mp4",
+        "temporary/924b1bed-9a87-4c33-b9af-49feaad09dd1-15.mp4",
+        "temporary/924b1bed-9a87-4c33-b9af-49feaad09dd1-16.mp4",
+        "temporary/924b1bed-9a87-4c33-b9af-49feaad09dd1-17.mp4",
+        "temporary/924b1bed-9a87-4c33-b9af-49feaad09dd1-18.mp4",
+        "temporary/924b1bed-9a87-4c33-b9af-49feaad09dd1-19.mp4",
+        "temporary/924b1bed-9a87-4c33-b9af-49feaad09dd1-20.mp4",
+        "temporary/924b1bed-9a87-4c33-b9af-49feaad09dd1-21.mp4",
+        "temporary/924b1bed-9a87-4c33-b9af-49feaad09dd1-22.mp4",
+        "temporary/924b1bed-9a87-4c33-b9af-49feaad09dd1-23.mp4",
+        "temporary/924b1bed-9a87-4c33-b9af-49feaad09dd1-24.mp4",
+        "temporary/924b1bed-9a87-4c33-b9af-49feaad09dd1-25.mp4",
+        "temporary/924b1bed-9a87-4c33-b9af-49feaad09dd1-26.mp4",
+        "temporary/924b1bed-9a87-4c33-b9af-49feaad09dd1-27.mp4",
+        "temporary/924b1bed-9a87-4c33-b9af-49feaad09dd1-28.mp4",
+        "temporary/924b1bed-9a87-4c33-b9af-49feaad09dd1-29.mp4",
+        "temporary/924b1bed-9a87-4c33-b9af-49feaad09dd1-30.mp4",
+        "temporary/924b1bed-9a87-4c33-b9af-49feaad09dd1-31.mp4",
+        "temporary/924b1bed-9a87-4c33-b9af-49feaad09dd1-32.mp4",
+        "temporary/924b1bed-9a87-4c33-b9af-49feaad09dd1-33.mp4",
+        "temporary/924b1bed-9a87-4c33-b9af-49feaad09dd1-34.mp4",
+        "temporary/924b1bed-9a87-4c33-b9af-49feaad09dd1-35.mp4",
+        "temporary/924b1bed-9a87-4c33-b9af-49feaad09dd1-36.mp4",
+        "temporary/924b1bed-9a87-4c33-b9af-49feaad09dd1-37.mp4",
+        "temporary/924b1bed-9a87-4c33-b9af-49feaad09dd1-38.mp4",
+        "temporary/924b1bed-9a87-4c33-b9af-49feaad09dd1-39.mp4",
+        "temporary/924b1bed-9a87-4c33-b9af-49feaad09dd1-40.mp4",
+        "temporary/924b1bed-9a87-4c33-b9af-49feaad09dd1-41.mp4",
+        "temporary/924b1bed-9a87-4c33-b9af-49feaad09dd1-42.mp4",
+        "temporary/924b1bed-9a87-4c33-b9af-49feaad09dd1-43.mp4",
+        "temporary/924b1bed-9a87-4c33-b9af-49feaad09dd1-44.mp4",
+        "temporary/924b1bed-9a87-4c33-b9af-49feaad09dd1-45.mp4",
+        "temporary/924b1bed-9a87-4c33-b9af-49feaad09dd1-46.mp4",
+        "temporary/924b1bed-9a87-4c33-b9af-49feaad09dd1-47.mp4",
+        "temporary/924b1bed-9a87-4c33-b9af-49feaad09dd1-48.mp4",
+        "temporary/924b1bed-9a87-4c33-b9af-49feaad09dd1-49.mp4",
+        "temporary/924b1bed-9a87-4c33-b9af-49feaad09dd1-50.mp4"
       ]
     }
   ]
