@@ -1,10 +1,10 @@
 {
-  "uploadFolder": "/Users/abdullah.harits/Downloads/Backup Google Photo/result/Takeout/Google Foto/Photos from 2023/Harits",
-  "year": "2023",
+  "uploadFolder": "/Users/abdullah.harits/Downloads/Backup Google Photo/result/Takeout/Google Foto/Photos from 2025/Harits",
+  "year": "2025",
   "post": {
-    "lastUpdate": "8 May 2025",
-    "totalPost": 19,
-    "filename": "IMG_20231126_133817_578.jpg"
+    "lastUpdate": "9 May 2025",
+    "totalPost": 63,
+    "filename": "IMG_20250314_113409_940.jpg"
   },
   "errors": [
     {
@@ -28,7 +28,7 @@
     }
   ],
   "filter": {
-    "caption": "31 Dec 2023",
+    "caption": "31 Dec 2025",
     "startIndex": 0
   }
 }

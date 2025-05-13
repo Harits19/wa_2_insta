@@ -11,6 +11,10 @@ export interface AppState {
     startIndex: number;
   };
   errors?: AppStateError[];
+  video?: {
+    path: string;
+    resizedPath: string | string[];
+  }[]
 }
 
 export interface AppStateError {

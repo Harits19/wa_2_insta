@@ -11,6 +11,7 @@ import {
   AlbumResponse,
   ErrorMultiplePost,
   FilterMultiplePost as FilterMultiplePost,
+  ResizeVideoResult,
   VideoImageBuffer,
   VideoImageResizeResult as VideoImageResizeResult,
 } from "./type";
@@ -218,7 +219,7 @@ export class InstagramService {
 
     console.log("totalFileSize in MB ", totalFileSize);
 
-    let maxAttempt = 3;
+    let maxAttempt = 1;
     if (items.length === 0) {
       console.log(`items length is empty,`);
       return;
@@ -392,7 +393,7 @@ export class InstagramService {
             coverImage: item.video?.thumbnail!,
             file: item.image!,
             video: item.video?.buffer!,
-            transcodeDelay: 4000,
+            transcodeDelay: 12000,
           })),
         });
         await AppStateService.updateFilter({ caption, startIndex: index + 1 });
@@ -425,13 +426,16 @@ export class InstagramService {
     const result: VideoImageResizeResult[] = [];
     for (const item of items) {
       if (item.type === "video") {
-        const videoResult = await this.resizeVideo({
+        const videoResult = await this.resizeVideoWithPath({
           aspectRatio,
-          buffer: item.buffer,
-          filename: item.filename,
+          path: item.path,
         });
 
         if (Array.isArray(videoResult)) {
+          await AppStateService.pushCurrentVideoProcess({
+            path: item.path,
+            resizedPath: videoResult.map((item) => item.resizedPath),
+          });
           result.push(
             ...videoResult.map((item) => ({
               video: item,
@@ -439,13 +443,17 @@ export class InstagramService {
           );
           continue;
         }
-
+        await AppStateService.pushCurrentVideoProcess({
+          path: item.path,
+          resizedPath: videoResult.resizedPath,
+        });
         result.push({
           video: videoResult,
         });
       } else {
+        const buffer = await readFile(item.path);
         result.push({
-          image: await this.resizeImage({ aspectRatio, buffer: item.buffer }),
+          image: await this.resizeImage({ aspectRatio, buffer }),
         });
       }
     }
@@ -496,6 +504,100 @@ export class InstagramService {
     });
 
     return await resizeService.resizeImage();
+  }
+
+  async getVideoThumbnailBuffer(path: string) {
+    const videoService = new VideoService({ path: path });
+    const thumbnail = await videoService.getVideoThumbnail();
+
+    const buffer = await readFile(path);
+
+    const result: ResizeVideoResult = {
+      buffer,
+      thumbnail,
+      resizedPath: path,
+    };
+
+    return result;
+  }
+
+  async resizeVideoWithPath({
+    aspectRatio,
+    path,
+  }: {
+    aspectRatio: AspectRatio;
+    path: string;
+  }): Promise<ResizeVideoResult | ResizeVideoResult[]> {
+    const appState = AppStateService.state;
+
+    const cacheVideo = appState.video?.find(
+      (item) => item.path === path
+    )?.resizedPath;
+    const isHaveCache = cacheVideo !== undefined;
+
+    console.log({ isHaveCache, path });
+
+    if (isHaveCache) {
+      const isSplitVideo = Array.isArray(cacheVideo);
+      if (isSplitVideo) {
+        return PromiseService.run({
+          promises: cacheVideo.map((path) => {
+            return this.getVideoThumbnailBuffer(path);
+          }),
+        });
+      }
+
+      return this.getVideoThumbnailBuffer(cacheVideo);
+    }
+
+    // Extract metadata from the original video
+    const originalVideo = new VideoService({ path });
+    const originalMetadata = await originalVideo.getVideoMetadata();
+    const duration = originalMetadata.format.duration;
+
+    if (!duration) {
+      throw new Error("No duration found in original video");
+    }
+
+    const maxDuration = instagramConstant.max.duration * MINUTE;
+
+    // Resize video based on aspect ratio
+    const resizeProcessor = new ResizeVideoService({
+      aspectRatio,
+      filePath: path,
+      metadata: originalMetadata,
+    });
+    const resizedFilePath = await resizeProcessor.resizeLargeVideo();
+
+    const getResult = async (): Promise<
+      ResizeVideoResult | ResizeVideoResult[]
+    > => {
+      if (duration > maxDuration) {
+        console.log(
+          `video duration ${duration} long more than ${maxDuration}, need to be split`
+        );
+        const videoService = new VideoService({ path: resizedFilePath });
+        const splitVideoResult = await videoService.splitVideo({
+          maxDurationPerFile: maxDuration,
+          totalDuration: duration,
+        });
+        const result = await PromiseService.run({
+          promises: splitVideoResult.map(async (video) => {
+            return this.getVideoThumbnailBuffer(video.path);
+          }),
+        });
+
+        await unlink(resizedFilePath);
+
+        return result;
+      } else {
+        return this.getVideoThumbnailBuffer(resizedFilePath);
+      }
+    };
+
+    const result = await getResult();
+
+    return result;
   }
 
   async resizeVideo({

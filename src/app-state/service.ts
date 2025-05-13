@@ -2,7 +2,7 @@ import { join } from "path";
 import MyDate from "../date/service";
 import FsService from "../fs/service";
 import { AppState, AppStateError } from "./type";
-import { writeFile } from "fs/promises";
+import { unlink, writeFile } from "fs/promises";
 import { env } from "../env/service";
 
 export default class AppStateService {
@@ -22,7 +22,6 @@ export default class AppStateService {
   static async init() {
     this._state = await FsService.readJsonFile<AppState>(this.path);
   }
-
 
   static async updateState() {
     await writeFile(
@@ -52,13 +51,12 @@ export default class AppStateService {
     await this.updateState();
   }
 
-  static async updateCaption(caption: string){
+  static async updateCaption(caption: string) {
     this._state.filter = {
       caption,
       startIndex: this._state.filter?.startIndex ?? 0,
-    }
+    };
     await this.updateState();
-
   }
 
   static async resetFilter() {
@@ -90,6 +88,35 @@ export default class AppStateService {
     });
     this._state.errors = errors;
 
+    await this.updateState();
+  }
+
+  static async pushCurrentVideoProcess(
+    ...value: {
+      path: string;
+      resizedPath: string | string[];
+    }[]
+  ) {
+    const tempVideo = this._state.video ?? [];
+
+    tempVideo.push(...value);
+
+    this._state.video = tempVideo;
+    await this.updateState();
+  }
+
+  static async resetLastVideoProcess() {
+    const videos = this._state.video ?? [];
+    for (const item of videos) {
+      if (Array.isArray(item.resizedPath)) {
+        for (const resized of item.resizedPath) {
+          await unlink(resized);
+        }
+      } else {
+        await unlink(item.resizedPath);
+      }
+    }
+    this._state.video = undefined;
     await this.updateState();
   }
 }

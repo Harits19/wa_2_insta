@@ -2,7 +2,10 @@ import path, { join } from "path";
 import { InstagramService } from "../instagram/service";
 import { AspectRatio } from "../resize/types";
 import fs, { readdir, readFile } from "fs/promises";
-import { getTimestamp, SupplementalMetadataModel } from "../google-takeout/type";
+import {
+  getTimestamp,
+  SupplementalMetadataModel,
+} from "../google-takeout/type";
 import { SECOND } from "../constants/size";
 import MyDate from "../date/service";
 import FsService from "../fs/service";
@@ -59,10 +62,10 @@ export default class LocalInstagramSyncService
         dates,
         index,
       });
+      
+      await AppStateService.resetLastVideoProcess();
     }
   }
-
- 
 
   private async loadImageBuffers(
     metadataList: SupplementalMetadataModel[],
@@ -77,13 +80,13 @@ export default class LocalInstagramSyncService
       try {
         const filePath = join(folder, metadata.title);
         const type = await FileService.getFileType(filePath);
-        const buffer = await readFile(filePath);
         buffers.push({
-          buffer,
+          path: filePath,
           type,
           filename: metadata.title,
         } as VideoImageBuffer);
       } catch (error: any) {
+        const code = error?.code;
         errors.push({ error, metadata });
       }
     }

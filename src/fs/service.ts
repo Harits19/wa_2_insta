@@ -1,4 +1,4 @@
-import path, { dirname, join } from "path";
+import path, { dirname, extname, join } from "path";
 import { randomUUID } from "crypto";
 import {
   access,
@@ -103,7 +103,6 @@ export default class FsService {
     console.info(`Moved file`, { from: sourcePath, to: targetPath });
   }
 
-
   static async tryCopyFile(sourcePath: string, targetPath: string) {
     const exists = await FsService.fileExists(sourcePath);
 
@@ -136,7 +135,10 @@ export default class FsService {
     return metadataList.filter(Boolean) as T[];
   }
 
-  static async findFile(dir: string, targetFilename: string): Promise<string | undefined> {
+  static async findFile(
+    dir: string,
+    targetFilename: string
+  ): Promise<string | undefined> {
     const files = await readdir(dir);
     for (const file of files) {
       const fullPath = path.join(dir, file);
@@ -152,7 +154,11 @@ export default class FsService {
     return undefined;
   }
 
-  static async moveFileIfFound(filename: string, searchPath: string, targetDir: string) {
+  static async moveFileIfFound(
+    filename: string,
+    searchPath: string,
+    targetDir: string
+  ) {
     const foundPath = await this.findFile(searchPath, filename);
 
     if (!foundPath) {
@@ -167,5 +173,34 @@ export default class FsService {
     const targetPath = path.join(targetDir, filename);
     await copyFile(foundPath, targetPath);
     console.log(`✅ Copied: ${foundPath} → ${targetPath}`);
+  }
+
+  static getExtension(path: string){
+    const extension = extname(path);
+    if (!extension) {
+      throw new Error(`Empty extension for path ${path}`);
+    }
+    return extension;
+  }
+
+  static getTemporaryPath(path: string){
+    const id = randomUUID();
+    const extension = this.getExtension(path);
+  
+    const tempFilePath = join(`temporary/${id}${extension}`);
+    return tempFilePath;
+  }
+
+  static async copyToTemporary({ path }: { path: string }) {
+  
+    const tempFilePath = this.getTemporaryPath(path)
+
+    await this.tryCopyFile(path, tempFilePath);
+
+    return tempFilePath;
+  }
+
+  static async unlink(path: string) {
+    await unlink(path);
   }
 }
