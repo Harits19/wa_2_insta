@@ -338,15 +338,14 @@ export class InstagramService {
     onSuccess: () => void;
   }) {
     console.log("before process items length", items.length);
-    const allFiles = await this.processAllImageVideo({ aspectRatio, items });
 
     const batchFiles = ArrayService.batch({
-      files: allFiles,
+      files: items,
       batchLength: instagramConstant.max.post,
     });
 
     console.log(
-      `total file ${allFiles.length} total post ${batchFiles.length} caption ${caption}`
+      `total file ${items.length} total post ${batchFiles.length} caption ${caption}`
     );
 
     const isMultipleUpload = batchFiles.length > 1;
@@ -386,14 +385,18 @@ export class InstagramService {
 
       try {
         await AppStateService.updateFilter({ caption, startIndex: index });
+        const allFiles = await this.processAllImageVideo({
+          aspectRatio,
+          items: files,
+        });
 
         await this.publishAlbum({
           caption: finalCaption,
-          items: files.map((item) => ({
+          items: allFiles.map((item) => ({
             coverImage: item.video?.thumbnail!,
             file: item.image!,
             video: item.video?.buffer!,
-            transcodeDelay: 12000,
+            transcodeDelay: item.video?.buffer ? 12000 : undefined,
           })),
         });
         await AppStateService.updateFilter({ caption, startIndex: index + 1 });
@@ -413,6 +416,7 @@ export class InstagramService {
 
       await AppStateService.updateDaily();
       await AppStateService.resetFilter();
+      await PromiseService.sleep(3 * SECOND * MINUTE)
     }
   }
 
