@@ -20,7 +20,7 @@ export default class AppStateService {
   }
 
   static async init() {
-    console.log('start read app state from this path ', this.path)
+    console.log("start read app state from this path ", this.path);
     this._state = await FsService.readJsonFile<AppState>(this.path);
   }
 
@@ -119,5 +119,22 @@ export default class AppStateService {
     }
     this._state.video = undefined;
     await this.updateState();
+  }
+
+  static async setCache(key: string, value: any) {
+    if (!this._state.cache) {
+      this._state.cache = {};
+    }
+    this._state.cache[key] = value;
+
+    await this.updateState();
+  }
+
+  static getCache(key: string) {
+    const cache = this._state.cache;
+
+    if (!cache) return undefined;
+
+    return cache[key];
   }
 }

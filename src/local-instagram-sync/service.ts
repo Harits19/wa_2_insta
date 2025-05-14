@@ -177,7 +177,7 @@ export default class LocalInstagramSyncService
         dailyFolder
       );
 
-      await AppStateService.updateFilename(imageBuffers.at(0)?.filename);
+      await AppStateService.updateFilename(imageBuffers.at(0)?.path);
 
       await this.instagram.publishMultiplePost({
         aspectRatio: "1x1",
@@ -199,49 +199,62 @@ export default class LocalInstagramSyncService
   public async uploadWithPath(folderPath: string) {
     const files = await FsService.getAllFiles(folderPath);
 
-    const metadatas = await FileService.getMetadatas(files);
+    let postItems: { path: string }[];
 
-    /**
-     * image 222 harusnya pada waktu yang sama dengan image 274
-     * image 1/ 222 2024-12-13T06:57:26.000Z
-     * image 2/274 2024-12-13T06:57:48.000Z
-     *
-     * 307 308
-     */
+    const cache = AppStateService.getCache(folderPath);
 
-    const sortedFiles = metadatas
-      .map((item) => {
-        const value = item.metadata.DateTimeOriginal;
+    /// 185 + 769
 
-        if (!value)
+    if (cache) {
+      console.log("have cache,");
+      postItems = cache;
+    } else {
+      const metadatas = await FileService.getMetadatas(files);
+
+      console.log("dont have cache,");
+
+      const sortedFiles = metadatas
+        .map((item) => {
+          const value = item.metadata.DateTimeOriginal;
+
+          if (!value)
+            return {
+              ...item,
+              convertedDate: undefined,
+            };
+
+          let date =
+            typeof value === "string" ? new Date(value) : value.toDate();
+
+          if (
+            item.path.startsWith(
+              "/Users/abdullah.harits/Documents/pribadi/Akad/2"
+            )
+          ) {
+            date = MyDate.adjustDate(date, {
+              hour: 6,
+              second: -25,
+              minute: 30,
+            });
+          }
+
           return {
             ...item,
-            convertedDate: undefined,
+            convertedDate: date,
           };
-
-        const date =
-          typeof value === "string" ? new Date(value) : value.toDate();
-
-        if (
-          item.path.startsWith(
-            "/Users/abdullah.harits/Documents/pribadi/Akad/2"
-          )
-        ) {
-          date.setMinutes(date.getMinutes() + 30);
-          date.setHours(date.getHours() + 6);
-          date.setSeconds(date.getSeconds() - 22 - 3);
-        }
-
-        return {
-          ...item,
-          convertedDate: date,
-        };
-      })
-      .filter((value) => value.convertedDate !== undefined)
-      .sort((a, b) => a.convertedDate.getTime() - b.convertedDate.getTime());
-
-    for (const item of sortedFiles) {
-      console.log(`item ${item.path} time ${item.convertedDate.toISOString()}`);
+        })
+        .filter((value) => value.convertedDate !== undefined)
+        .sort((a, b) => a.convertedDate.getTime() - b.convertedDate.getTime())
+        .map((item) => ({ path: item.path }));
+      postItems = sortedFiles;
+      await AppStateService.setCache(folderPath, sortedFiles);
     }
+
+    await this.instagram.publishMultiplePost({
+      aspectRatio: "1x1",
+      caption: "Akad",
+      items: postItems,
+      onSuccess: async () => {},
+    });
   }
 }

@@ -425,7 +425,9 @@ export class InstagramService {
   }): Promise<VideoImageResizeResult[]> {
     const result: VideoImageResizeResult[] = [];
     for (const item of items) {
-      if (item.type === "video") {
+      const type = await FileService.getFileType(item.path);
+
+      if (type === "video") {
         const videoResult = await this.resizeVideoWithPath({
           aspectRatio,
           path: item.path,

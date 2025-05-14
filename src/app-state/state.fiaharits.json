@@ -1,13 +1,2879 @@
 {
   "uploadFolder": "/Users/abdullah.harits/Documents/pribadi/Akad",
   "post": {
-    "lastUpdate": "13 May 2025",
-    "totalPost": 42,
+    "lastUpdate": "14 May 2025",
+    "totalPost": 0,
     "filename": "IMG_20250125_141555_525.jpg"
   },
   "errors": [],
   "filter": {
-    "caption": "31 Dec 2024",
-    "startIndex": 0
+    "caption": "Akad",
+    "startIndex": 1
+  },
+  "cache": {
+    "/Users/abdullah.harits/Documents/pribadi/Akad": [
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0001.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0002.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0003.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0004.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0005.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0006.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0007.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0008.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0009.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0010.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0011.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0012.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0013.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0014.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0015.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0016.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0017.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0018.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0019.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0020.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0021.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0022.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0023.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0024.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0025.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0026.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0027.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0028.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0029.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0030.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0031.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0032.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0033.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0034.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0035.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0036.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0037.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0038.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0039.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0040.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0041.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0042.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0043.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0044.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0045.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0046.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0047.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0048.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0049.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0050.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0051.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0052.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0053.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0054.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0055.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0056.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0057.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0058.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0059.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0060.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0061.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0062.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0063.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0064.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0065.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0066.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0067.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0068.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0069.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0070.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0071.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0072.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0073.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0074.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0075.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0076.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0077.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0078.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0079.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0080.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0081.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0082.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0083.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0084.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0085.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0086.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0087.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0088.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0089.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0090.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0091.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0092.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0093.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0094.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0095.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0096.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0097.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0098.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0099.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0100.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0101.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0102.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0103.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0104.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0105.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0106.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0107.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0108.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0109.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0110.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0111.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0112.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0113.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0114.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0115.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0116.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0117.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0118.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0119.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0120.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0121.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0122.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0123.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0124.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0125.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0126.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0127.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0128.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0129.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0130.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0131.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0132.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0133.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0134.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0135.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0136.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0137.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0138.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0139.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0140.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0141.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0142.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0143.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0144.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0145.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0146.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0147.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0148.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0149.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0150.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0151.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0152.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0153.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0154.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0155.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0156.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0157.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0158.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0159.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0160.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0161.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0162.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0163.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0164.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0165.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0166.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0167.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0168.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0169.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0170.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0171.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0172.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0173.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0174.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0175.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0176.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0177.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0178.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0179.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0180.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0181.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0182.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0183.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0184.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0185.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0186.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0187.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0188.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0189.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0190.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0191.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0192.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0193.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0194.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0195.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0196.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0197.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0198.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0199.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0200.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0201.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0202.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0203.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0204.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0205.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0206.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0207.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0208.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0209.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0210.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0211.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0212.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0257.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0258.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0259.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0260.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0213.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0214.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0268.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0215.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0269.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0270.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0271.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0216.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0217.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0218.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0219.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0220.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0221.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0222.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0223.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0224.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0225.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0226.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0227.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0228.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0274.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0229.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0275.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0230.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0231.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0232.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0233.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0234.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0235.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0276.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0236.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0237.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0238.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0239.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0278.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0240.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0279.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0241.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0242.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0280.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0243.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0281.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0244.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0245.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0246.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0247.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0248.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0249.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0285.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0286.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0250.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0251.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0252.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0253.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0288.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0254.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0255.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0256.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0291.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0292.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0293.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0257.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0294.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0295.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0258.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0296.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0297.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0298.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0259.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0299.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0300.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0260.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0261.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0262.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0263.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0301.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0302.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0264.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0265.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0266.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0267.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0268.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0269.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0270.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0271.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0272.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0273.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0274.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0275.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0276.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0303.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0277.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0304.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0305.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0278.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0306.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0279.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0280.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0281.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0282.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0283.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0284.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0285.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0286.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0287.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0307.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0308.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0309.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0288.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0289.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0290.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0291.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0292.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0310.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0293.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0294.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0295.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0311.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0312.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0313.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0314.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0315.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0296.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0297.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0316.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0317.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0318.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0298.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0299.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0300.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0301.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0322.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0302.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0303.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0325.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0326.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0304.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0327.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0330.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0305.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0331.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0332.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0306.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0307.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0333.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0334.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0335.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0308.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0309.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0310.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0311.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0312.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0313.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0314.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0336.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0315.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0316.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0317.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0318.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0337.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0338.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0339.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0319.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0340.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0341.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0342.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0343.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0320.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0321.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0344.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0322.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0323.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0324.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0325.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0326.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0327.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0328.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0329.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0330.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0331.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0332.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0333.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0334.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0345.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0335.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0346.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0336.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0347.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0348.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0337.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0338.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0339.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0340.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0349.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0341.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0350.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0342.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0343.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0344.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0345.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0351.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0352.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0353.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0346.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0347.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0354.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0355.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0356.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0348.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0349.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0357.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0358.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0350.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0351.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0352.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0359.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0353.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0360.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0354.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0361.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0355.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0363.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0364.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0356.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0357.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0358.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0359.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0360.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0361.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0362.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0363.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0364.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0365.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0366.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0367.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0368.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0369.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0370.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0371.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0372.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0373.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0374.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0375.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0376.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0365.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0366.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0367.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0368.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0369.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0370.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0371.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0372.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0373.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0376.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0377.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0378.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0377.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0379.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0378.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0379.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0381.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0380.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0384.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0385.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0386.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0387.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0388.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0389.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0390.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0391.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0392.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0393.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0394.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0395.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0396.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0397.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0398.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0399.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0400.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0401.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0381.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0382.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0383.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0384.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0385.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0386.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0387.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0388.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0389.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0390.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0391.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0392.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0393.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0394.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0395.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0396.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0397.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0402.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0398.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0403.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0399.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0400.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0401.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0402.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0404.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0405.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0403.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0404.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0405.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0406.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0407.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0408.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0406.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0409.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0410.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0411.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0407.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0408.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0409.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0412.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0410.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0413.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0414.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0411.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0415.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0416.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0417.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0418.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0419.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0420.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0412.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0421.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0422.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0423.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0424.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0425.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0426.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0427.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0428.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0429.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0430.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0431.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0432.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0433.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0434.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0435.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0413.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0436.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0437.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0438.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0439.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0440.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0414.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0415.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0416.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0417.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0418.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0419.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0441.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0442.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0443.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0444.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0445.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0446.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0447.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0448.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0420.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0421.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0422.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0423.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0424.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0425.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0426.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0427.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0449.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0428.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0450.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0429.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0451.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0452.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0453.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0430.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0454.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0431.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0432.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0433.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0434.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0435.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0436.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0455.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0456.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0457.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0458.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0459.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0460.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0461.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0462.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0463.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0464.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0465.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0466.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0467.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0468.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0469.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0470.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0471.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0472.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0473.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0474.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0475.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0476.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0477.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0478.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0479.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0480.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0481.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0482.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0483.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0484.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0485.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0486.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0487.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0488.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0437.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0438.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0439.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0442.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0443.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0444.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0446.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0447.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0448.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0449.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0450.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0451.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0452.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0453.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0454.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0455.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0456.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0457.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0459.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0461.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0462.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0463.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0489.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0490.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0464.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0465.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0466.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0467.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0491.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0492.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0493.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0494.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0495.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0496.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0497.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0498.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0499.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0500.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0501.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0502.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0503.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0504.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0505.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0506.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0507.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0508.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0509.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0510.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0511.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0512.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0513.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0514.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0515.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0516.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0517.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0518.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0519.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0520.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0521.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0522.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0523.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0524.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0525.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0526.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0527.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0528.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0529.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0530.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0531.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0532.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0533.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0534.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0535.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0536.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0537.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0538.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0539.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0540.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0541.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0542.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0543.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0544.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0545.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0546.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0547.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0548.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0549.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0550.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0551.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0552.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0553.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0554.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0555.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0556.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0557.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0558.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0559.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0560.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0561.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0562.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0563.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0564.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0565.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0566.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0567.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0568.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0569.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0570.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0571.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0572.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0573.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0574.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0575.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0576.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0577.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0578.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0579.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0580.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0581.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0582.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0583.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0584.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0585.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0586.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0587.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0588.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0589.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0590.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0591.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0592.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0593.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0594.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0595.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0596.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0597.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0598.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0599.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0600.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0601.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0602.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0603.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0604.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0605.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0606.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0607.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0608.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0609.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0610.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0611.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0612.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0613.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0614.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0615.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0616.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0617.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0618.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0619.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0620.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0621.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0622.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0623.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0624.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0625.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0626.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0627.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0628.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0629.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0630.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0631.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0632.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0633.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0634.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0635.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0636.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0637.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0638.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0639.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0640.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0641.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0642.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0643.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0644.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0645.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0646.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0647.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0648.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0649.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0650.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0651.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0652.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0653.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0654.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0655.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0656.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0657.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0658.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0659.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0660.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0661.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0662.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0663.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0664.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0665.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0666.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0667.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0668.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0669.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0670.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0671.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0672.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0673.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0674.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0675.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0676.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0677.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0678.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0679.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0680.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0681.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0682.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0683.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0684.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0685.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0686.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0687.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0688.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0689.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0690.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0691.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0692.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0693.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0694.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0695.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0696.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0697.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0698.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0699.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0700.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0701.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0702.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0703.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0704.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0705.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0706.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0707.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0708.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0709.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0710.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0711.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0712.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0713.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0714.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0715.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0716.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0717.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0718.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0719.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0720.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0721.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0722.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0723.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0724.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0725.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0726.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0727.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0728.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0729.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0730.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0731.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0732.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0733.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0734.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0735.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0736.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0737.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0738.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0739.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0740.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0741.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0742.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0743.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0744.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0745.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0746.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0747.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0748.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0749.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0750.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0751.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0752.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0753.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0754.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0755.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0756.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0757.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0758.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0759.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0760.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0761.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0762.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0763.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0764.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0765.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0766.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0767.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0768.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/1/IMG_0769.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0470.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0471.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0472.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0473.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0474.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0476.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0477.JPG"
+      },
+      {
+        "path": "/Users/abdullah.harits/Documents/pribadi/Akad/2/IMG_0478.JPG"
+      }
+    ]
   }
 }

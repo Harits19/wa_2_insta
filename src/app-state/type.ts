@@ -14,7 +14,10 @@ export interface AppState {
   video?: {
     path: string;
     resizedPath: string | string[];
-  }[]
+  }[];
+  cache?: {
+    [x: string]: any;
+  };
 }
 
 export interface AppStateError {

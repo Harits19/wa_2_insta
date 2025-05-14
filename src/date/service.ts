@@ -2,9 +2,7 @@ import { SECOND } from "../constants/size";
 import { RawDate } from "./type";
 
 export default class MyDate extends Date {
-
-  static fromTimestamp(value: number){
-
+  static fromTimestamp(value: number) {
     const instance = new MyDate(value * SECOND);
 
     return instance;
@@ -60,5 +58,16 @@ export default class MyDate extends Date {
     const monthName = monthNames[Number(month) - 1];
 
     return `${day} ${monthName} ${year}`;
+  }
+
+  static adjustDate(
+    date: Date,
+    { hour, minute, second }: { minute: number; hour: number; second: number }
+  ) {
+    date.setMinutes(date.getMinutes() + minute);
+    date.setHours(date.getHours() + hour);
+    date.setSeconds(date.getSeconds() - second);
+
+    return date;
   }
 }
