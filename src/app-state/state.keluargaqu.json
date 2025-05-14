@@ -204,6 +204,16 @@
       },
       "startIndex": 0,
       "path": "/Users/abdullah.harits/Downloads/Backup Google Photo/result/Takeout/Google Foto/Photos from 2025/Keluarga"
+    },
+    {
+      "date": "25 Jan 2025",
+      "error": {
+        "message": "POST /rupload_igphoto/1747188965035_0_2683978153 - 400 Bad Request; User restricted from uploading, please try later.",
+        "name": "Error",
+        "stack": "Error: POST /rupload_igphoto/1747188965035_0_2683978153 - 400 Bad Request; User restricted from uploading, please try later.\n    at InstagramService.<anonymous> (/Users/abdullah.harits/Documents/pribadi/project/dev/wa_2_insta/src/instagram/service.ts:406:17)\n    at Generator.throw (<anonymous>)\n    at rejected (/Users/abdullah.harits/Documents/pribadi/project/dev/wa_2_insta/src/instagram/service.ts:39:65)"
+      },
+      "startIndex": 0,
+      "path": "/Users/abdullah.harits/Downloads/Backup Google Photo/result/Takeout/Google Foto/Photos from 2025/Keluarga"
     }
   ],
   "filter": {
