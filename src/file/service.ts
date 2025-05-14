@@ -2,6 +2,7 @@ import * as fs from "fs/promises";
 import path from "path";
 import { instagramConstant } from "../instagram/constant";
 import { ArrayService } from "../array/service";
+import { exiftool, Tags } from "exiftool-vendored";
 
 export default class FileService {
   static async getAllImageFiles(folderPath: string) {
@@ -104,5 +105,41 @@ export default class FileService {
     }, 0);
 
     return totalFileSize;
+  }
+
+  static async getMetadata(path: string): Promise<Tags> {
+    try {
+      const result = await exiftool.read(path);
+      return result;
+    } catch (error) {
+      throw error;
+    } finally {
+      exiftool.end();
+    }
+  }
+
+  static async getMetadatas(paths: string[]): Promise<
+    {
+      metadata: Tags;
+      path: string;
+    }[]
+  > {
+    try {
+      const results: {
+        metadata: Tags;
+        path: string;
+      }[] = [];
+
+      for (const path of paths) {
+        const metadata = await exiftool.read(path);
+        results.push({ metadata, path });
+      }
+
+      return results;
+    } catch (error) {
+      throw error;
+    } finally {
+      exiftool.end();
+    }
   }
 }

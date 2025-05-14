@@ -20,6 +20,7 @@ export default class AppStateService {
   }
 
   static async init() {
+    console.log('start read app state from this path ', this.path)
     this._state = await FsService.readJsonFile<AppState>(this.path);
   }
 

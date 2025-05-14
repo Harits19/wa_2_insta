@@ -175,7 +175,7 @@ export default class FsService {
     console.log(`✅ Copied: ${foundPath} → ${targetPath}`);
   }
 
-  static getExtension(path: string){
+  static getExtension(path: string) {
     const extension = extname(path);
     if (!extension) {
       throw new Error(`Empty extension for path ${path}`);
@@ -183,17 +183,16 @@ export default class FsService {
     return extension;
   }
 
-  static getTemporaryPath(path: string){
+  static getTemporaryPath(path: string) {
     const id = randomUUID();
     const extension = this.getExtension(path);
-  
+
     const tempFilePath = join(`temporary/${id}${extension}`);
     return tempFilePath;
   }
 
   static async copyToTemporary({ path }: { path: string }) {
-  
-    const tempFilePath = this.getTemporaryPath(path)
+    const tempFilePath = this.getTemporaryPath(path);
 
     await this.tryCopyFile(path, tempFilePath);
 
@@ -202,5 +201,24 @@ export default class FsService {
 
   static async unlink(path: string) {
     await unlink(path);
+  }
+
+  static async getAllFiles(folderPath: string): Promise<string[]> {
+    const files = await readdir(folderPath);
+
+    const checkItems = files.map(async (itemPath) => {
+      const currentPath = join(folderPath, itemPath);
+      const stats = await stat(currentPath);
+
+      if (!stats.isFile()) {
+        return await this.getAllFiles(currentPath);
+      }
+
+      return currentPath;
+    });
+
+    return (await Promise.all(checkItems))
+      .flat()
+      .filter((item) => !item.endsWith(".DS_Store"));
   }
 }

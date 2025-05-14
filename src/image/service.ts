@@ -9,4 +9,5 @@ export default class ImageService {
       height: metadata.height,
     };
   }
+
 }
