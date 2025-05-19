@@ -437,26 +437,27 @@ export class InstagramService {
 
         if (Array.isArray(videoResult)) {
           return videoResult.map((item) => ({
-              video: item,
-            }));
+            video: item,
+          }));
         }
 
         return {
           video: videoResult,
         };
       } else {
-        const buffer = await readFile(item.path);
-
         return {
-          image: await this.resizeImage({ aspectRatio, buffer }),
-        }
+          image: await this.resizeImageWithPath({
+            aspectRatio,
+            path: item.path,
+          }),
+        };
       }
     });
 
-    const result = await PromiseService.run(({
+    const result = await PromiseService.run({
       promises: promises,
       parallel: true,
-    }))
+    });
 
     return result.flat();
   }
@@ -505,6 +506,18 @@ export class InstagramService {
     });
 
     return await resizeService.resizeImage();
+  }
+
+  async resizeImageWithPath({
+    aspectRatio,
+    path,
+  }: {
+    aspectRatio: AspectRatio;
+    path: string;
+  }) {
+    const service = await ImageService.createWithPath({ path: path });
+
+    return service.instagramReady({ aspectRatio });
   }
 
   async getVideoThumbnailBuffer(path: string) {

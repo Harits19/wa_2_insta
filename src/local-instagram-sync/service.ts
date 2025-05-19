@@ -248,6 +248,7 @@ export default class LocalInstagramSyncService
       await AppStateService.setCache(folderPath, sortedFiles);
     }
 
+
     await this.instagram.publishMultiplePost({
       aspectRatio: "1x1",
       caption: AppStateService.state.filter?.caption ?? "",

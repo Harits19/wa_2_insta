@@ -1,5 +1,7 @@
 import sharp from "sharp";
 import AnalyzeSizeService from "../analyze-size/service";
+import { AspectRatio } from "./types";
+import { Base64 } from "./base-64/type";
 
 export default class ResizeService extends AnalyzeSizeService {
   async runResize({ input }: { input: string | Buffer }) {
@@ -23,3 +25,4 @@ export default class ResizeService extends AnalyzeSizeService {
     }
   }
 }
+

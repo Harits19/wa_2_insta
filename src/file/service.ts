@@ -72,7 +72,7 @@ export default class FileService {
     return batchFiles;
   }
 
-  static async getFileType(filePath: string) {
+  static getFileType(filePath: string) {
     const ext = path.extname(filePath).toLowerCase();
 
     const imageExts = [".jpg", ".jpeg", ".png", ".webp", ".heic", ".gif"];
