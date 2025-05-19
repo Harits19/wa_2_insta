@@ -45,7 +45,7 @@ export default class ImageService {
 
   async rotate() {
     if (this.metadata.orientation && this.metadata.orientation !== 1) {
-      await this.rotate();
+      await this.image.rotate();
     }
   }
 
@@ -53,6 +53,6 @@ export default class ImageService {
     await this.resizeWithAspectRatio({ aspectRatio });
     await this.rotate();
 
-    return this.image.jpeg({ quality: 100 }).toBuffer();
+    return this.image.jpeg({ quality: 99 }).toBuffer();
   }
 }
