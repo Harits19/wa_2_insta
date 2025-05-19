@@ -1,332 +1,111 @@
 {
   "uploadFolder": "/Users/abdullah.harits/Downloads/Backup Google Photo/result/Takeout/Google Foto/Photos from 2025/Keluarga",
   "post": {
-    "lastUpdate": "13 May 2025",
-    "totalPost": 42,
-    "filename": "IMG_20250125_141555_525.jpg"
+    "lastUpdate": "15 May 2025",
+    "totalPost": 15,
+    "filename": "/Users/abdullah.harits/Downloads/Backup Google Photo/result/Takeout/Google Foto/Photos from 2025/Keluarga/1 Mar 2025/IMG_20250301_205753_371.jpg"
   },
   "year": "2025",
   "errors": [
     {
-      "date": "2 Jan 2023",
+      "date": "25 Jan 2025",
       "error": {
-        "message": "POST /rupload_igphoto/1746503173654_0_3379041320 - 400 Bad Request; challenge_required",
+        "message": "ffmpeg exited with code 1: temporary/db83b131-7851-4618-b574-2f470d0b5d1a-1.mp4: No such file or directory\n",
         "name": "Error",
-        "stack": "Error: POST /rupload_igphoto/1746503173654_0_3379041320 - 400 Bad Request; challenge_required\n    at InstagramService.<anonymous> (/Users/abdullah.harits/Documents/pribadi/project/dev/wa_2_insta/src/instagram/service.ts:405:17)\n    at Generator.throw (<anonymous>)\n    at rejected (/Users/abdullah.harits/Documents/pribadi/project/dev/wa_2_insta/src/instagram/service.ts:39:65)"
+        "stack": "Error: ffmpeg exited with code 1: temporary/db83b131-7851-4618-b574-2f470d0b5d1a-1.mp4: No such file or directory\n\n    at ChildProcess.<anonymous> (/Users/abdullah.harits/Documents/pribadi/project/dev/wa_2_insta/node_modules/fluent-ffmpeg/lib/processor.js:180:22)\n    at ChildProcess.emit (node:events:518:28)\n    at ChildProcess.emit (node:domain:489:12)\n    at Process.ChildProcess._handle.onexit (node:internal/child_process:293:12)"
+      },
+      "path": "/Users/abdullah.harits/Downloads/Backup Google Photo/result/Takeout/Google Foto/Photos from 2025/Keluarga"
+    },
+    {
+      "date": "25 Jan 2025",
+      "error": {
+        "message": "ffmpeg exited with code 1: temporary/db83b131-7851-4618-b574-2f470d0b5d1a-1.mp4: No such file or directory\n",
+        "name": "Error",
+        "stack": "Error: ffmpeg exited with code 1: temporary/db83b131-7851-4618-b574-2f470d0b5d1a-1.mp4: No such file or directory\n\n    at ChildProcess.<anonymous> (/Users/abdullah.harits/Documents/pribadi/project/dev/wa_2_insta/node_modules/fluent-ffmpeg/lib/processor.js:180:22)\n    at ChildProcess.emit (node:events:518:28)\n    at ChildProcess.emit (node:domain:489:12)\n    at Process.ChildProcess._handle.onexit (node:internal/child_process:293:12)"
+      },
+      "path": "/Users/abdullah.harits/Downloads/Backup Google Photo/result/Takeout/Google Foto/Photos from 2025/Keluarga"
+    },
+    {
+      "date": "25 Jan 2025",
+      "error": {
+        "message": "GET /rupload_igvideo/1747289403279_0_7510603352 - 403 Forbidden; login_required",
+        "name": "Error",
+        "stack": "Error: GET /rupload_igvideo/1747289403279_0_7510603352 - 403 Forbidden; login_required\n    at InstagramService.<anonymous> (/Users/abdullah.harits/Documents/pribadi/project/dev/wa_2_insta/src/instagram/service.ts:409:17)\n    at Generator.throw (<anonymous>)\n    at rejected (/Users/abdullah.harits/Documents/pribadi/project/dev/wa_2_insta/src/instagram/service.ts:39:65)\n    at runNextTicks (node:internal/process/task_queues:65:5)\n    at processImmediate (node:internal/timers:459:9)"
+      },
+      "startIndex": 2,
+      "path": "/Users/abdullah.harits/Downloads/Backup Google Photo/result/Takeout/Google Foto/Photos from 2025/Keluarga"
+    },
+    {
+      "date": "25 Jan 2025",
+      "error": {
+        "message": "GET /rupload_igvideo/1747290105838_0_1619565973 - 403 Forbidden; login_required",
+        "name": "Error",
+        "stack": "Error: GET /rupload_igvideo/1747290105838_0_1619565973 - 403 Forbidden; login_required\n    at InstagramService.<anonymous> (/Users/abdullah.harits/Documents/pribadi/project/dev/wa_2_insta/src/instagram/service.ts:409:17)\n    at Generator.throw (<anonymous>)\n    at rejected (/Users/abdullah.harits/Documents/pribadi/project/dev/wa_2_insta/src/instagram/service.ts:39:65)\n    at runNextTicks (node:internal/process/task_queues:65:5)\n    at processImmediate (node:internal/timers:459:9)"
+      },
+      "startIndex": 2,
+      "path": "/Users/abdullah.harits/Downloads/Backup Google Photo/result/Takeout/Google Foto/Photos from 2025/Keluarga"
+    },
+    {
+      "date": "25 Jan 2025",
+      "error": {
+        "message": "GET /rupload_igvideo/1747290971141_0_5150632394 - 403 Forbidden; login_required",
+        "name": "Error",
+        "stack": "Error: GET /rupload_igvideo/1747290971141_0_5150632394 - 403 Forbidden; login_required\n    at InstagramService.<anonymous> (/Users/abdullah.harits/Documents/pribadi/project/dev/wa_2_insta/src/instagram/service.ts:409:17)\n    at Generator.throw (<anonymous>)\n    at rejected (/Users/abdullah.harits/Documents/pribadi/project/dev/wa_2_insta/src/instagram/service.ts:39:65)\n    at runNextTicks (node:internal/process/task_queues:65:5)\n    at processImmediate (node:internal/timers:459:9)"
       },
       "startIndex": 3,
-      "path": "/Users/abdullah.harits/Downloads/Backup Google Photo/result/Takeout/Google Foto/Photos from 2023/Keluarga"
-    },
-    {
-      "date": "7 Apr 2023",
-      "error": {
-        "message": "GET /rupload_igvideo/1746514006956_0_9699359215 - 400 Bad Request; User restricted from uploading, please try later.",
-        "name": "Error",
-        "stack": "Error: GET /rupload_igvideo/1746514006956_0_9699359215 - 400 Bad Request; User restricted from uploading, please try later.\n    at InstagramService.<anonymous> (/Users/abdullah.harits/Documents/pribadi/project/dev/wa_2_insta/src/instagram/service.ts:405:17)\n    at Generator.throw (<anonymous>)\n    at rejected (/Users/abdullah.harits/Documents/pribadi/project/dev/wa_2_insta/src/instagram/service.ts:39:65)\n    at runNextTicks (node:internal/process/task_queues:65:5)\n    at processImmediate (node:internal/timers:459:9)"
-      },
-      "startIndex": 0,
-      "path": "/Users/abdullah.harits/Downloads/Backup Google Photo/result/Takeout/Google Foto/Photos from 2023/Keluarga"
-    },
-    {
-      "date": "7 Apr 2023",
-      "error": {
-        "message": "GET /rupload_igvideo/1746583549817_0_9467872557 - 400 Bad Request; User restricted from uploading, please try later.",
-        "name": "Error",
-        "stack": "Error: GET /rupload_igvideo/1746583549817_0_9467872557 - 400 Bad Request; User restricted from uploading, please try later.\n    at InstagramService.<anonymous> (/Users/abdullah.harits/Documents/pribadi/project/dev/wa_2_insta/src/instagram/service.ts:405:17)\n    at Generator.throw (<anonymous>)\n    at rejected (/Users/abdullah.harits/Documents/pribadi/project/dev/wa_2_insta/src/instagram/service.ts:39:65)\n    at runNextTicks (node:internal/process/task_queues:65:5)\n    at processImmediate (node:internal/timers:459:9)"
-      },
-      "startIndex": 0,
-      "path": "/Users/abdullah.harits/Downloads/Backup Google Photo/result/Takeout/Google Foto/Photos from 2023/Keluarga"
-    },
-    {
-      "date": "7 Apr 2023",
-      "error": {
-        "message": "GET /rupload_igvideo/1746597709133_0_1308839725 - 400 Bad Request; User restricted from uploading, please try later.",
-        "name": "Error",
-        "stack": "Error: GET /rupload_igvideo/1746597709133_0_1308839725 - 400 Bad Request; User restricted from uploading, please try later.\n    at InstagramService.<anonymous> (/Users/abdullah.harits/Documents/pribadi/project/dev/wa_2_insta/src/instagram/service.ts:405:17)\n    at Generator.throw (<anonymous>)\n    at rejected (/Users/abdullah.harits/Documents/pribadi/project/dev/wa_2_insta/src/instagram/service.ts:39:65)\n    at runNextTicks (node:internal/process/task_queues:65:5)\n    at processImmediate (node:internal/timers:459:9)"
-      },
-      "startIndex": 0,
-      "path": "/Users/abdullah.harits/Downloads/Backup Google Photo/result/Takeout/Google Foto/Photos from 2023/Keluarga"
-    },
-    {
-      "date": "18 Aug 2023",
-      "error": {
-        "message": "POST /rupload_igphoto/1746684881894_0_5893010546 - 400 Bad Request; challenge_required",
-        "name": "Error",
-        "stack": "Error: POST /rupload_igphoto/1746684881894_0_5893010546 - 400 Bad Request; challenge_required\n    at InstagramService.<anonymous> (/Users/abdullah.harits/Documents/pribadi/project/dev/wa_2_insta/src/instagram/service.ts:405:17)\n    at Generator.throw (<anonymous>)\n    at rejected (/Users/abdullah.harits/Documents/pribadi/project/dev/wa_2_insta/src/instagram/service.ts:39:65)"
-      },
-      "startIndex": 1,
-      "path": "/Users/abdullah.harits/Downloads/Backup Google Photo/result/Takeout/Google Foto/Photos from 2023/Keluarga"
-    },
-    {
-      "date": "19 Aug 2023",
-      "error": {
-        "message": "GET /rupload_igvideo/1746690154118_0_5445700859 - 400 Bad Request; challenge_required",
-        "name": "Error",
-        "stack": "Error: GET /rupload_igvideo/1746690154118_0_5445700859 - 400 Bad Request; challenge_required\n    at InstagramService.<anonymous> (/Users/abdullah.harits/Documents/pribadi/project/dev/wa_2_insta/src/instagram/service.ts:405:17)\n    at Generator.throw (<anonymous>)\n    at rejected (/Users/abdullah.harits/Documents/pribadi/project/dev/wa_2_insta/src/instagram/service.ts:39:65)\n    at runNextTicks (node:internal/process/task_queues:65:5)\n    at processImmediate (node:internal/timers:459:9)"
-      },
-      "startIndex": 0,
-      "path": "/Users/abdullah.harits/Downloads/Backup Google Photo/result/Takeout/Google Foto/Photos from 2023/Keluarga"
-    },
-    {
-      "date": "19 Aug 2023",
-      "error": {
-        "message": "GET /rupload_igvideo/1746694081126_0_2283287777 - 400 Bad Request; challenge_required",
-        "name": "Error",
-        "stack": "Error: GET /rupload_igvideo/1746694081126_0_2283287777 - 400 Bad Request; challenge_required\n    at InstagramService.<anonymous> (/Users/abdullah.harits/Documents/pribadi/project/dev/wa_2_insta/src/instagram/service.ts:405:17)\n    at Generator.throw (<anonymous>)\n    at rejected (/Users/abdullah.harits/Documents/pribadi/project/dev/wa_2_insta/src/instagram/service.ts:39:65)\n    at runNextTicks (node:internal/process/task_queues:65:5)\n    at processImmediate (node:internal/timers:459:9)"
-      },
-      "startIndex": 8,
-      "path": "/Users/abdullah.harits/Downloads/Backup Google Photo/result/Takeout/Google Foto/Photos from 2023/Keluarga"
-    },
-    {
-      "date": "31 Dec 2023",
-      "error": {
-        "message": "POST /rupload_igphoto/1746698538942_0_4636098907 - 400 Bad Request; User restricted from uploading, please try later.",
-        "name": "Error",
-        "stack": "Error: POST /rupload_igphoto/1746698538942_0_4636098907 - 400 Bad Request; User restricted from uploading, please try later.\n    at InstagramService.<anonymous> (/Users/abdullah.harits/Documents/pribadi/project/dev/wa_2_insta/src/instagram/service.ts:405:17)\n    at Generator.throw (<anonymous>)\n    at rejected (/Users/abdullah.harits/Documents/pribadi/project/dev/wa_2_insta/src/instagram/service.ts:39:65)"
-      },
-      "startIndex": 1,
-      "path": "/Users/abdullah.harits/Downloads/Backup Google Photo/result/Takeout/Google Foto/Photos from 2023/Keluarga"
-    },
-    {
-      "date": "31 Dec 2023",
-      "error": {
-        "message": "POST /rupload_igphoto/1746758256058_0_4111920234 - 400 Bad Request; User restricted from uploading, please try later.",
-        "name": "Error",
-        "stack": "Error: POST /rupload_igphoto/1746758256058_0_4111920234 - 400 Bad Request; User restricted from uploading, please try later.\n    at InstagramService.<anonymous> (/Users/abdullah.harits/Documents/pribadi/project/dev/wa_2_insta/src/instagram/service.ts:405:17)\n    at Generator.throw (<anonymous>)\n    at rejected (/Users/abdullah.harits/Documents/pribadi/project/dev/wa_2_insta/src/instagram/service.ts:39:65)"
-      },
-      "startIndex": 1,
-      "path": "/Users/abdullah.harits/Downloads/Backup Google Photo/result/Takeout/Google Foto/Photos from 2023/Keluarga"
-    },
-    {
-      "date": "31 Dec 2023",
-      "error": {
-        "message": "POST /rupload_igphoto/1746779059880_0_3446895041 - 400 Bad Request; User restricted from uploading, please try later.",
-        "name": "Error",
-        "stack": "Error: POST /rupload_igphoto/1746779059880_0_3446895041 - 400 Bad Request; User restricted from uploading, please try later.\n    at InstagramService.<anonymous> (/Users/abdullah.harits/Documents/pribadi/project/dev/wa_2_insta/src/instagram/service.ts:405:17)\n    at Generator.throw (<anonymous>)\n    at rejected (/Users/abdullah.harits/Documents/pribadi/project/dev/wa_2_insta/src/instagram/service.ts:39:65)"
-      },
-      "startIndex": 1,
-      "path": "/Users/abdullah.harits/Downloads/Backup Google Photo/result/Takeout/Google Foto/Photos from 2023/Keluarga"
-    },
-    {
-      "date": "6 Jan 2025",
-      "error": {
-        "message": "GET /rupload_igvideo/1747108572728_0_4906454528 - 403 Forbidden; login_required",
-        "name": "Error",
-        "stack": "Error: GET /rupload_igvideo/1747108572728_0_4906454528 - 403 Forbidden; login_required\n    at InstagramService.<anonymous> (/Users/abdullah.harits/Documents/pribadi/project/dev/wa_2_insta/src/instagram/service.ts:405:17)\n    at Generator.throw (<anonymous>)\n    at rejected (/Users/abdullah.harits/Documents/pribadi/project/dev/wa_2_insta/src/instagram/service.ts:39:65)\n    at runNextTicks (node:internal/process/task_queues:65:5)\n    at processImmediate (node:internal/timers:459:9)"
-      },
-      "startIndex": 0,
-      "path": "/Users/abdullah.harits/Downloads/Backup Google Photo/result/Takeout/Google Foto/Photos from 2025/Keluarga"
-    },
-    {
-      "date": "6 Jan 2025",
-      "error": {
-        "message": "GET /rupload_igvideo/1747108721198_0_2692339106 - 400 Bad Request; challenge_required",
-        "name": "Error",
-        "stack": "Error: GET /rupload_igvideo/1747108721198_0_2692339106 - 400 Bad Request; challenge_required\n    at InstagramService.<anonymous> (/Users/abdullah.harits/Documents/pribadi/project/dev/wa_2_insta/src/instagram/service.ts:405:17)\n    at Generator.throw (<anonymous>)\n    at rejected (/Users/abdullah.harits/Documents/pribadi/project/dev/wa_2_insta/src/instagram/service.ts:39:65)\n    at runNextTicks (node:internal/process/task_queues:65:5)\n    at processImmediate (node:internal/timers:459:9)"
-      },
-      "startIndex": 0,
-      "path": "/Users/abdullah.harits/Downloads/Backup Google Photo/result/Takeout/Google Foto/Photos from 2025/Keluarga"
-    },
-    {
-      "date": "6 Jan 2025",
-      "error": {
-        "message": "POST /api/v1/media/configure_sidecar/ - 202 Accepted; Transcode not finished yet.",
-        "name": "Error",
-        "stack": "Error: POST /api/v1/media/configure_sidecar/ - 202 Accepted; Transcode not finished yet.\n    at InstagramService.<anonymous> (/Users/abdullah.harits/Documents/pribadi/project/dev/wa_2_insta/src/instagram/service.ts:405:17)\n    at Generator.throw (<anonymous>)\n    at rejected (/Users/abdullah.harits/Documents/pribadi/project/dev/wa_2_insta/src/instagram/service.ts:39:65)"
-      },
-      "startIndex": 0,
-      "path": "/Users/abdullah.harits/Downloads/Backup Google Photo/result/Takeout/Google Foto/Photos from 2025/Keluarga"
-    },
-    {
-      "date": "6 Jan 2025",
-      "error": {
-        "message": "POST /api/v1/media/configure_sidecar/ - 202 Accepted; Transcode not finished yet.",
-        "name": "Error",
-        "stack": "Error: POST /api/v1/media/configure_sidecar/ - 202 Accepted; Transcode not finished yet.\n    at InstagramService.<anonymous> (/Users/abdullah.harits/Documents/pribadi/project/dev/wa_2_insta/src/instagram/service.ts:405:17)\n    at Generator.throw (<anonymous>)\n    at rejected (/Users/abdullah.harits/Documents/pribadi/project/dev/wa_2_insta/src/instagram/service.ts:39:65)"
-      },
-      "startIndex": 0,
-      "path": "/Users/abdullah.harits/Downloads/Backup Google Photo/result/Takeout/Google Foto/Photos from 2025/Keluarga"
-    },
-    {
-      "date": "21 Jan 2025",
-      "error": {
-        "message": "POST /api/v1/media/configure_sidecar/ - 403 Forbidden; login_required",
-        "name": "Error",
-        "stack": "Error: POST /api/v1/media/configure_sidecar/ - 403 Forbidden; login_required\n    at InstagramService.<anonymous> (/Users/abdullah.harits/Documents/pribadi/project/dev/wa_2_insta/src/instagram/service.ts:405:17)\n    at Generator.throw (<anonymous>)\n    at rejected (/Users/abdullah.harits/Documents/pribadi/project/dev/wa_2_insta/src/instagram/service.ts:39:65)"
-      },
-      "startIndex": 0,
       "path": "/Users/abdullah.harits/Downloads/Backup Google Photo/result/Takeout/Google Foto/Photos from 2025/Keluarga"
     },
     {
       "date": "25 Jan 2025",
       "error": {
-        "message": "Unexpected error: {\"error\":{\"code\":\"ERR_FS_FILE_TOO_LARGE\"},\"metadata\":{\"title\":\"VID_20250125_193429.mp4\",\"description\":\"\",\"imageViews\":\"10\",\"creationTime\":{\"timestamp\":\"1737843210\",\"formatted\":\"25 Jan 2025, 22.13.30 UTC\"},\"photoTakenTime\":{\"timestamp\":\"1737808468\",\"formatted\":\"25 Jan 2025, 12.34.28 UTC\"},\"geoData\":{\"latitude\":0,\"longitude\":0,\"altitude\":0,\"latitudeSpan\":0,\"longitudeSpan\":0},\"people\":[{\"name\":\"Mahardien Luthfiyah Nuradenia\"}],\"url\":\"https://photos.google.com/photo/AF1QipMMU7NDsPCtAVMJWtyila--_8visvlrPggNEhCj\",\"googlePhotosOrigin\":{\"mobileUpload\":{\"deviceFolder\":{\"localFolderName\":\"\"},\"deviceType\":\"ANDROID_PHONE\"}},\"appSource\":{\"androidPackageName\":\"com.transsion.camera\"}}}",
+        "message": "GET /rupload_igvideo/1747291200536_0_1830179578 - 400 Bad Request; challenge_required",
         "name": "Error",
-        "stack": "Error: Unexpected error: {\"error\":{\"code\":\"ERR_FS_FILE_TOO_LARGE\"},\"metadata\":{\"title\":\"VID_20250125_193429.mp4\",\"description\":\"\",\"imageViews\":\"10\",\"creationTime\":{\"timestamp\":\"1737843210\",\"formatted\":\"25 Jan 2025, 22.13.30 UTC\"},\"photoTakenTime\":{\"timestamp\":\"1737808468\",\"formatted\":\"25 Jan 2025, 12.34.28 UTC\"},\"geoData\":{\"latitude\":0,\"longitude\":0,\"altitude\":0,\"latitudeSpan\":0,\"longitudeSpan\":0},\"people\":[{\"name\":\"Mahardien Luthfiyah Nuradenia\"}],\"url\":\"https://photos.google.com/photo/AF1QipMMU7NDsPCtAVMJWtyila--_8visvlrPggNEhCj\",\"googlePhotosOrigin\":{\"mobileUpload\":{\"deviceFolder\":{\"localFolderName\":\"\"},\"deviceType\":\"ANDROID_PHONE\"}},\"appSource\":{\"androidPackageName\":\"com.transsion.camera\"}}}\n    at LocalInstagramSyncService.<anonymous> (/Users/abdullah.harits/Documents/pribadi/project/dev/wa_2_insta/src/local-instagram-sync/service.ts:140:16)\n    at Generator.next (<anonymous>)\n    at /Users/abdullah.harits/Documents/pribadi/project/dev/wa_2_insta/src/local-instagram-sync/service.ts:8:71\n    at new Promise (<anonymous>)\n    at __awaiter (/Users/abdullah.harits/Documents/pribadi/project/dev/wa_2_insta/src/local-instagram-sync/service.ts:4:12)\n    at LocalInstagramSyncService.handleError (/Users/abdullah.harits/Documents/pribadi/project/dev/wa_2_insta/src/local-instagram-sync/service.ts:96:16)\n    at LocalInstagramSyncService.<anonymous> (/Users/abdullah.harits/Documents/pribadi/project/dev/wa_2_insta/src/local-instagram-sync/service.ts:190:18)\n    at Generator.throw (<anonymous>)\n    at rejected (/Users/abdullah.harits/Documents/pribadi/project/dev/wa_2_insta/src/local-instagram-sync/service.ts:6:65)"
+        "stack": "Error: GET /rupload_igvideo/1747291200536_0_1830179578 - 400 Bad Request; challenge_required\n    at InstagramService.<anonymous> (/Users/abdullah.harits/Documents/pribadi/project/dev/wa_2_insta/src/instagram/service.ts:409:17)\n    at Generator.throw (<anonymous>)\n    at rejected (/Users/abdullah.harits/Documents/pribadi/project/dev/wa_2_insta/src/instagram/service.ts:39:65)\n    at runNextTicks (node:internal/process/task_queues:65:5)\n    at processImmediate (node:internal/timers:459:9)"
       },
+      "startIndex": 3,
       "path": "/Users/abdullah.harits/Downloads/Backup Google Photo/result/Takeout/Google Foto/Photos from 2025/Keluarga"
     },
     {
       "date": "25 Jan 2025",
       "error": {
-        "message": "Unexpected error: {\"error\":{\"code\":\"ERR_FS_FILE_TOO_LARGE\"},\"metadata\":{\"title\":\"VID_20250125_193429.mp4\",\"description\":\"\",\"imageViews\":\"10\",\"creationTime\":{\"timestamp\":\"1737843210\",\"formatted\":\"25 Jan 2025, 22.13.30 UTC\"},\"photoTakenTime\":{\"timestamp\":\"1737808468\",\"formatted\":\"25 Jan 2025, 12.34.28 UTC\"},\"geoData\":{\"latitude\":0,\"longitude\":0,\"altitude\":0,\"latitudeSpan\":0,\"longitudeSpan\":0},\"people\":[{\"name\":\"Mahardien Luthfiyah Nuradenia\"}],\"url\":\"https://photos.google.com/photo/AF1QipMMU7NDsPCtAVMJWtyila--_8visvlrPggNEhCj\",\"googlePhotosOrigin\":{\"mobileUpload\":{\"deviceFolder\":{\"localFolderName\":\"\"},\"deviceType\":\"ANDROID_PHONE\"}},\"appSource\":{\"androidPackageName\":\"com.transsion.camera\"}}}",
+        "message": "GET /rupload_igvideo/1747292117974_0_6673932725 - 403 Forbidden; login_required",
         "name": "Error",
-        "stack": "Error: Unexpected error: {\"error\":{\"code\":\"ERR_FS_FILE_TOO_LARGE\"},\"metadata\":{\"title\":\"VID_20250125_193429.mp4\",\"description\":\"\",\"imageViews\":\"10\",\"creationTime\":{\"timestamp\":\"1737843210\",\"formatted\":\"25 Jan 2025, 22.13.30 UTC\"},\"photoTakenTime\":{\"timestamp\":\"1737808468\",\"formatted\":\"25 Jan 2025, 12.34.28 UTC\"},\"geoData\":{\"latitude\":0,\"longitude\":0,\"altitude\":0,\"latitudeSpan\":0,\"longitudeSpan\":0},\"people\":[{\"name\":\"Mahardien Luthfiyah Nuradenia\"}],\"url\":\"https://photos.google.com/photo/AF1QipMMU7NDsPCtAVMJWtyila--_8visvlrPggNEhCj\",\"googlePhotosOrigin\":{\"mobileUpload\":{\"deviceFolder\":{\"localFolderName\":\"\"},\"deviceType\":\"ANDROID_PHONE\"}},\"appSource\":{\"androidPackageName\":\"com.transsion.camera\"}}}\n    at LocalInstagramSyncService.<anonymous> (/Users/abdullah.harits/Documents/pribadi/project/dev/wa_2_insta/src/local-instagram-sync/service.ts:147:16)\n    at Generator.next (<anonymous>)\n    at /Users/abdullah.harits/Documents/pribadi/project/dev/wa_2_insta/src/local-instagram-sync/service.ts:8:71\n    at new Promise (<anonymous>)\n    at __awaiter (/Users/abdullah.harits/Documents/pribadi/project/dev/wa_2_insta/src/local-instagram-sync/service.ts:4:12)\n    at LocalInstagramSyncService.handleError (/Users/abdullah.harits/Documents/pribadi/project/dev/wa_2_insta/src/local-instagram-sync/service.ts:100:16)\n    at LocalInstagramSyncService.<anonymous> (/Users/abdullah.harits/Documents/pribadi/project/dev/wa_2_insta/src/local-instagram-sync/service.ts:197:18)\n    at Generator.throw (<anonymous>)\n    at rejected (/Users/abdullah.harits/Documents/pribadi/project/dev/wa_2_insta/src/local-instagram-sync/service.ts:6:65)"
+        "stack": "Error: GET /rupload_igvideo/1747292117974_0_6673932725 - 403 Forbidden; login_required\n    at InstagramService.<anonymous> (/Users/abdullah.harits/Documents/pribadi/project/dev/wa_2_insta/src/instagram/service.ts:409:17)\n    at Generator.throw (<anonymous>)\n    at rejected (/Users/abdullah.harits/Documents/pribadi/project/dev/wa_2_insta/src/instagram/service.ts:39:65)\n    at runNextTicks (node:internal/process/task_queues:65:5)\n    at processImmediate (node:internal/timers:459:9)"
       },
+      "startIndex": 4,
       "path": "/Users/abdullah.harits/Downloads/Backup Google Photo/result/Takeout/Google Foto/Photos from 2025/Keluarga"
     },
     {
       "date": "25 Jan 2025",
       "error": {
-        "message": "POST /rupload_igphoto/1747119879399_0_9231713116 - 400 Bad Request; User restricted from uploading, please try later.",
+        "message": "GET /rupload_igvideo/1747293407026_0_5139961078 - 400 Bad Request; challenge_required",
         "name": "Error",
-        "stack": "Error: POST /rupload_igphoto/1747119879399_0_9231713116 - 400 Bad Request; User restricted from uploading, please try later.\n    at InstagramService.<anonymous> (/Users/abdullah.harits/Documents/pribadi/project/dev/wa_2_insta/src/instagram/service.ts:406:17)\n    at Generator.throw (<anonymous>)\n    at rejected (/Users/abdullah.harits/Documents/pribadi/project/dev/wa_2_insta/src/instagram/service.ts:39:65)"
+        "stack": "Error: GET /rupload_igvideo/1747293407026_0_5139961078 - 400 Bad Request; challenge_required\n    at InstagramService.<anonymous> (/Users/abdullah.harits/Documents/pribadi/project/dev/wa_2_insta/src/instagram/service.ts:409:17)\n    at Generator.throw (<anonymous>)\n    at rejected (/Users/abdullah.harits/Documents/pribadi/project/dev/wa_2_insta/src/instagram/service.ts:39:65)\n    at runNextTicks (node:internal/process/task_queues:65:5)\n    at processImmediate (node:internal/timers:459:9)"
       },
-      "startIndex": 0,
+      "startIndex": 5,
       "path": "/Users/abdullah.harits/Downloads/Backup Google Photo/result/Takeout/Google Foto/Photos from 2025/Keluarga"
     },
     {
-      "date": "25 Jan 2025",
+      "date": "26 Jan 2025",
       "error": {
-        "message": "POST /rupload_igphoto/1747119914628_0_2725644135 - 400 Bad Request; User restricted from uploading, please try later.",
+        "message": "ENOENT: no such file or directory, open '/Users/abdullah.harits/Downloads/Backup Google Photo/result/Takeout/Google Foto/Photos from 2025/Keluarga/26 Jan 2025/IMG_20250126_133431_141.jpg'",
         "name": "Error",
-        "stack": "Error: POST /rupload_igphoto/1747119914628_0_2725644135 - 400 Bad Request; User restricted from uploading, please try later.\n    at InstagramService.<anonymous> (/Users/abdullah.harits/Documents/pribadi/project/dev/wa_2_insta/src/instagram/service.ts:406:17)\n    at Generator.throw (<anonymous>)\n    at rejected (/Users/abdullah.harits/Documents/pribadi/project/dev/wa_2_insta/src/instagram/service.ts:39:65)"
+        "stack": "Error: ENOENT: no such file or directory, open '/Users/abdullah.harits/Downloads/Backup Google Photo/result/Takeout/Google Foto/Photos from 2025/Keluarga/26 Jan 2025/IMG_20250126_133431_141.jpg'\n    at async open (node:internal/fs/promises:638:25)\n    at async readFile (node:internal/fs/promises:1242:14)"
       },
-      "startIndex": 0,
       "path": "/Users/abdullah.harits/Downloads/Backup Google Photo/result/Takeout/Google Foto/Photos from 2025/Keluarga"
     },
     {
-      "date": "25 Jan 2025",
+      "date": "26 Jan 2025",
       "error": {
-        "message": "POST /rupload_igphoto/1747120094429_0_6117151783 - 400 Bad Request; User restricted from uploading, please try later.",
+        "message": "ENOENT: no such file or directory, open '/Users/abdullah.harits/Downloads/Backup Google Photo/result/Takeout/Google Foto/Photos from 2025/Keluarga/26 Jan 2025/IMG_20250126_131741_056.jpg'",
         "name": "Error",
-        "stack": "Error: POST /rupload_igphoto/1747120094429_0_6117151783 - 400 Bad Request; User restricted from uploading, please try later.\n    at InstagramService.<anonymous> (/Users/abdullah.harits/Documents/pribadi/project/dev/wa_2_insta/src/instagram/service.ts:406:17)\n    at Generator.throw (<anonymous>)\n    at rejected (/Users/abdullah.harits/Documents/pribadi/project/dev/wa_2_insta/src/instagram/service.ts:39:65)"
+        "stack": "Error: ENOENT: no such file or directory, open '/Users/abdullah.harits/Downloads/Backup Google Photo/result/Takeout/Google Foto/Photos from 2025/Keluarga/26 Jan 2025/IMG_20250126_131741_056.jpg'\n    at async open (node:internal/fs/promises:638:25)\n    at async readFile (node:internal/fs/promises:1242:14)"
       },
-      "startIndex": 0,
-      "path": "/Users/abdullah.harits/Downloads/Backup Google Photo/result/Takeout/Google Foto/Photos from 2025/Keluarga"
-    },
-    {
-      "date": "25 Jan 2025",
-      "error": {
-        "message": "POST /rupload_igphoto/1747188965035_0_2683978153 - 400 Bad Request; User restricted from uploading, please try later.",
-        "name": "Error",
-        "stack": "Error: POST /rupload_igphoto/1747188965035_0_2683978153 - 400 Bad Request; User restricted from uploading, please try later.\n    at InstagramService.<anonymous> (/Users/abdullah.harits/Documents/pribadi/project/dev/wa_2_insta/src/instagram/service.ts:406:17)\n    at Generator.throw (<anonymous>)\n    at rejected (/Users/abdullah.harits/Documents/pribadi/project/dev/wa_2_insta/src/instagram/service.ts:39:65)"
-      },
-      "startIndex": 0,
       "path": "/Users/abdullah.harits/Downloads/Backup Google Photo/result/Takeout/Google Foto/Photos from 2025/Keluarga"
     }
   ],
   "filter": {
-    "caption": "25 Jan 2025",
+    "caption": "31 Dec 2025",
     "startIndex": 0
-  },
-  "video": [
-    {
-      "path": "/Users/abdullah.harits/Downloads/Backup Google Photo/result/Takeout/Google Foto/Photos from 2025/Keluarga/25 Jan 2025/VID_20250125_181002.mp4",
-      "resizedPath": [
-        "temporary/e82be8aa-8e59-4a56-9147-f30db3e415ac-1.mp4",
-        "temporary/e82be8aa-8e59-4a56-9147-f30db3e415ac-2.mp4",
-        "temporary/e82be8aa-8e59-4a56-9147-f30db3e415ac-3.mp4",
-        "temporary/e82be8aa-8e59-4a56-9147-f30db3e415ac-4.mp4",
-        "temporary/e82be8aa-8e59-4a56-9147-f30db3e415ac-5.mp4",
-        "temporary/e82be8aa-8e59-4a56-9147-f30db3e415ac-6.mp4",
-        "temporary/e82be8aa-8e59-4a56-9147-f30db3e415ac-7.mp4"
-      ]
-    },
-    {
-      "path": "/Users/abdullah.harits/Downloads/Backup Google Photo/result/Takeout/Google Foto/Photos from 2025/Keluarga/25 Jan 2025/VID_20250125_190610.mp4",
-      "resizedPath": "temporary/5e677abd-deb3-4bde-964f-1a62556af6c5.mp4"
-    },
-    {
-      "path": "/Users/abdullah.harits/Downloads/Backup Google Photo/result/Takeout/Google Foto/Photos from 2025/Keluarga/25 Jan 2025/VID_20250125_191401.mp4",
-      "resizedPath": [
-        "temporary/d1e5c715-2ce5-4448-8ed8-6bb3e49d51b8-1.mp4",
-        "temporary/d1e5c715-2ce5-4448-8ed8-6bb3e49d51b8-2.mp4",
-        "temporary/d1e5c715-2ce5-4448-8ed8-6bb3e49d51b8-3.mp4"
-      ]
-    },
-    {
-      "path": "/Users/abdullah.harits/Downloads/Backup Google Photo/result/Takeout/Google Foto/Photos from 2025/Keluarga/25 Jan 2025/VID_20250125_191629.mp4",
-      "resizedPath": [
-        "temporary/63b3cfb4-da2e-4a14-b84c-649cd485a2e1-1.mp4",
-        "temporary/63b3cfb4-da2e-4a14-b84c-649cd485a2e1-2.mp4",
-        "temporary/63b3cfb4-da2e-4a14-b84c-649cd485a2e1-3.mp4"
-      ]
-    },
-    {
-      "path": "/Users/abdullah.harits/Downloads/Backup Google Photo/result/Takeout/Google Foto/Photos from 2025/Keluarga/25 Jan 2025/VID_20250125_193429.mp4",
-      "resizedPath": [
-        "temporary/19a8c09b-453c-435b-99d5-2479fc97e288-1.mp4",
-        "temporary/19a8c09b-453c-435b-99d5-2479fc97e288-2.mp4",
-        "temporary/19a8c09b-453c-435b-99d5-2479fc97e288-3.mp4",
-        "temporary/19a8c09b-453c-435b-99d5-2479fc97e288-4.mp4",
-        "temporary/19a8c09b-453c-435b-99d5-2479fc97e288-5.mp4",
-        "temporary/19a8c09b-453c-435b-99d5-2479fc97e288-6.mp4",
-        "temporary/19a8c09b-453c-435b-99d5-2479fc97e288-7.mp4",
-        "temporary/19a8c09b-453c-435b-99d5-2479fc97e288-8.mp4",
-        "temporary/19a8c09b-453c-435b-99d5-2479fc97e288-9.mp4",
-        "temporary/19a8c09b-453c-435b-99d5-2479fc97e288-10.mp4",
-        "temporary/19a8c09b-453c-435b-99d5-2479fc97e288-11.mp4",
-        "temporary/19a8c09b-453c-435b-99d5-2479fc97e288-12.mp4",
-        "temporary/19a8c09b-453c-435b-99d5-2479fc97e288-13.mp4",
-        "temporary/19a8c09b-453c-435b-99d5-2479fc97e288-14.mp4",
-        "temporary/19a8c09b-453c-435b-99d5-2479fc97e288-15.mp4"
-      ]
-    },
-    {
-      "path": "/Users/abdullah.harits/Downloads/Backup Google Photo/result/Takeout/Google Foto/Photos from 2025/Keluarga/25 Jan 2025/VID_20250125_202624.mp4",
-      "resizedPath": [
-        "temporary/924b1bed-9a87-4c33-b9af-49feaad09dd1-1.mp4",
-        "temporary/924b1bed-9a87-4c33-b9af-49feaad09dd1-2.mp4",
-        "temporary/924b1bed-9a87-4c33-b9af-49feaad09dd1-3.mp4",
-        "temporary/924b1bed-9a87-4c33-b9af-49feaad09dd1-4.mp4",
-        "temporary/924b1bed-9a87-4c33-b9af-49feaad09dd1-5.mp4",
-        "temporary/924b1bed-9a87-4c33-b9af-49feaad09dd1-6.mp4",
-        "temporary/924b1bed-9a87-4c33-b9af-49feaad09dd1-7.mp4",
-        "temporary/924b1bed-9a87-4c33-b9af-49feaad09dd1-8.mp4",
-        "temporary/924b1bed-9a87-4c33-b9af-49feaad09dd1-9.mp4",
-        "temporary/924b1bed-9a87-4c33-b9af-49feaad09dd1-10.mp4",
-        "temporary/924b1bed-9a87-4c33-b9af-49feaad09dd1-11.mp4",
-        "temporary/924b1bed-9a87-4c33-b9af-49feaad09dd1-12.mp4",
-        "temporary/924b1bed-9a87-4c33-b9af-49feaad09dd1-13.mp4",
-        "temporary/924b1bed-9a87-4c33-b9af-49feaad09dd1-14.mp4",
-        "temporary/924b1bed-9a87-4c33-b9af-49feaad09dd1-15.mp4",
-        "temporary/924b1bed-9a87-4c33-b9af-49feaad09dd1-16.mp4",
-        "temporary/924b1bed-9a87-4c33-b9af-49feaad09dd1-17.mp4",
-        "temporary/924b1bed-9a87-4c33-b9af-49feaad09dd1-18.mp4",
-        "temporary/924b1bed-9a87-4c33-b9af-49feaad09dd1-19.mp4",
-        "temporary/924b1bed-9a87-4c33-b9af-49feaad09dd1-20.mp4",
-        "temporary/924b1bed-9a87-4c33-b9af-49feaad09dd1-21.mp4",
-        "temporary/924b1bed-9a87-4c33-b9af-49feaad09dd1-22.mp4",
-        "temporary/924b1bed-9a87-4c33-b9af-49feaad09dd1-23.mp4",
-        "temporary/924b1bed-9a87-4c33-b9af-49feaad09dd1-24.mp4",
-        "temporary/924b1bed-9a87-4c33-b9af-49feaad09dd1-25.mp4",
-        "temporary/924b1bed-9a87-4c33-b9af-49feaad09dd1-26.mp4",
-        "temporary/924b1bed-9a87-4c33-b9af-49feaad09dd1-27.mp4",
-        "temporary/924b1bed-9a87-4c33-b9af-49feaad09dd1-28.mp4",
-        "temporary/924b1bed-9a87-4c33-b9af-49feaad09dd1-29.mp4",
-        "temporary/924b1bed-9a87-4c33-b9af-49feaad09dd1-30.mp4",
-        "temporary/924b1bed-9a87-4c33-b9af-49feaad09dd1-31.mp4",
-        "temporary/924b1bed-9a87-4c33-b9af-49feaad09dd1-32.mp4",
-        "temporary/924b1bed-9a87-4c33-b9af-49feaad09dd1-33.mp4",
-        "temporary/924b1bed-9a87-4c33-b9af-49feaad09dd1-34.mp4",
-        "temporary/924b1bed-9a87-4c33-b9af-49feaad09dd1-35.mp4",
-        "temporary/924b1bed-9a87-4c33-b9af-49feaad09dd1-36.mp4",
-        "temporary/924b1bed-9a87-4c33-b9af-49feaad09dd1-37.mp4",
-        "temporary/924b1bed-9a87-4c33-b9af-49feaad09dd1-38.mp4",
-        "temporary/924b1bed-9a87-4c33-b9af-49feaad09dd1-39.mp4",
-        "temporary/924b1bed-9a87-4c33-b9af-49feaad09dd1-40.mp4",
-        "temporary/924b1bed-9a87-4c33-b9af-49feaad09dd1-41.mp4",
-        "temporary/924b1bed-9a87-4c33-b9af-49feaad09dd1-42.mp4",
-        "temporary/924b1bed-9a87-4c33-b9af-49feaad09dd1-43.mp4",
-        "temporary/924b1bed-9a87-4c33-b9af-49feaad09dd1-44.mp4",
-        "temporary/924b1bed-9a87-4c33-b9af-49feaad09dd1-45.mp4",
-        "temporary/924b1bed-9a87-4c33-b9af-49feaad09dd1-46.mp4",
-        "temporary/924b1bed-9a87-4c33-b9af-49feaad09dd1-47.mp4",
-        "temporary/924b1bed-9a87-4c33-b9af-49feaad09dd1-48.mp4",
-        "temporary/924b1bed-9a87-4c33-b9af-49feaad09dd1-49.mp4",
-        "temporary/924b1bed-9a87-4c33-b9af-49feaad09dd1-50.mp4"
-      ]
-    }
-  ]
+  }
 }

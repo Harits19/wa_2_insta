@@ -228,13 +228,11 @@ export default class LocalInstagramSyncService
 
           if (
             item.path.startsWith(
-              "/Users/abdullah.harits/Documents/pribadi/Akad/2"
+              "/Users/abdullah.harits/Documents/pribadi/Resepsi/2"
             )
           ) {
             date = MyDate.adjustDate(date, {
-              hour: 6,
-              second: -25,
-              minute: 30,
+              minute: 15,
             });
           }
 
@@ -252,7 +250,7 @@ export default class LocalInstagramSyncService
 
     await this.instagram.publishMultiplePost({
       aspectRatio: "1x1",
-      caption: "Akad",
+      caption: AppStateService.state.filter?.caption ?? "",
       items: postItems,
       onSuccess: async () => {},
     });

@@ -62,7 +62,11 @@ export default class MyDate extends Date {
 
   static adjustDate(
     date: Date,
-    { hour, minute, second }: { minute: number; hour: number; second: number }
+    {
+      hour = 0,
+      minute = 0,
+      second = 0,
+    }: { minute?: number; hour?: number; second?: number }
   ) {
     date.setMinutes(date.getMinutes() + minute);
     date.setHours(date.getHours() + hour);

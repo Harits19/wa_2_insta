@@ -338,9 +338,13 @@ export class InstagramService {
     onSuccess: () => void;
   }) {
     console.log("before process items length", items.length);
+    const allFiles = await this.processAllImageVideo({
+      aspectRatio,
+      items: items,
+    });
 
     const batchFiles = ArrayService.batch({
-      files: items,
+      files: allFiles,
       batchLength: instagramConstant.max.post,
     });
 
@@ -385,14 +389,10 @@ export class InstagramService {
 
       try {
         await AppStateService.updateFilter({ caption, startIndex: index });
-        const allFiles = await this.processAllImageVideo({
-          aspectRatio,
-          items: files,
-        });
 
         await this.publishAlbum({
           caption: finalCaption,
-          items: allFiles.map((item) => ({
+          items: files.map((item) => ({
             coverImage: item.video?.thumbnail!,
             file: item.image!,
             video: item.video?.buffer!,
@@ -415,8 +415,7 @@ export class InstagramService {
       }
 
       await AppStateService.updateDaily();
-      await AppStateService.resetFilter();
-      await PromiseService.sleep(3 * SECOND * MINUTE)
+      await PromiseService.sleep(1.5 * SECOND * MINUTE);
     }
   }
 
@@ -427,8 +426,7 @@ export class InstagramService {
     aspectRatio: AspectRatio;
     items: VideoImageBuffer[];
   }): Promise<VideoImageResizeResult[]> {
-    const result: VideoImageResizeResult[] = [];
-    for (const item of items) {
+    const promises = items.map(async (item) => {
       const type = await FileService.getFileType(item.path);
 
       if (type === "video") {
@@ -438,25 +436,29 @@ export class InstagramService {
         });
 
         if (Array.isArray(videoResult)) {
-          result.push(
-            ...videoResult.map((item) => ({
+          return videoResult.map((item) => ({
               video: item,
-            }))
-          );
-          continue;
+            }));
         }
 
-        result.push({
+        return {
           video: videoResult,
-        });
+        };
       } else {
         const buffer = await readFile(item.path);
-        result.push({
+
+        return {
           image: await this.resizeImage({ aspectRatio, buffer }),
-        });
+        }
       }
-    }
-    return result;
+    });
+
+    const result = await PromiseService.run(({
+      promises: promises,
+      parallel: true,
+    }))
+
+    return result.flat();
   }
 
   async processImageVideo({
@@ -582,12 +584,13 @@ export class InstagramService {
         });
         const result = await PromiseService.run({
           promises: splitVideoResult.map(async (video) => {
-            await AppStateService.pushCurrentVideoProcess({
-              path: path,
-              resizedPath: video.path,
-            });
             return this.getVideoThumbnailBuffer(video.path);
           }),
+        });
+
+        await AppStateService.pushCurrentVideoProcess({
+          path: path,
+          resizedPath: result.map((item) => item.resizedPath),
         });
 
         await unlink(resizedFilePath);
