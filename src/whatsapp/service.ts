@@ -50,7 +50,6 @@ export default class WhatsappService {
 
       msg.reply("start login");
       const instagramService = await InstagramService.login({
-        cookiesKey: from,
         password,
         username,
       });

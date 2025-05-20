@@ -1,6 +1,6 @@
 import MyDate from "../date/service";
 import { RawDate } from "../date/type";
-import GooglePhotoService from "../google-photo/service";
+import GooglePhotoApiService from "../google-photo-api/service";
 import { instagramConstant } from "../instagram/constant";
 import { InstagramService } from "../instagram/service";
 import { VideoImageResizeResult } from "../instagram/type";
@@ -10,14 +10,14 @@ import { AspectRatio } from "../resize/types";
 
 export default class MediaSyncService {
   instagram: InstagramService;
-  googlePhoto: GooglePhotoService;
+  googlePhoto: GooglePhotoApiService;
 
   constructor({
     googlePhoto,
     instagram,
   }: {
     instagram: InstagramService;
-    googlePhoto: GooglePhotoService;
+    googlePhoto: GooglePhotoApiService;
   }) {
     this.googlePhoto = googlePhoto;
     this.instagram = instagram;
@@ -34,7 +34,7 @@ export default class MediaSyncService {
       password,
       username,
     });
-    const googlePhoto = await GooglePhotoService.create();
+    const googlePhoto = await GooglePhotoApiService.create();
 
     return new MediaSyncService({ googlePhoto, instagram });
   }

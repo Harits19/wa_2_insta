@@ -2,7 +2,7 @@ import GoogleOauthService from "../google-oauth/service";
 import axios, { AxiosError } from "axios";
 import { DownloadedMediaItem, MediaItem, SearchResponse } from "./type";
 
-export default class GooglePhotoService {
+export default class GooglePhotoApiService {
   googleOauth: GoogleOauthService;
 
   baseUrl = "https://photoslibrary.googleapis.com/v1/mediaItems";
@@ -13,7 +13,7 @@ export default class GooglePhotoService {
 
   static async create() {
     const googleOauth = await GoogleOauthService.create();
-    const instance = new GooglePhotoService({ googleOauth });
+    const instance = new GooglePhotoApiService({ googleOauth });
     return instance;
   }
 
