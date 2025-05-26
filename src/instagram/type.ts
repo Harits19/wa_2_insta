@@ -306,6 +306,7 @@ export type VideoImageResizeResult = {
     thumbnail: Buffer;
   };
   image?: Buffer;
+  path: string;
 };
 
 export interface FilterMultiplePost {

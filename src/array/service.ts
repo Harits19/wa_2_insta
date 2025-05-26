@@ -2,9 +2,11 @@ export class ArrayService {
   static batch<T>({
     batchLength,
     files,
+    skipFromIndex
   }: {
     files: T[];
     batchLength: number;
+    skipFromIndex?: number;
   }) {
     const result: T[][] = [];
 

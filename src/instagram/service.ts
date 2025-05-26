@@ -295,19 +295,19 @@ export class InstagramService {
           timeout: 7 * MINUTE * SECOND,
         });
         return;
-      } catch (error) {
+      } catch (error: any) {
         console.error(error);
-        if (error instanceof IgLoginRequiredError) {
-          await this.initInstagramClient(true);
-        } else if (error instanceof IgResponseError) {
-          console.error({
-            name: error.name,
-            message: error.message,
-            response: JSON.stringify(error.response?.toJSON().body),
-            stack: error.stack,
-            text: error.text,
-          });
+        console.error({
+          name: error.name,
+          message: error.message,
+          response: JSON.stringify(error.response?.toJSON().body),
+          stack: error.stack,
+          text: error.text,
+        });
 
+        if (error instanceof IgLoginRequiredError) {
+          throw error;
+        } else if (error instanceof IgResponseError) {
           if (
             error.text === "User restricted from uploading, please try later."
           ) {
@@ -326,6 +326,62 @@ export class InstagramService {
     }
   }
 
+  async getProcessedFile({
+    aspectRatio,
+    items,
+    startIndex = 0,
+  }: {
+    aspectRatio: AspectRatio;
+    items: VideoImageBuffer[];
+    startIndex?: number;
+  }): Promise<VideoImageResizeResult[][]> {
+    const isAllImage = items.every(
+      (item) => FileService.getFileType(item.path) === "image"
+    );
+    if (isAllImage) {
+      const batchFiles = ArrayService.batch({
+        files: items,
+        batchLength: instagramConstant.max.post,
+        skipFromIndex: startIndex,
+      });
+
+      const result = await Promise.all(
+        batchFiles.map(async (items, index) => {
+          if (index < startIndex) return Promise.resolve([]);
+          return Promise.all(
+            items.map(async (item) => {
+              const result = await this.resizeImageWithPath({
+                aspectRatio,
+                path: item.path,
+              });
+
+              return {
+                image: result,
+                path: item.path,
+              };
+            })
+          );
+        })
+      );
+
+      return result;
+    } else {
+      if (startIndex) {
+        throw new Error("Combined image and video can't have startIndex");
+      }
+      const allFiles = await this.processAllImageVideo({
+        aspectRatio,
+        items: items,
+      });
+
+      const batchFiles = ArrayService.batch({
+        files: allFiles,
+        batchLength: instagramConstant.max.post,
+      });
+      return batchFiles;
+    }
+  }
+
   async publishMultiplePost({
     aspectRatio,
     items,
@@ -338,14 +394,12 @@ export class InstagramService {
     onSuccess: () => void;
   }) {
     console.log("before process items length", items.length);
-    const allFiles = await this.processAllImageVideo({
-      aspectRatio,
-      items: items,
-    });
+    const state = AppStateService.state;
 
-    const batchFiles = ArrayService.batch({
-      files: allFiles,
-      batchLength: instagramConstant.max.post,
+    const batchFiles = await this.getProcessedFile({
+      aspectRatio,
+      items,
+      startIndex: state.filter?.startIndex,
     });
 
     console.log(
@@ -357,7 +411,6 @@ export class InstagramService {
     for (const [index, files] of batchFiles.entries()) {
       const isLastIndex = index === batchFiles.length - 1;
       const state = AppStateService.state;
-
       console.log("current state", state.post);
       console.log(`upload ${index + 1} total file ${files.length}`);
 
@@ -389,6 +442,7 @@ export class InstagramService {
 
       try {
         await AppStateService.updateFilter({ caption, startIndex: index });
+        await AppStateService.updateFilename(files.at(0)?.path);
 
         await this.publishAlbum({
           caption: finalCaption,
@@ -426,7 +480,7 @@ export class InstagramService {
     aspectRatio: AspectRatio;
     items: VideoImageBuffer[];
   }): Promise<VideoImageResizeResult[]> {
-    const promises = items.map(async (item) => {
+    const promises = items.map(async (item, index) => {
       const type = await FileService.getFileType(item.path);
 
       if (type === "video") {
@@ -436,20 +490,23 @@ export class InstagramService {
         });
 
         if (Array.isArray(videoResult)) {
-          return videoResult.map((item) => ({
-            video: item,
+          return videoResult.map((video) => ({
+            video,
+            path: item.path!,
           }));
         }
 
         return {
           video: videoResult,
+          path: item.path!,
         };
       } else {
         return {
           image: await this.resizeImageWithPath({
             aspectRatio,
-            path: item.path,
+            path: item.path!,
           }),
+          path: item.path!,
         };
       }
     });

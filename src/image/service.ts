@@ -53,6 +53,6 @@ export default class ImageService {
     await this.resizeWithAspectRatio({ aspectRatio });
     await this.rotate();
 
-    return this.image.jpeg({ quality: 99 }).toBuffer();
+    return this.image.jpeg({ quality: 90 }).toBuffer();
   }
 }
