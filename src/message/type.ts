@@ -18,7 +18,7 @@ export function mapMessageType(type: MessageTypes): "image" | "video" {
     case MessageTypes.IMAGE:
       return "image";
     default:
-      return "image";
+      throw new Error("Salah mengirim file, hanya menerima gambar atau video");
   }
 }
 
@@ -28,4 +28,13 @@ export const InstagramCredential = zod.object({
 });
 
 // extract the inferred type
-type InstagramCredential = zod.infer<typeof InstagramCredential>;
+export type InstagramCredential = zod.infer<typeof InstagramCredential>;
+
+export interface InstagramState {
+  username?: string;
+  upload: "start" | "process" | "idle";
+}
+
+export interface MessageState {
+  [key: string]: InstagramState;
+}

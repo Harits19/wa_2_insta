@@ -28,7 +28,11 @@ export default class WhatsappServiceV2 {
 
     client.on("message", (message) => {
       console.info("message received", message.body);
-      listen(message);
+      try {
+        listen(message);
+      } catch (error) {
+        console.error(error);
+      }
     });
 
     client.on("ready", () => {

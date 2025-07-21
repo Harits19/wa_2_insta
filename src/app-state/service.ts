@@ -14,7 +14,7 @@ export default class AppStateService {
 
   static get state() {
     if (!this._state)
-      throw new Error("AppStateService.init to access the app state");
+      return
 
     return this._state;
   }
