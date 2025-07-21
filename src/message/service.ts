@@ -112,7 +112,7 @@ export class MessageService {
         this.client.batchMedia.length
       );
       console.log("start post multiple photo");
-      let caption = body.split("-").at(1)?.trim();
+      const caption = body.split("-").at(1)?.trim();
 
       const resultBatch = ArrayService.batch({
         files: this.client.batchMedia,

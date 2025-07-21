@@ -3,27 +3,25 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "setup-linux": "chmod +x ./install-chrome.sh && bash install-chrome.sh && npm install",
-    "start-whatsapp-upload": "npx ts-node src/whatsapp-main.ts",
-    "start-google-photo-upload": "npx ts-node src/google-photo-main.ts",
-    "start-local-upload": "npx ts-node src/google-takeout-local-upload-main.ts",
-    "harits": "NODE_ENV=harits npx ts-node src/google-takeout-local-upload-main.ts",
-    "keluargaqu": "NODE_ENV=keluargaqu npx ts-node src/google-takeout-local-upload-main.ts",
-    "fiaharits": "NODE_ENV=fiaharits npx ts-node src/local-upload-main.ts",
-    "group-google-photo-file": "NODE_ENV=keluargaqu npx ts-node src/google-takeout-google-photo-group-file-by-date.ts",
-    "google-photo-download": "npx ts-node src/google-photo-download-by-date.ts",
-    "build": "npx tsc --outDir ./dist",
-    "prod": "node dist/main.js"
+    "dev": "ts-node src/main.ts"
   },
   "author": "",
   "license": "ISC",
   "description": "",
   "devDependencies": {
+    "@eslint/js": "^9.31.0",
+    "@stylistic/eslint-plugin": "^5.2.0",
     "@types/fluent-ffmpeg": "^2.1.27",
     "@types/qrcode-terminal": "^0.12.2",
+    "@typescript-eslint/eslint-plugin": "^8.37.0",
+    "@typescript-eslint/parser": "^8.37.0",
+    "eslint": "^9.31.0",
+    "eslint-config-prettier": "^10.1.8",
+    "globals": "^16.3.0",
+    "prettier": "^3.6.2",
     "ts-node": "^10.9.2",
-    "typescript": "^5.8.2"
+    "typescript": "^5.8.2",
+    "typescript-eslint": "^8.37.0"
   },
   "dependencies": {
     "@ffmpeg-installer/ffmpeg": "^1.1.0",
@@ -37,6 +35,7 @@
     "puppeteer-core": "^24.8.2",
     "qrcode-terminal": "^0.12.0",
     "sharp": "^0.33.5",
-    "whatsapp-web.js": "^1.27.0"
+    "whatsapp-web.js": "^1.31.0",
+    "zod": "^4.0.5"
   }
 }

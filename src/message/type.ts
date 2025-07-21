@@ -1,7 +1,8 @@
-import { MessageMedia, MessageTypes } from "whatsapp-web.js";
+import { MessageTypes } from "whatsapp-web.js";
 import { InstagramService } from "../instagram/service";
 import { AspectRatio } from "../resize/types";
 import { VideoImageBuffer } from "../instagram/type";
+import zod from "zod";
 
 export interface MessageClientModel {
   isLoadingUploadToInstagram: boolean;
@@ -20,3 +21,11 @@ export function mapMessageType(type: MessageTypes): "image" | "video" {
       return "image";
   }
 }
+
+export const InstagramCredential = zod.object({
+  username: zod.string(),
+  password: zod.string(),
+});
+
+// extract the inferred type
+type InstagramCredential = zod.infer<typeof InstagramCredential>;

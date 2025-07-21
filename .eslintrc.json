@@ -1,0 +1,13 @@
+{
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["@typescript-eslint", "@stylistic"],
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:@stylistic/recommended"
+  ],
+  "rules": {
+    "@stylistic/semi": ["error", "always"],
+    "quotes": ["error", "double"]
+  }
+}

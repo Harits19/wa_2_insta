@@ -11,7 +11,7 @@ export default class MyDate extends Date {
   getDatesBetween(end: Date) {
     const result: MyDate[] = [];
 
-    let currentDate = this;
+    const currentDate = this;
 
     while (currentDate <= end) {
       result.push(

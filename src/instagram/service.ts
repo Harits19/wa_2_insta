@@ -219,7 +219,7 @@ export class InstagramService {
 
     console.log("totalFileSize in MB ", totalFileSize);
 
-    let maxAttempt = 1;
+    const maxAttempt = 1;
     if (items.length === 0) {
       console.log(`items length is empty,`);
       return;
