@@ -3,6 +3,7 @@ import { InstagramService } from "../instagram/service";
 import { AspectRatio } from "../resize/types";
 import { VideoImageBuffer } from "../instagram/type";
 import zod from "zod";
+import { InstagramServiceV2 } from "../instagram/service-v2";
 
 export interface MessageClientModel {
   isLoadingUploadToInstagram: boolean;
@@ -27,14 +28,29 @@ export const InstagramCredential = zod.object({
   password: zod.string(),
 });
 
+export const InstagramPostBody = zod.object({
+  caption: zod.string().optional(),
+});
+
+export type InstagramPostBody = zod.infer<typeof InstagramPostBody>;
+
 // extract the inferred type
 export type InstagramCredential = zod.infer<typeof InstagramCredential>;
 
 export interface InstagramState {
   username?: string;
-  upload: "start" | "process" | "idle";
+  upload: "start" | "end" | "idle";
+  media: {
+    path: string;
+    filename: string;
+    type: "image" | "video"
+  }[];
 }
 
 export interface MessageState {
   [key: string]: InstagramState;
+}
+
+export interface InstagramServiceState {
+  [key: string]: InstagramServiceV2;
 }

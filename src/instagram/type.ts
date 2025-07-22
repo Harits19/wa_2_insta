@@ -294,7 +294,7 @@ export type VideoImageBuffer = {
   path: string;
 };
 
-export interface ResizeVideoResult{
+export interface ResizeVideoResult {
   thumbnail: Buffer;
   buffer: Buffer;
   resizedPath: string;
@@ -330,3 +330,8 @@ export class ErrorMultiplePost extends Error {
 
 export type AlbumModel = Partial<PostingAlbumPhotoItem> &
   Partial<PostingAlbumVideoItem>;
+
+export type PostItem = {
+  type: "image" | "video";
+  path: string;
+};

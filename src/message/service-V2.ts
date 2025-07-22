@@ -1,6 +1,11 @@
 import { Message } from "whatsapp-web.js";
+import fs from "fs/promises";
+import { v4 as uuidv4 } from "uuid";
+
 import {
   InstagramCredential,
+  InstagramPostBody,
+  InstagramServiceState,
   InstagramState,
   mapMessageType,
   MessageState,
@@ -13,28 +18,44 @@ export default class MessageServiceV2 {
   static jsonPath = "src/message/state.json";
 
   jsonService: JSONService;
-  listState: MessageState;
+  messageState: MessageState;
 
-  setInstagram: {
-    [key: string]: InstagramServiceV2;
-  } = {};
+  instagramServiceState: InstagramServiceState;
 
   private constructor({
     jsonService,
-    listState,
+    messageState: listState,
+    instagramServiceState,
   }: {
     jsonService: JSONService;
-    listState: MessageState;
+    messageState: MessageState;
+    instagramServiceState: InstagramServiceState;
   }) {
     this.jsonService = jsonService;
-    this.listState = listState;
+    this.messageState = listState;
+    this.instagramServiceState = instagramServiceState;
   }
 
   static async init() {
     const jsonService = new JSONService<MessageState>(this.jsonPath);
-    const listState = await jsonService.read();
+    const messageState = await jsonService.read();
 
-    return new MessageServiceV2({ jsonService, listState });
+    const instagramServiceState: InstagramServiceState = {};
+
+    for (const [key, value] of Object.entries(messageState)) {
+      if (!value.username) continue;
+      const service = await InstagramServiceV2.loadCookies({
+        username: value.username,
+      });
+      if (!service) continue;
+      instagramServiceState[key] = service;
+    }
+
+    return new MessageServiceV2({
+      jsonService,
+      messageState,
+      instagramServiceState,
+    });
   }
 
   listen = async (msg: Message) => {
@@ -44,30 +65,33 @@ export default class MessageServiceV2 {
     const id = chat.key;
     try {
       console.log("receive new message", body);
-      console.log("list state before", this.listState);
+      console.log("list state before", this.messageState);
 
-      const selectedUser = Object.entries(this.listState ?? {}).find(
-        (item) => item[0] === id
-      )?.[1];
+      const selectedUser = this.messageState[id];
+      const instagramService = this.instagramServiceState[id];
 
-      if (selectedUser) {
-        const instagramService = this.setInstagram[id];
-        console.log({ instagramService });
-        if (!instagramService) {
-          await this.startLogin({ body, chat, selectedUser });
-        } else if (body === "start") {
-          await this.startUpload({ chat });
-        } else if (selectedUser.upload === "start") {
-          await this.handleAddMedia({ msg });
-        }
-      } else if (body === "init") {
+      if (!selectedUser && !instagramService) {
+        // belum pernah login, kirim pesan welcome
         await this.initInstagram({ chat });
+      } else if (selectedUser && !instagramService) {
+        // sudah pernah chat, dan baru mengirim credential
+        await this.startLogin({ body, chat, selectedUser });
+      } else if (body === "start") {
+        await this.startUpload({ chat });
+      } else if (selectedUser.upload === "start") {
+        if (body === "end") {
+          await this.handleEndUpload({ chat });
+        } else {
+          await this.handleAddMedia({ msg, chat });
+        }
+      } else if (selectedUser.upload === "end") {
+        await this.startPost({ body, chat });
       } else {
         chat.sendMessage("Maaf saya tidak mengerti perintah itu");
       }
 
-      console.log("list state after", this.listState);
-      await this.jsonService.write(this.listState);
+      console.log("list state after", this.messageState);
+      await this.jsonService.write(this.messageState);
     } catch (error) {
       console.error("receive error ", error);
 
@@ -98,10 +122,11 @@ export default class MessageServiceV2 {
       password: "P@ssword",
     };
     await chat.sendMessage("Jawab dengan format seperti ini");
-    await chat.sendMessage(JSON.stringify(exampleListUsername, null, 2));
+    await chat.sendMessage(JSONService.stringify(exampleListUsername));
 
-    this.listState[chat.key] = {
+    this.messageState[chat.key] = {
       upload: "idle",
+      media: [],
     };
   }
 
@@ -123,19 +148,68 @@ export default class MessageServiceV2 {
     });
     selectedUser.username = credential.username;
 
-    this.listState[id] = selectedUser;
-    this.setInstagram[id] = instagramService;
+    this.messageState[id] = selectedUser;
+    this.instagramServiceState[id] = instagramService;
 
     chat.sendMessage("Berhasil login");
   }
 
   async startUpload({ chat }: { chat: ChatModel }) {
     const id = chat.key;
-    this.listState[id].upload = "start";
+    this.messageState[id].upload = "start";
   }
 
-  async handleAddMedia({ msg }: { msg: Message }) {
+  handleAddMedia = async ({ msg, chat }: { msg: Message; chat: ChatModel }) => {
     const type = mapMessageType(msg.type);
     console.log({ type });
+    const id = chat.key;
+    const media = await msg.downloadMedia();
+    if (!media) {
+      throw new Error("empty value on downloadMedia()");
+    }
+    console.log("start add media", media.filename);
+
+    const temp = this.messageState[id].media ?? [];
+    const path = await this.createFile(media.data, media.mimetype);
+    temp.push({
+      path,
+      filename: media.filename ?? "",
+      type: type,
+    });
+    this.messageState[id].media = temp;
+  };
+
+  async createFile(base64: string, mimeType: string) {
+    const buffer = Buffer.from(base64, "base64");
+    const extension = mimeType.split("/").at(1);
+    const filename = uuidv4();
+    const output = `temp/${filename}.${extension}`;
+
+    await fs.writeFile(output, buffer);
+
+    return output;
+  }
+
+  async handleEndUpload({ chat }: { chat: ChatModel }) {
+    const id = chat.key;
+    this.messageState[id].upload = "end";
+    const postBody: InstagramPostBody = {
+      caption: "Isi dengan caption (opsional)",
+    };
+
+    await chat.sendMessage("Jawab dengan format seperti ini");
+    await chat.sendMessage(JSONService.stringify(postBody));
+  }
+
+  async startPost({ body, chat }: { body: string; chat: ChatModel }) {
+    const id = chat.key;
+    const { caption } = InstagramPostBody.parse(JSON.parse(body));
+    const service = this.instagramServiceState[id];
+    const items = this.messageState[id].media;
+
+    await service.postAlbum({
+      items,
+      caption,
+    });
   }
 }

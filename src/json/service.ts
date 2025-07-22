@@ -49,4 +49,8 @@ export default class JSONService<T extends object = any> {
     const json = await this.read();
     return get(json, keyPath);
   }
+
+  static stringify(value: any) {
+    return JSON.stringify(value, null, 3);
+  }
 }
